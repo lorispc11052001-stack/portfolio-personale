@@ -1,0 +1,34 @@
+@use "header";
+@use "my-work";
+@use "skill";
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;}
+
+  a{text-decoration: none;}
+
+  body{
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-areas: 
+"header header header header"
+"skill skill skill skill"
+"aside-left aside-left aside-right aside-right"
+"aside-left aside-left aside-right aside-right"
+"my-work my-work my-work my-work"
+"my-work my-work my-work my-work"
+"footer footer footer footer";
+gap: 20px;}
+
+header { grid-area: header; } // Niente virgolette!
+.skill-container { grid-area: skill; }
+.cosa-faccio { grid-area: aside-left; }
+.come-lo-faccio { grid-area: aside-right; }
+.progetti-card { grid-area: my-work; }
+footer { grid-area: footer; }
