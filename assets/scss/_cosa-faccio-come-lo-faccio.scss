@@ -1,0 +1,110 @@
+.metodo-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(0.9rem, 2vw, 1.6rem);
+}
+
+.metodo-grid::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(var(--accent), var(--accent-2));
+  opacity: 0.42;
+}
+
+.cosa-faccio,
+.come-lo-faccio {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: relative;
+}
+
+.cosa-faccio::after,
+.come-lo-faccio::before {
+  content: "";
+  position: absolute;
+  top: 1.55rem;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 0 4px rgba(47, 118, 210, 0.14);
+}
+
+.cosa-faccio::after {
+  right: -0.36rem;
+}
+
+.come-lo-faccio::before {
+  left: -0.36rem;
+}
+
+.cosa-faccio h3,
+.come-lo-faccio h3 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+}
+
+.metodo-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.metodo-list li {
+  position: relative;
+  color: var(--muted);
+  line-height: 1.62;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: var(--surface-strong);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cosa-faccio .metodo-list li::after,
+.come-lo-faccio .metodo-list li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1rem;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.cosa-faccio .metodo-list li::after {
+  right: -1rem;
+}
+
+.come-lo-faccio .metodo-list li::before {
+  left: -1rem;
+}
+
+.metodo-list li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(47, 118, 210, 0.38);
+  box-shadow: 0 11px 16px rgba(20, 34, 59, 0.1);
+}
+
+@media (max-width: 992px) {
+  .metodo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metodo-grid::before {
+    display: none;
+  }
+
+  .cosa-faccio::after,
+  .come-lo-faccio::before,
+  .cosa-faccio .metodo-list li::after,
+  .come-lo-faccio .metodo-list li::before {
+    display: none;
+  }
+}

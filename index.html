@@ -1,166 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loris Battaglini Portfolio Full Stack Web Developer</title>
+  <title>Loris Battaglini | Full-Stack Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
-  
+  <div class="site-shell">
+    <header id="top">
+      <div class="header-nav-row">
+        <a href="#top" class="brand-mark">Loris Battaglini</a>
 
-  <!-- inizio header -->
-<header>
-  <!-- inizio lato sinistro -->
-  <section class="left-container-header">
-   <div class="text-container-header">
-    <h1>Ciao, mi chiamo Loris Battaglini</h1>
-    <h4>Sono un</h4>
-    <h2>Full-Stack Web Developer</h2>
-   </div>
+        <nav class="header-nav" aria-label="Menu principale">
+          <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#metodo">Metodo</a></li>
+            <li><a href="#projects">My Work</a></li>
+          </ul>
+        </nav>
 
-   <ul class="link-container-header">
-    <li>
-      <a href="#" class="btn-cv">Scarica Curriculum</a>
-    </li>
-
-    <li class="btn-linkedin">
-      <a href="http://www.linkedin.com/in/loris-battaglini-web" target="_blank"><img src="assets/img/linkedin/LI-In-Bug.png" alt="profilo linkedin">
-      </a>
-    </li>
-
-    <li class="btn-instagram">
-      <a href="https://www.instagram.com/loris_battaglini/" target="_blank"> <img src="assets/img/logo-instagram/01 Gradient Glyph/Instagram_Glyph_Gradient.png" alt="profilo instagram">
-      </a>
-    </li>
-   </ul>
-
-    <ul class="info-container-header">
-      <li><i class="fa-solid fa-location-dot"></i>vivo a caprarola, Italia</li>
-      <li><i class="fa-regular fa-address-card"></i>24 anni</li>
-      <li>devo capire che mettere qui</li>
-    </ul>
-  </section>
-  <!-- fine lato sinistro -->
-
-<!-- inizio lato destro -->
-    <section class="right-container-header">
-      <div class="img-container-header">
-        <img class="foto-loris" src="assets/img/20251005_001626.jpg" alt="foto profilo di loris battaglini">
+        <div class="header-cta-row">
+          <a href="#metodo" class="about-link-header">About me</a>
+          <a href="#form" class="contattami-header">Contattami</a>
         </div>
+      </div>
 
-        <a href="#form" class="contattami-header">Contattami</a>
+      <div class="header-main-row">
+        <section class="left-container-header">
+          <div class="text-container-header">
+            <h1>Ciao, mi chiamo Loris Battaglini</h1>
+            <h4>Sono un</h4>
+            <h2>Full-Stack Web Developer</h2>
+            <p>
+              Progetto e sviluppo siti web chiari, veloci e orientati al risultato.
+              Ogni sezione viene costruita per valorizzare il tuo lavoro e guidare
+              l'utente verso il contatto.
+            </p>
+          </div>
+
+          <ul class="link-container-header">
+            <li>
+              <a href="#" class="btn-cv">Scarica Curriculum</a>
+            </li>
+            <li class="btn-linkedin">
+              <a href="http://www.linkedin.com/in/loris-battaglini-web" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo LinkedIn">
+                <img src="assets/img/linkedin/LI-In-Bug.png" alt="LinkedIn">
+              </a>
+            </li>
+            <li class="btn-instagram">
+              <a href="https://www.instagram.com/loris_battaglini/" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo Instagram">
+                <img src="assets/img/logo-instagram/01 Gradient Glyph/Instagram_Glyph_Gradient.png" alt="Instagram">
+              </a>
+            </li>
+          </ul>
+
+          <ul class="info-container-header">
+            <li><i class="fa-solid fa-location-dot"></i>Caprarola, Italia</li>
+            <li><i class="fa-regular fa-address-card"></i>24 anni</li>
+            <li><i class="fa-solid fa-bolt"></i>Siti moderni e su misura</li>
+          </ul>
+        </section>
+
+        <section class="right-container-header">
+          <div class="img-container-header">
+            <img class="foto-loris" src="assets/img/20251005_001626.jpg" alt="Foto profilo di Loris Battaglini">
+          </div>
+        </section>
+      </div>
+    </header>
+
+    <section class="skill-container" id="skills">
+      <div class="section-heading">
+        <h3>Competenze principali</h3>
+        <p>Tecnologie selezionate per costruire prodotti affidabili, aggiornabili e performanti.</p>
+      </div>
+
+      <div class="skill-grid">
+        <article class="skill-inside-container">
+          <h4>HTML</h4>
+          <p>Struttura semantica e accessibile.</p>
+        </article>
+        <article class="skill-inside-container">
+          <h4>CSS / SCSS</h4>
+          <p>Layout responsive e UI professionali.</p>
+        </article>
+        <article class="skill-inside-container">
+          <h4>GitHub</h4>
+          <p>Versionamento pulito e workflow ordinato.</p>
+        </article>
+      </div>
     </section>
-    <!-- fine lato destro -->
-</header>
-<!-- fine header -->
 
+    <section class="metodo-section" id="metodo">
+      <div class="section-heading">
+        <h3>Cosa faccio e come lo faccio</h3>
+        <p>Un processo chiaro, con due aree connesse, pensato per dare direzione al progetto.</p>
+      </div>
 
-<!-- inizio skill -->
-<section class="skill-container">
-  <div class="skill-inside-container">html</div>
-  <div class="skill-inside-container">css</div>
-  <div class="skill-inside-container">github</div>
-</section>
-<!-- fine skill -->
+      <div class="metodo-grid">
+        <aside class="cosa-faccio">
+          <h3>Cosa faccio per te</h3>
+          <ul class="metodo-list">
+            <li>Trasformo la tua idea in un sito professionale orientato agli obiettivi.</li>
+            <li>Organizzo i contenuti per mostrare subito il valore dei tuoi servizi.</li>
+            <li>Costruisco pagine che guidano il visitatore verso la richiesta di contatto.</li>
+            <li>Realizzo una base solida, pronta per crescere con il tuo progetto.</li>
+          </ul>
+        </aside>
 
+        <aside class="come-lo-faccio">
+          <h3>Come lo faccio</h3>
+          <ul class="metodo-list">
+            <li>Definisco obiettivi, target e messaggio prima di scrivere il codice.</li>
+            <li>Progetto una gerarchia visiva chiara e un percorso utente lineare.</li>
+            <li>Sviluppo con codice modulare, semplice da mantenere e ampliare.</li>
+            <li>Verifico responsive, performance e leggibilita prima della consegna.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-  <aside class="cosa-faccio">
-    <h3>Cosa faccio per te</h3>
-    ogetto e realizzo siti web pensati per trasformare visitatori in clienti.
+    <section class="progetti-card" id="projects">
+      <div class="section-heading">
+        <h3>I miei progetti</h3>
+        <p>Una selezione di lavori recenti, presentati con una struttura chiara e leggibile.</p>
+      </div>
 
-Trasformo la tua idea in una presenza online concreta, professionale e pronta a farti crescere.
+      <div class="projects-grid">
+        <article class="card project-card card-left">
+          <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="Anteprima progetto 1">
+          <div class="card-body">
+            <h5 class="card-title">Progetto Depyl</h5>
+            <p class="card-text">Sito dedicato alla presentazione del progetto con focus su chiarezza e conversione.</p>
+            <a href="#" class="btn btn-primary">Visita il sito</a>
+          </div>
+        </article>
 
-Ti aiuto a portare online il tuo progetto in modo chiaro, credibile e convincente, così che chi visita il sito capisca subito il valore di ciò che offri.
+        <article class="card project-card card-right">
+          <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto 2">
+          <div class="card-body">
+            <h5 class="card-title">Landing Prodotto</h5>
+            <p class="card-text">Layout orientato alla presentazione del servizio e al contatto diretto.</p>
+            <a href="#" class="btn btn-primary">Visita il sito</a>
+          </div>
+        </article>
 
-Creo uno spazio digitale che rappresenta davvero il tuo lavoro, che ispira fiducia e che rende semplice per le persone contattarti o scegliere i tuoi servizi.
+        <article class="card project-card card-left">
+          <img src="https://images.unsplash.com/photo-1502759683299-cdcd6974244f?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto 3">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Creativo</h5>
+            <p class="card-text">Esperienza visiva pulita con navigazione semplice e contenuti in evidenza.</p>
+            <a href="#" class="btn btn-primary">Visita il sito</a>
+          </div>
+        </article>
 
-Non realizzo solo pagine web, ma uno strumento che lavora per te anche quando tu non stai lavorando.
+        <article class="card project-card card-right">
+          <img src="https://cdn.pixabay.com/photo/2018/08/14/15/32/coming-3605857_1280.jpg" class="card-img-top" alt="Anteprima progetto 4">
+          <div class="card-body">
+            <h5 class="card-title">Business Website</h5>
+            <p class="card-text">Sito istituzionale per comunicare servizi in modo autorevole e professionale.</p>
+            <a href="#" class="btn btn-primary">Visita il sito</a>
+          </div>
+        </article>
+      </div>
+    </section>
 
-Se hai un’idea, un’attività o un progetto che vuoi far evolvere, costruisco la struttura digitale che gli permette di fare un passo in più.
-  </aside>
+    <footer>
+      <div class="section-heading">
+        <h3>Parliamo del tuo progetto</h3>
+        <p>Scrivimi qui: ti rispondo entro 24 ore con una proposta chiara e concreta.</p>
+      </div>
 
-  <aside class="come-lo-faccio">
-    <h3>Come lo faccio</h3>
-    Definisco con precisione l’obiettivo del sito e il pubblico a cui deve parlare, così ogni scelta ha una direzione chiara.
+      <form action="#" method="post" id="form">
+        <label for="text">
+          Nome
+          <input type="text" placeholder="Scrivi il tuo nome" id="text" name="nome-utente">
+        </label>
 
-Studio la struttura delle pagine, la gerarchia delle informazioni e il percorso dell’utente, evitando confusione e dispersione.
+        <label for="email">
+          Email
+          <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente">
+        </label>
 
-Organizzo i contenuti in modo strategico, dando priorità a ciò che deve attirare attenzione e guidare all’azione.
+        <label for="message">
+          Messaggio
+          <textarea name="messaggio" id="message" rows="6" placeholder="Inserisci il tuo messaggio, rispondo entro 24 ore"></textarea>
+        </label>
 
-Sviluppo il sito con codice ordinato e modulare, progettato per essere facilmente aggiornabile e ampliabile nel tempo.
-
-Ottimizzo prestazioni, compatibilità mobile e stabilità tecnica, testando ogni sezione prima della consegna.
-
-Mi assicuro che il progetto sia pronto per essere pubblicato e utilizzato in modo professionale, senza improvvisazioni o soluzioni fragili.
-  </aside>
-
-
-
-  <!-- inizio my work -->
-<section class="progetti-card">
-  <h1>I mie progetti</h1>
-
-
-  <!-- usato bootstrap -->
-  <div class="card card-left" style="width: 18rem;">
-  <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">SProgetto Depyl, un sito che si occupa di blablabla</p>
-    <a href="#" class="btn btn-primary">Visita il sito</a>
+        <button type="submit" class="btn-footer">Invia richiesta</button>
+      </form>
+    </footer>
   </div>
-</div>
-<div class="card card-right" style="width: 18rem;">
-  <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c2ZvbmRpfGVufDB8fDB8fHww" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Visita il sito</a>
-  </div>
-</div>
-<div class="card card-left" style="width: 18rem;">
-  <img src="https://images.unsplash.com/photo-1502759683299-cdcd6974244f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2ZvbmRpfGVufDB8fDB8fHww" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Visita il sito</a>
-  </div>
-</div>
-<div class="card card-right" style="width: 18rem;">
-  <img src="https://cdn.pixabay.com/photo/2018/08/14/15/32/coming-3605857_1280.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Visita il sito</a>
-  </div>
-</div>
-<!-- fine bootsrap -->
-</section>
-<!-- fine my work -->
-
-
-<!-- inizio footer -->
-<footer>
-  <h3>questo form di contatto è il tuo primo passo verso una collaborazione di successo. che tu stia cercando di collaborare o abbia solo una domanda o chattare sul tuo progetto, sono qui per aiutarti. I tuoi sogni, la mia esperienza</h3>
-  <form action="#" method="post" id="form">
-  <label for="text">
-    Nome
-    <input type="text" placeholder="scrivi il tuo nome" id="text" name="nome-utente">
-  </label>
-  <label for="email">
-    Email
-    <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente">
-  </label>
-  <label for="message">
- <textarea name="messaggio" id="message" cols="100" rows="5" placeholder="Inserisci il tuo messaggio, rispondo entro 24 ore">
-</textarea>
-</label>
-  <button type="submit" class="btn-footer">Invia</button>
-  </form>
-</footer>
-<!-- fine footer -->
 </body>
 </html>
