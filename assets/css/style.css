@@ -86,6 +86,33 @@ footer {
   border-radius: 1.1rem;
   box-shadow: var(--shadow);
   padding: clamp(1rem, 2.2vw, 2rem);
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.section-focus {
+  border-color: rgba(47, 118, 210, 0.62);
+  box-shadow:
+    0 0 0 4px rgba(47, 118, 210, 0.2),
+    0 26px 46px rgba(20, 34, 59, 0.16);
+  animation: section-focus-fade 1.4s ease;
+}
+
+@keyframes section-focus-fade {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(47, 118, 210, 0.38),
+      0 20px 45px rgba(20, 34, 59, 0.1);
+  }
+  60% {
+    box-shadow:
+      0 0 0 8px rgba(47, 118, 210, 0.16),
+      0 30px 54px rgba(20, 34, 59, 0.2);
+  }
+  100% {
+    box-shadow:
+      0 0 0 4px rgba(47, 118, 210, 0.2),
+      0 26px 46px rgba(20, 34, 59, 0.16);
+  }
 }
 
 .section-heading {

@@ -225,5 +225,42 @@
       </form>
     </footer>
   </div>
+  <script>
+    (function () {
+      const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"]');
+      let activeTimer = null;
+      let activeSection = null;
+
+      function highlightSection(targetId) {
+        const section = document.querySelector(targetId);
+        if (!section) return;
+
+        if (activeSection && activeSection !== section) {
+          activeSection.classList.remove('section-focus');
+        }
+
+        section.classList.remove('section-focus');
+        void section.offsetWidth;
+        section.classList.add('section-focus');
+        activeSection = section;
+
+        if (activeTimer) clearTimeout(activeTimer);
+        activeTimer = setTimeout(function () {
+          section.classList.remove('section-focus');
+          if (activeSection === section) activeSection = null;
+        }, 1700);
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          const targetId = link.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          setTimeout(function () {
+            highlightSection(targetId);
+          }, 380);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
