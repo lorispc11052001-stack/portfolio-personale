@@ -157,43 +157,140 @@
     <section class="progetti-card" id="projects">
       <div class="section-heading">
         <h3>I miei progetti</h3>
-        <p>Una selezione di lavori recenti, presentati con una struttura chiara e leggibile.</p>
+        <p>Una selezione essenziale dei lavori principali. Se vuoi vedere tutto, espandi la sezione.</p>
       </div>
 
-      <div class="projects-grid">
-        <article class="card project-card card-left">
-          <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="Anteprima progetto 1">
+      <div class="projects-grid projects-grid-static">
+        <article class="card project-card card-left" data-project-state="live">
+          <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="Anteprima progetto Depyl">
           <div class="card-body">
             <h5 class="card-title">Progetto Depyl</h5>
             <p class="card-text">Sito dedicato alla presentazione del progetto con focus su chiarezza e conversione.</p>
-            <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank">Visita il sito</a>
+            <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
           </div>
         </article>
 
-        <article class="card project-card card-right">
-          <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto 2">
+        <article class="card project-card card-right" data-project-state="live">
+          <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Coffee Studio">
           <div class="card-body">
             <h5 class="card-title">Landing Prodotto</h5>
             <p class="card-text">Layout orientato alla presentazione del servizio e al contatto diretto.</p>
-            <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank">Visita il sito</a>
+            <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="projects-expand-row">
+        <button type="button" class="projects-more-link" id="toggle-projects-expanded" aria-expanded="false" aria-controls="projects-expanded-content">
+          Vedi tutti i progetti
+        </button>
+      </div>
+
+      <div class="projects-expanded-content" id="projects-expanded-content" hidden>
+        <article class="projects-slider-block">
+          <h4>Progetti completati</h4>
+          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti completati">
+            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra">&larr;</button>
+            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false">Blocca Scorrimento</button>
+            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra">&rarr;</button>
+          </div>
+          <div class="projects-slider" aria-label="Carosello progetti completati">
+            <div class="projects-track">
+              <div class="projects-lane">
+                <article class="card project-card" data-project-state="live">
+                  <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="Anteprima progetto Depyl">
+                  <div class="card-body">
+                    <h5 class="card-title">Progetto Depyl</h5>
+                    <p class="card-text">Sito dedicato alla presentazione del progetto con focus su chiarezza e conversione.</p>
+                    <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+                  </div>
+                </article>
+
+                <article class="card project-card" data-project-state="live">
+                  <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Coffee Studio">
+                  <div class="card-body">
+                    <h5 class="card-title">Landing Prodotto</h5>
+                    <p class="card-text">Layout orientato alla presentazione del servizio e al contatto diretto.</p>
+                    <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="card project-card card-left">
-          <img src="https://images.unsplash.com/photo-1502759683299-cdcd6974244f?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto 3">
-          <div class="card-body">
-            <h5 class="card-title">Portfolio Creativo</h5>
-            <p class="card-text">Esperienza visiva pulita con navigazione semplice e contenuti in evidenza.</p>
-            <a href="#" class="btn btn-primary">Visita il sito</a>
+        <article class="projects-slider-block projects-slider-block-working">
+          <h4>Progetti in lavorazione</h4>
+          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti in lavorazione">
+            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra">&larr;</button>
+            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false">Blocca Scorrimento</button>
+            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra">&rarr;</button>
           </div>
-        </article>
+          <div class="projects-slider projects-slider-soon" aria-label="Carosello progetti in lavorazione">
+            <div class="projects-track">
+              <div class="projects-lane">
+                <article class="card project-card" data-project-state="soon">
+                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto E-commerce Artigiano">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">E-commerce Artigiano</h5>
+                    <p class="card-text">Store essenziale pensato per prodotti locali e checkout semplificato.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
 
-        <article class="card project-card card-right">
-          <img src="https://cdn.pixabay.com/photo/2018/08/14/15/32/coming-3605857_1280.jpg" class="card-img-top" alt="Anteprima progetto 4">
-          <div class="card-body">
-            <h5 class="card-title">Business Website</h5>
-            <p class="card-text">Sito istituzionale per comunicare servizi in modo autorevole e professionale.</p>
-            <a href="#" class="btn btn-primary">Visita il sito</a>
+                <article class="card project-card" data-project-state="soon">
+                  <img src="https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Portfolio Foto">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">Portfolio Foto</h5>
+                    <p class="card-text">Esperienza immersiva per fotografi con galleria ad alto impatto visivo.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
+
+                <article class="card project-card" data-project-state="soon">
+                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto CRM Team">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">CRM Team</h5>
+                    <p class="card-text">Piattaforma interna per gestione lead, task condivisi e calendario commerciale.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
+
+                <article class="card project-card" data-project-state="soon">
+                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto App Eventi">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">App Eventi</h5>
+                    <p class="card-text">Portale eventi con filtri geolocalizzati, ticketing e profili organizzatori.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
+
+                <article class="card project-card" data-project-state="live">
+                  <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Dashboard SEO">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">Dashboard SEO</h5>
+                    <p class="card-text">Report automatici e panoramica metriche per monitorare performance mensili.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
+
+                <article class="card project-card" data-project-state="live">
+                  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Landing Restaurant">
+                  <div class="card-body">
+                    <span class="project-status">Coming soon</span>
+                    <h5 class="card-title">Landing Restaurant</h5>
+                    <p class="card-text">Sito vetrina ad alto impatto per prenotazioni rapide e menu in evidenza.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                  </div>
+                </article>
+
+              </div>
+            </div>
           </div>
         </article>
       </div>
@@ -228,8 +325,304 @@
   <script>
     (function () {
       const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"]');
+      const projectsSection = document.querySelector('#projects');
+      const projectsExpandedContent = document.querySelector('#projects-expanded-content');
+      const toggleProjectsExpandedButton = document.querySelector('#toggle-projects-expanded');
+      const projectSliderStates = [];
       let activeTimer = null;
       let activeSection = null;
+
+      let projectAnimationFrameId = null;
+      let projectAnimationLastTime = 0;
+
+      function getLaneGap(state) {
+        const styles = window.getComputedStyle(state.lane);
+        const rawGap = styles.columnGap || styles.gap || '0';
+        const gap = Number.parseFloat(rawGap);
+        return Number.isNaN(gap) ? 0 : gap;
+      }
+
+      function ensureMinimumCards(lane, minCards) {
+        const originalCards = Array.from(lane.children);
+        if (originalCards.length === 0) return;
+        let cloneIndex = 0;
+
+        while (lane.children.length < minCards) {
+          const sourceCard = originalCards[cloneIndex % originalCards.length];
+          const clonedCard = sourceCard.cloneNode(true);
+          clonedCard.setAttribute('data-cloned-card', 'true');
+          lane.appendChild(clonedCard);
+          cloneIndex += 1;
+        }
+      }
+
+      function getCardStep(card, state) {
+        return card.getBoundingClientRect().width + getLaneGap(state);
+      }
+
+      function applyLaneTransform(state) {
+        state.lane.style.transform = 'translate3d(' + state.offset + 'px, 0, 0)';
+      }
+
+      function updateSliderEdgeOffset(state) {
+        const cards = Array.from(state.lane.children);
+        if (cards.length === 0) return;
+
+        const firstCard = cards[0];
+        const gap = getLaneGap(state);
+        const cardsTotalWidth = cards.reduce(function (sum, card) {
+          return sum + card.getBoundingClientRect().width;
+        }, 0);
+        const laneNaturalWidth = cardsTotalWidth + gap * Math.max(0, cards.length - 1);
+        const sliderWidth = state.slider.clientWidth;
+        const isSmallViewport = window.matchMedia('(max-width: 992px)').matches;
+
+        const targetWidth = isSmallViewport
+          ? firstCard.getBoundingClientRect().width
+          : Math.min(laneNaturalWidth, sliderWidth);
+        const edgeOffset = Math.max(0, (sliderWidth - targetWidth) / 2);
+
+        state.lane.style.setProperty('--edge-offset', edgeOffset + 'px');
+      }
+
+      function updateSliderSpeed(state) {
+        const isSmallViewport = window.matchMedia('(max-width: 992px)').matches;
+        state.speed = isSmallViewport ? 0.03 : 0.045;
+      }
+
+      function normalizeForwardLoop(state) {
+        let firstCard = state.lane.firstElementChild;
+        while (firstCard) {
+          const step = getCardStep(firstCard, state);
+          if (-state.offset < step) break;
+          state.offset += step;
+          state.lane.appendChild(firstCard);
+          firstCard = state.lane.firstElementChild;
+        }
+      }
+
+      function snapLaneToCenter(state, durationMs) {
+        const firstCard = state.lane.firstElementChild;
+        if (!firstCard) return;
+        const step = getCardStep(firstCard, state);
+        if (!step) return;
+
+        while (state.offset <= -step) {
+          const movedCard = state.lane.firstElementChild;
+          if (!movedCard) break;
+          state.offset += step;
+          state.lane.appendChild(movedCard);
+        }
+
+        while (state.offset > 0) {
+          const movedCard = state.lane.lastElementChild;
+          if (!movedCard) break;
+          state.offset -= step;
+          state.lane.insertBefore(movedCard, state.lane.firstElementChild);
+        }
+
+        const deltaToCenter = -state.offset;
+        if (Math.abs(deltaToCenter) < 0.5) {
+          state.offset = 0;
+          applyLaneTransform(state);
+          return;
+        }
+
+        if (durationMs && !state.isManualAnimating) {
+          animateLaneBy(state, deltaToCenter, durationMs, function () {
+            state.offset = 0;
+            applyLaneTransform(state);
+          });
+          return;
+        }
+
+        state.offset = 0;
+        applyLaneTransform(state);
+      }
+
+      function setSliderPaused(state, shouldPause, alignOnPause) {
+        state.isAutoPaused = shouldPause;
+        state.toggleButton.setAttribute('aria-pressed', shouldPause ? 'true' : 'false');
+        state.toggleButton.textContent = shouldPause ? 'Riprendi' : 'Pausa';
+        if (shouldPause && alignOnPause !== false) {
+          snapLaneToCenter(state, 220);
+        }
+      }
+
+      function animateLaneBy(state, delta, durationMs, onComplete) {
+        state.isManualAnimating = true;
+        const startOffset = state.offset;
+        let startTime = null;
+
+        function frame(now) {
+          if (startTime === null) startTime = now;
+          const progress = Math.min(1, (now - startTime) / durationMs);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          state.offset = startOffset + delta * eased;
+          applyLaneTransform(state);
+
+          if (progress < 1) {
+            requestAnimationFrame(frame);
+            return;
+          }
+
+          state.isManualAnimating = false;
+          if (onComplete) onComplete();
+        }
+
+        requestAnimationFrame(frame);
+      }
+
+      function stepSlider(state, direction) {
+        if (state.isManualAnimating) return;
+
+        setSliderPaused(state, true, false);
+
+        if (direction > 0) {
+          const firstCard = state.lane.firstElementChild;
+          if (!firstCard) return;
+          const step = getCardStep(firstCard, state);
+
+          animateLaneBy(state, -step, 300, function () {
+            const movedCard = state.lane.firstElementChild;
+            if (!movedCard) return;
+            state.lane.appendChild(movedCard);
+            state.offset += step;
+            applyLaneTransform(state);
+          });
+          return;
+        }
+
+        const lastCard = state.lane.lastElementChild;
+        if (!lastCard) return;
+        const step = getCardStep(lastCard, state);
+
+        state.lane.insertBefore(lastCard, state.lane.firstElementChild);
+        state.offset -= step;
+        applyLaneTransform(state);
+
+        requestAnimationFrame(function () {
+          animateLaneBy(state, step, 300, null);
+        });
+      }
+
+      function runProjectAnimation(now) {
+        if (!projectAnimationLastTime) projectAnimationLastTime = now;
+        const elapsed = Math.min(40, now - projectAnimationLastTime);
+        projectAnimationLastTime = now;
+
+        projectSliderStates.forEach(function (state) {
+          if (!state.isVisible || state.isAutoPaused || state.isManualAnimating) return;
+          state.offset -= state.speed * elapsed;
+          normalizeForwardLoop(state);
+          applyLaneTransform(state);
+        });
+
+        projectAnimationFrameId = requestAnimationFrame(runProjectAnimation);
+      }
+
+      function startProjectAnimationLoop() {
+        if (projectAnimationFrameId) return;
+        projectAnimationLastTime = 0;
+        projectAnimationFrameId = requestAnimationFrame(runProjectAnimation);
+      }
+
+      function stopProjectAnimationLoop() {
+        if (!projectAnimationFrameId) return;
+        cancelAnimationFrame(projectAnimationFrameId);
+        projectAnimationFrameId = null;
+        projectAnimationLastTime = 0;
+      }
+
+      function setupProjectSliders() {
+        if (!projectsExpandedContent) return;
+        if (projectSliderStates.length > 0) return;
+
+        const sliderBlocks = projectsExpandedContent.querySelectorAll('.projects-slider-block');
+        sliderBlocks.forEach(function (block) {
+          const slider = block.querySelector('.projects-slider');
+          const lane = block.querySelector('.projects-lane');
+          const toggleButton = block.querySelector('.projects-nav-toggle');
+          const prevButton = block.querySelector('[data-action="prev"]');
+          const nextButton = block.querySelector('[data-action="next"]');
+          if (!slider || !lane || !toggleButton || !prevButton || !nextButton) return;
+
+          ensureMinimumCards(lane, 6);
+
+          const state = {
+            slider: slider,
+            lane: lane,
+            toggleButton: toggleButton,
+            isAutoPaused: false,
+            isManualAnimating: false,
+            isVisible: false,
+            offset: 0,
+            speed: 0.045
+          };
+
+          prevButton.addEventListener('click', function () {
+            stepSlider(state, -1);
+          });
+
+          nextButton.addEventListener('click', function () {
+            stepSlider(state, 1);
+          });
+
+          toggleButton.addEventListener('click', function () {
+            setSliderPaused(state, !state.isAutoPaused, true);
+            if (!state.isAutoPaused) {
+              startProjectAnimationLoop();
+            }
+          });
+
+          updateSliderEdgeOffset(state);
+          updateSliderSpeed(state);
+          applyLaneTransform(state);
+          projectSliderStates.push(state);
+        });
+
+        window.addEventListener('resize', function () {
+          projectSliderStates.forEach(function (state) {
+            updateSliderEdgeOffset(state);
+            updateSliderSpeed(state);
+            snapLaneToCenter(state, 0);
+            applyLaneTransform(state);
+          });
+        });
+      }
+
+      function setProjectsExpandedState(isExpanded) {
+        if (!projectsSection || !projectsExpandedContent || !toggleProjectsExpandedButton) return;
+
+        projectsSection.classList.toggle('projects-expanded', isExpanded);
+        projectsExpandedContent.hidden = !isExpanded;
+        toggleProjectsExpandedButton.setAttribute('aria-expanded', String(isExpanded));
+        toggleProjectsExpandedButton.textContent = isExpanded ? 'Torna alla griglia base' : 'Vedi tutti i progetti';
+
+        if (isExpanded) {
+          setupProjectSliders();
+          projectSliderStates.forEach(function (state) {
+            state.isVisible = true;
+            updateSliderEdgeOffset(state);
+            snapLaneToCenter(state, 0);
+            applyLaneTransform(state);
+          });
+          startProjectAnimationLoop();
+          return;
+        }
+
+        projectSliderStates.forEach(function (state) {
+          state.isVisible = false;
+        });
+        stopProjectAnimationLoop();
+      }
+
+      if (toggleProjectsExpandedButton) {
+        toggleProjectsExpandedButton.addEventListener('click', function () {
+          const currentState = toggleProjectsExpandedButton.getAttribute('aria-expanded') === 'true';
+          setProjectsExpandedState(!currentState);
+        });
+      }
 
       function scrollToCenter(element) {
         const rect = element.getBoundingClientRect();
