@@ -35,6 +35,14 @@ body {
     radial-gradient(1100px 500px at 10% -10%, rgba(47, 118, 210, 0.18), transparent 70%),
     radial-gradient(900px 420px at 90% 0%, rgba(229, 139, 99, 0.18), transparent 72%),
     var(--bg);
+  // Prevent horizontal scroll introduced by animated lanes / wide cards.
+  overflow-x: hidden;
+}
+
+@supports (overflow: clip) {
+  body {
+    overflow-x: clip;
+  }
 }
 
 body::before {
@@ -92,6 +100,63 @@ footer {
   border-radius: 1.1rem;
   box-shadow: var(--shadow);
   padding: clamp(1rem, 2.2vw, 2rem);
+  // Required by JS "highlightSection": transition is part of focus feedback.
+  transition: box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+// Temporary focus class added by JS after anchor navigation.
+.section-focus {
+  border-color: rgba(47, 118, 210, 0.62);
+  box-shadow: 0 0 0 4px rgba(47, 118, 210, 0.2), 0 26px 46px rgba(20, 34, 59, 0.16);
+  animation: section-focus-fade 1.4s ease;
+}
+
+.section-focus .skill-inside-container,
+.section-focus .learning-dropdown,
+.section-focus .metodo-track,
+.section-focus .metodo-item p,
+.section-focus .project-card,
+.section-focus form,
+.section-focus input,
+.section-focus textarea {
+  border-color: rgba(47, 118, 210, 0.38);
+  box-shadow: 0 0 0 2px rgba(47, 118, 210, 0.1);
+  animation: section-inner-focus-fade 1.35s ease;
+}
+
+.section-focus .project-card,
+.section-focus .skill-inside-container,
+.section-focus .metodo-track,
+.section-focus .metodo-item p {
+  background: linear-gradient(180deg, #ffffff, #f4f9ff);
+}
+
+@keyframes section-focus-fade {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 118, 210, 0.38), 0 20px 45px rgba(20, 34, 59, 0.1);
+  }
+
+  60% {
+    box-shadow: 0 0 0 8px rgba(47, 118, 210, 0.16), 0 30px 54px rgba(20, 34, 59, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 4px rgba(47, 118, 210, 0.2), 0 26px 46px rgba(20, 34, 59, 0.16);
+  }
+}
+
+@keyframes section-inner-focus-fade {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 118, 210, 0.24);
+  }
+
+  70% {
+    box-shadow: 0 0 0 4px rgba(47, 118, 210, 0.08);
+  }
+
+  100% {
+    box-shadow: 0 0 0 2px rgba(47, 118, 210, 0.1);
+  }
 }
 
 .section-heading {
@@ -115,4 +180,9 @@ footer {
     width: min(100%, 94vw);
     gap: 1rem;
   }
+}
+
+// Keeps spacing consistent for all <summary> toggles used in pages.
+summary {
+  margin-top: 10px;
 }

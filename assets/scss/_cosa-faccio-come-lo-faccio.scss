@@ -1,110 +1,209 @@
+// Metodo section: two tracks with real geometric connectors.
 .metodo-grid {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(0.9rem, 2vw, 1.6rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.55rem);
 }
 
-.metodo-grid::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 2px;
-  transform: translateX(-50%);
-  background: linear-gradient(var(--accent), var(--accent-2));
-  opacity: 0.42;
-}
-
-.cosa-faccio,
-.come-lo-faccio {
+.metodo-track {
+  --track-main: var(--accent);
+  --track-soft: rgba(47, 118, 210, 0.34);
+  --track-line: rgba(47, 118, 210, 0.22);
+  --row-gap: 0.72rem;
+  --spine-x: 0.92rem;
+  --node-size: 0.94rem;
+  --item-pad-left: 2.5rem;
   border: 1px solid var(--line);
-  background: #fff;
   border-radius: 1rem;
+  background: #fff;
   padding: 1rem;
-  position: relative;
-}
-
-.cosa-faccio::after,
-.come-lo-faccio::before {
-  content: "";
-  position: absolute;
-  top: 1.55rem;
-  width: 0.72rem;
-  height: 0.72rem;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  box-shadow: 0 0 0 4px rgba(47, 118, 210, 0.14);
-}
-
-.cosa-faccio::after {
-  right: -0.36rem;
-}
-
-.come-lo-faccio::before {
-  left: -0.36rem;
-}
-
-.cosa-faccio h3,
-.come-lo-faccio h3 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-}
-
-.metodo-list {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.78rem;
 }
 
-.metodo-list li {
+.metodo-track h3 {
+  margin: 0;
+  font-size: clamp(1.07rem, 1.45vw, 1.32rem);
+}
+
+.metodo-track-value {
+  --track-main: #d66f46;
+  --track-soft: rgba(214, 111, 70, 0.38);
+  --track-line: rgba(214, 111, 70, 0.2);
+}
+
+.metodo-track-value h3 {
+  color: #8a543f;
+}
+
+.metodo-track-process {
+  --track-main: #2f76d2;
+  --track-soft: rgba(47, 118, 210, 0.38);
+  --track-line: rgba(47, 118, 210, 0.2);
+}
+
+.metodo-track-process h3 {
+  color: #1e4f90;
+}
+
+.metodo-timeline {
   position: relative;
-  color: var(--muted);
-  line-height: 1.62;
-  padding: 0.7rem 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: 0.7rem;
-  background: var(--surface-strong);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  gap: var(--row-gap);
+  min-height: clamp(18.4rem, 30vw, 22rem);
 }
 
-.cosa-faccio .metodo-list li::after,
-.come-lo-faccio .metodo-list li::before {
+.metodo-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: var(--item-pad-left);
+}
+
+.metodo-item::before {
   content: "";
   position: absolute;
+  left: calc(var(--spine-x) + (var(--node-size) / 2));
   top: 50%;
-  width: 1rem;
-  height: 1px;
-  background: var(--line-strong);
+  width: calc(var(--item-pad-left) - var(--spine-x) - (var(--node-size) / 2));
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(var(--track-soft), var(--track-main));
 }
 
-.cosa-faccio .metodo-list li::after {
-  right: -1rem;
+.metodo-item::after {
+  content: "";
+  position: absolute;
+  left: var(--spine-x);
+  top: 50%;
+  width: 2px;
+  height: calc(100% + var(--row-gap));
+  transform: translate(-50%, 0);
+  background: linear-gradient(var(--track-soft), var(--track-main));
 }
 
-.come-lo-faccio .metodo-list li::before {
-  left: -1rem;
+.metodo-item:last-child::after {
+  display: none;
 }
 
-.metodo-list li:hover {
+.metodo-point {
+  position: absolute;
+  left: var(--spine-x);
+  top: 50%;
+  width: var(--node-size);
+  height: var(--node-size);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 3px solid var(--track-main);
+  background: #fff;
+  z-index: 1;
+}
+
+.metodo-item p {
+  margin: 0;
+  width: 100%;
+  // Closed card style requested in current visual iteration.
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  border-radius: 0.74rem 0.74rem 0.74rem 0.74rem;
+  background: linear-gradient(180deg, #ffffff, var(--surface-strong));
+  color: var(--muted);
+  line-height: 1.58;
+  padding: 0.72rem 0.8rem;
+  transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.metodo-item:hover p {
   transform: translateY(-2px);
-  border-color: rgba(47, 118, 210, 0.38);
+  border-left-color: var(--track-soft);
+  border-top-color: var(--track-soft);
+  border-right-color: var(--track-soft);
+  border-bottom-color: var(--track-soft);
   box-shadow: 0 11px 16px rgba(20, 34, 59, 0.1);
 }
 
+.metodo-cta {
+  margin-top: 1rem;
+  padding: 0.82rem 0.92rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 0.86rem;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.metodo-cta p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.56;
+}
+
+.metodo-cta-link {
+  white-space: nowrap;
+  border-radius: 999px;
+  border: 0;
+  padding: 0.58rem 1rem;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  box-shadow: 0 8px 16px rgba(47, 118, 210, 0.2);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.metodo-cta-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 20px rgba(47, 118, 210, 0.3);
+}
+
 @media (max-width: 992px) {
+  // On mobile, force all connector anchors to the same Y to avoid line drift.
   .metodo-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .metodo-grid::before {
-    display: none;
+  .metodo-track {
+    min-height: 0;
+    padding: 0.95rem;
+    --row-gap: 0.65rem;
   }
 
-  .cosa-faccio::after,
-  .come-lo-faccio::before,
-  .cosa-faccio .metodo-list li::after,
-  .come-lo-faccio .metodo-list li::before {
-    display: none;
+  .metodo-timeline {
+    min-height: 0;
+    grid-template-rows: none;
+    gap: 0.65rem;
+  }
+
+  .metodo-item::before {
+    top: 1.1rem;
+    transform: translateY(-50%);
+  }
+
+  .metodo-item::after {
+    top: 1.1rem;
+    height: calc(100% + var(--row-gap));
+    transform: translate(-50%, 0);
+  }
+
+  .metodo-point {
+    top: 1.1rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .metodo-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .metodo-cta-link {
+    text-align: center;
   }
 }
