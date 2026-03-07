@@ -715,6 +715,23 @@
           }, useDefaultTopScroll ? 360 : 460);
         });
       });
+
+      function focusSectionFromHash() {
+        const targetId = window.location.hash;
+        if (!targetId || targetId === '#') return;
+        const targetSection = document.querySelector(targetId);
+        if (!targetSection) return;
+
+        setTimeout(function () {
+          scrollToCenter(targetSection);
+          setTimeout(function () {
+            highlightSection(targetId);
+          }, 260);
+        }, 120);
+      }
+
+      focusSectionFromHash();
+      window.addEventListener('hashchange', focusSectionFromHash);
     })();
   </script>
 </body>
