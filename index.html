@@ -384,6 +384,12 @@
         return Number.isNaN(gap) ? 0 : gap;
       }
 
+      function getLaneEdgeOffset(state) {
+        const rawEdgeOffset = window.getComputedStyle(state.lane).getPropertyValue('--edge-offset');
+        const edgeOffset = Number.parseFloat(rawEdgeOffset);
+        return Number.isNaN(edgeOffset) ? 0 : edgeOffset;
+      }
+
       function ensureMinimumCards(lane, minCards) {
         const originalCards = Array.from(lane.children);
         if (originalCards.length === 0) return;
@@ -429,14 +435,15 @@
 
       function updateSliderSpeed(state) {
         const isSmallViewport = window.matchMedia('(max-width: 992px)').matches;
-        state.speed = isSmallViewport ? 0.03 : 0.045;
+        state.speed = isSmallViewport ? 0.026 : 0.045;
       }
 
       function normalizeForwardLoop(state) {
         let firstCard = state.lane.firstElementChild;
         while (firstCard) {
           const step = getCardStep(firstCard, state);
-          if (-state.offset < step) break;
+          const recycleThreshold = step + getLaneEdgeOffset(state);
+          if (-state.offset < recycleThreshold) break;
           state.offset += step;
           state.lane.appendChild(firstCard);
           firstCard = state.lane.firstElementChild;
