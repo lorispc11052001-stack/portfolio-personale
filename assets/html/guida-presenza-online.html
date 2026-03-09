@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guida pratica: prima presenza online credibile (anche se parti da zero)</title>
+  <meta name="description" content="Guida completa e operativa per freelance e piccoli business che non hanno ancora un sito: come creare una presenza online credibile e ricevere richieste migliori.">
+  <style>
+    :root {
+      --bg: #f3f7ff;
+      --paper: #ffffff;
+      --text: #1b2437;
+      --muted: #51617f;
+      --line: #d8e2f2;
+      --line-strong: #b7c7e3;
+      --accent: #2f76d2;
+      --accent-2: #e58b63;
+      --accent-soft: #eef5ff;
+      --good: #1f7a4e;
+      --warn: #a85a24;
+      --shadow: 0 14px 30px rgba(20, 36, 62, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Sora", "Segoe UI", Tahoma, sans-serif;
+      background:
+        radial-gradient(900px 420px at 90% 0%, rgba(47, 118, 210, 0.16), transparent 72%),
+        radial-gradient(800px 380px at 0% 100%, rgba(229, 139, 99, 0.14), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      letter-spacing: 0.002em;
+    }
+
+    .shell {
+      width: min(1080px, 94vw);
+      margin: 1.35rem auto 2.2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 1.3rem;
+      background: linear-gradient(125deg, #ffffff 0%, #f2f7ff 58%, #fff5ee 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -25% -50% auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(47, 118, 210, 0.16), rgba(47, 118, 210, 0));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(47, 118, 210, 0.28);
+      background: rgba(47, 118, 210, 0.07);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      margin: 0.7rem 0 0;
+      font-size: clamp(1.55rem, 2.9vw, 2.35rem);
+      line-height: 1.22;
+      max-width: 24ch;
+    }
+
+    .hero-subtitle {
+      margin: 0.7rem 0 0;
+      max-width: 68ch;
+      color: var(--muted);
+    }
+
+    .chips {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.33;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .section-head {
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 0.85rem;
+      padding: 0.85rem;
+      background: #fcfdff;
+    }
+
+    .card p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.24rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      color: #33486f;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .list {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .list li {
+      color: var(--text);
+    }
+
+    .diagnostic {
+      margin-top: 0.7rem;
+      display: grid;
+      gap: 0.58rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .diagnostic li {
+      padding: 0.62rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 0.7rem;
+      display: grid;
+      grid-template-columns: 1.35rem 1fr;
+      gap: 0.6rem;
+      align-items: start;
+      background: #fbfdff;
+    }
+
+    .box {
+      width: 1.02rem;
+      height: 1.02rem;
+      border: 2px solid #96aacc;
+      border-radius: 0.28rem;
+      margin-top: 0.1rem;
+      background: #fff;
+    }
+
+    .phase {
+      border: 1px solid var(--line);
+      border-radius: 0.88rem;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .phase-head {
+      padding: 0.72rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--accent-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phase-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #223a60;
+    }
+
+    .phase-time {
+      font-size: 0.8rem;
+      color: #476089;
+      font-weight: 700;
+    }
+
+    .phase-body {
+      padding: 0.82rem 0.85rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .step-block {
+      border-left: 3px solid #d0def4;
+      padding-left: 0.7rem;
+    }
+
+    .step-block strong {
+      display: inline-block;
+      margin-bottom: 0.22rem;
+    }
+
+    .step-note {
+      margin-top: 0.4rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .warning {
+      border: 1px dashed rgba(168, 90, 36, 0.45);
+      border-radius: 0.75rem;
+      background: rgba(229, 139, 99, 0.09);
+      padding: 0.8rem;
+    }
+
+    .warning h3 {
+      color: #7d3f17;
+      margin-bottom: 0.42rem;
+    }
+
+    .warning ul {
+      margin: 0;
+      padding-left: 1.05rem;
+      display: grid;
+      gap: 0.38rem;
+    }
+
+    .timeline {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .timeline li {
+      border: 1px solid var(--line);
+      border-radius: 0.75rem;
+      padding: 0.7rem;
+      background: #fff;
+    }
+
+    .timeline li strong {
+      color: #284b79;
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.55rem;
+      font-size: 0.95rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 0.8rem;
+      overflow: hidden;
+    }
+
+    .compare th,
+    .compare td {
+      padding: 0.62rem 0.66rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .compare tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .compare th {
+      background: #f7faff;
+      color: #2a436a;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .yes {
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    .no {
+      color: var(--warn);
+      font-weight: 700;
+    }
+
+    .cta {
+      background: linear-gradient(120deg, rgba(47, 118, 210, 0.12), rgba(229, 139, 99, 0.16));
+      border: 1px solid rgba(47, 118, 210, 0.3);
+    }
+
+    .cta p {
+      color: #2a3d61;
+      margin: 0.5rem 0 0;
+    }
+
+    .cta-actions {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.55rem;
+      border-radius: 999px;
+      padding: 0.55rem 1.05rem;
+      border: 1px solid transparent;
+      font-size: 0.93rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 18px rgba(47, 118, 210, 0.24);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: #fff;
+      border-color: var(--line-strong);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .shell {
+        width: min(1080px, 95vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel hero">
+      <p class="eyebrow">Guida pratica gratuita</p>
+      <h1>Prima presenza online credibile, anche se oggi non hai ancora un sito</h1>
+      <p class="hero-subtitle">
+        Questa guida e pensata per freelance, professionisti e piccoli business che partono da zero e vogliono smettere di dipendere solo da passaparola e social disordinati.
+      </p>
+      <div class="chips">
+        <span class="chip">Lettura: 12-15 minuti</span>
+        <span class="chip">Taglio: operativo</span>
+        <span class="chip">Obiettivo: richieste più qualificate</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Perché questa guida è diversa dalle solite checklist</h2>
+        <p>Non ti spinge a "fare un sito bello". Ti aiuta a creare una presenza che spiega bene chi sei, cosa fai e come contattarti.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="pill">Problema tipico</span>
+          <h3>Messaggio confuso</h3>
+          <p>Le persone visitano il tuo profilo o pagina, ma non capiscono subito se sei la persona giusta.</p>
+        </article>
+        <article class="card">
+          <span class="pill">Effetto concreto</span>
+          <h3>Richieste deboli</h3>
+          <p>Ricevi messaggi generici, poco chiari, spesso fuori target o con budget sbagliato.</p>
+        </article>
+        <article class="card">
+          <span class="pill">Soluzione</span>
+          <h3>Struttura + processo</h3>
+          <p>Con pochi elementi fatti bene, filtri meglio i contatti e risparmi tempo ogni settimana.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Autodiagnosi rapida: dove sei adesso</h2>
+        <p>Metti un check solo se il punto è già attivo e chiaro. Se non sei sicuro, considera "non fatto".</p>
+      </div>
+      <ul class="diagnostic">
+        <li><span class="box" aria-hidden="true"></span><span>In 10 secondi si capisce <strong>chi aiuti</strong> e <strong>con quale risultato</strong>.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Hai una pagina o profilo principale dove i contatti arrivano sempre.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>I tuoi servizi sono spiegati in modo semplice, senza gergo tecnico.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Chi ti scrive sa già i prossimi passi (tempi, modalità, call sì/no).</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Hai almeno 2 prove di fiducia reali (testimonianze, mini risultati, casi).</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Il form contatto filtra già obiettivo, budget, urgenza.</span></li>
+      </ul>
+      <p class="note">Se hai meno di 4 check, la priorità non è "fare tutto": è costruire una base ordinata con i blocchi giusti.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Il metodo in 4 fasi (con cosa fare davvero, non teoria)</h2>
+        <p>Ogni fase include attività pratiche. È proprio qui che molte persone si bloccano e perdono settimane.</p>
+      </div>
+
+      <article class="phase">
+        <div class="phase-head">
+          <span class="phase-title">Fase 1: Posizionamento e messaggio</span>
+          <span class="phase-time">Tempo medio: 2-3 ore</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>Cosa devi preparare</strong>
+            <p>Una frase unica: "Aiuto [target] a ottenere [risultato] tramite [modalità]". Deve essere concreta, non generica.</p>
+            <p class="step-note">Output minimo: headline pronta + sottotitolo + 3 servizi principali.</p>
+          </div>
+          <div class="step-block">
+            <strong>Errore tipico</strong>
+            <p>Parlare di te invece che del problema del cliente. Risultato: pagina elegante ma poco comprensibile.</p>
+          </div>
+          <div class="step-block">
+            <strong>Perché molti mollano qui</strong>
+            <p>Perché sembra "solo testo", ma in realtà definisce tutto il resto: layout, call to action, servizi, prezzi.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Fase 2: Struttura minima della pagina</span>
+          <span class="phase-time">Tempo medio: 4-6 ore</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>Cosa devi inserire</strong>
+            <p>Hero chiaro, sezione servizi, prove sociali, blocco contatto, FAQ breve. Niente sezioni decorative inutili.</p>
+            <p class="step-note">Output minimo: pagina leggibile su mobile con una CTA principale sempre visibile.</p>
+          </div>
+          <div class="step-block">
+            <strong>Errore tipico</strong>
+            <p>Aggiungere tante sezioni "perché fanno professionale", ma senza priorità. Il visitatore si perde.</p>
+          </div>
+          <div class="step-block">
+            <strong>Perché conviene non improvvisare</strong>
+            <p>La differenza tra una pagina che riceve messaggi e una che non converte è quasi sempre nella struttura.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Fase 3: Processo di contatto e follow-up</span>
+          <span class="phase-time">Tempo medio: 2-4 ore</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>Cosa devi impostare</strong>
+            <p>Form con campi giusti, risposta automatica, pagina di conferma post invio, gestione checklist/lead magnet.</p>
+            <p class="step-note">Output minimo: chi invia sa esattamente cosa succede dopo e quando riceverà risposta.</p>
+          </div>
+          <div class="step-block">
+            <strong>Errore tipico</strong>
+            <p>Form "muto": invio ok ma nessuna indicazione. L'utente si sente nel vuoto e cala la fiducia.</p>
+          </div>
+          <div class="step-block">
+            <strong>Punto critico</strong>
+            <p>Automazioni email e template devono essere coerenti con i dati del form, altrimenti si rompe il flusso.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Fase 4: Test e ottimizzazione iniziale</span>
+          <span class="phase-time">Tempo medio: 2-3 ore</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>Cosa devi testare</strong>
+            <p>Mobile, velocità percepita, leggibilità testi, invio form, ricezione email, link di follow-up.</p>
+            <p class="step-note">Output minimo: 3 test reali completati con feedback esterno.</p>
+          </div>
+          <div class="step-block">
+            <strong>Errore tipico</strong>
+            <p>Pubblicare senza test reali. Poi ti accorgi dopo settimane che il form non era affidabile.</p>
+          </div>
+          <div class="step-block">
+            <strong>Risultato atteso</strong>
+            <p>Non perfezione: base stabile che può essere migliorata mese dopo mese senza rifare tutto da capo.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel grid-2">
+      <article class="warning">
+        <h3>Errori costosi da evitare subito</h3>
+        <ul>
+          <li>Usare testi troppo vaghi: "soluzioni innovative", "approccio personalizzato".</li>
+          <li>Avere più call to action uguali con obiettivi diversi.</li>
+          <li>Mostrare prezzi a caso senza contesto o senza una fascia minima.</li>
+          <li>Form lunghissimo o troppo corto (nessun filtro vero).</li>
+          <li>Nessuna risposta automatica: il lead pensa che il messaggio non sia arrivato.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Segnale positivo che stai facendo bene</h3>
+        <ul class="list">
+          <li>Le persone ti scrivono con un obiettivo già definito.</li>
+          <li>Le richieste iniziano a somigliarsi (segno di posizionamento chiaro).</li>
+          <li>Riduci il tempo perso in spiegazioni ripetute.</li>
+          <li>Le call diventano più brevi e più orientate alla decisione.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Piano 14 giorni realistico per partire bene</h2>
+        <p>Se hai poco tempo, usa questo piano come guida minima. È progettato per essere eseguibile davvero.</p>
+      </div>
+      <ol class="timeline">
+        <li><strong>Giorni 1-2:</strong> definisci messaggio, target, risultato promesso, tono comunicativo.</li>
+        <li><strong>Giorni 3-4:</strong> scrivi contenuti base (hero, servizi, perché sceglierti, FAQ).</li>
+        <li><strong>Giorni 5-6:</strong> costruisci pagina e priorità visive (mobile prima, desktop dopo).</li>
+        <li><strong>Giorni 7-8:</strong> integra form, risposta automatica e conferma post invio.</li>
+        <li><strong>Giorni 9-10:</strong> aggiungi prove reali: testimonianze, mini risultati, progetti.</li>
+        <li><strong>Giorni 11-12:</strong> test completo su dispositivi diversi con persona esterna.</li>
+        <li><strong>Giorni 13-14:</strong> pubblica, traccia prime richieste, correggi il punto più debole.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Farla da solo o affidarti a un professionista?</h2>
+        <p>Entrambe le strade sono valide. La differenza reale è il costo in tempo, errori e tentativi.</p>
+      </div>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Quando ha senso</th>
+            <th>Rischio principale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fai tutto da solo</strong></td>
+            <td>Hai tempo, pazienza e vuoi testare una base minima.</td>
+            <td class="no">Progressione lenta e tante revisioni strutturali.</td>
+          </tr>
+          <tr>
+            <td><strong>Ti fai affiancare</strong></td>
+            <td>Vuoi partire bene subito e ridurre errori di impostazione.</td>
+            <td class="yes">Maggior controllo sul risultato e tempi più rapidi.</td>
+          </tr>
+          <tr>
+            <td><strong>Affidi il progetto</strong></td>
+            <td>Vuoi un sistema pronto: pagina, copy, form e follow-up.</td>
+            <td class="yes">Ti concentri sul lavoro, non sull'implementazione tecnica.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel cta">
+      <h2>Se vuoi, questa guida diventa il tuo sistema reale in pochi step</h2>
+      <p>
+        Se preferisci non perdere tempo tra testi, struttura, form e test tecnici, posso aiutarti a costruire una presenza online ordinata e già pronta a ricevere contatti utili.
+      </p>
+      <p>
+        L'obiettivo non è avere "un sito qualunque": è avere una base credibile che lavora per te anche quando non sei online.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="../../index.html#form">Richiedi una valutazione iniziale</a>
+        <a class="btn btn-secondary" href="../../index.html#projects">Guarda i progetti</a>
+      </div>
+    </section>
+
+    <p class="note">
+      Nota finale: parti semplice, ma con una direzione chiara. Una base ben costruita oggi evita rifacimenti costosi domani.
+    </p>
+  </main>
+</body>
+</html>
