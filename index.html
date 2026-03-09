@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -175,7 +175,7 @@
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Eseguo ottimizzazioni finali su performance, leggibilità e UX prima della consegna.</p>
+              <p>Eseguo ottimizzazioni finali su performance, leggibilitÃ  e UX prima della consegna.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
           </ul>
@@ -197,19 +197,19 @@
 
       <div class="projects-grid projects-grid-static">
         <article class="card project-card card-left" data-project-state="live">
-          <img src="assets/img/siti/depyl.png" class="card-img-top" alt="Anteprima progetto Depyl">
+          <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl">
           <div class="card-body">
             <h5 class="card-title">Progetto Depyl</h5>
-            <p class="card-text">Sito dedicato alla presentazione del progetto con focus su chiarezza e conversione.</p>
+            <p class="card-text">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
             <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
           </div>
         </article>
 
         <article class="card project-card card-right" data-project-state="live">
-          <img src="assets/img/siti/coffe-studio.png" class="card-img-top" alt="Anteprima progetto Coffee Studio">
+          <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio">
           <div class="card-body">
             <h5 class="card-title">Landing Prodotto</h5>
-            <p class="card-text">Layout orientato alla presentazione del servizio e al contatto diretto.</p>
+            <p class="card-text">Sito vetrina per una caffetteria specialty con identita visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
             <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
           </div>
         </article>
@@ -233,19 +233,19 @@
             <div class="projects-track">
               <div class="projects-lane">
                 <article class="card project-card" data-project-state="live">
-                  <img src="https://cdn.pixabay.com/photo/2018/01/13/13/12/coming-soon-3080102_1280.png" class="card-img-top" alt="Anteprima progetto Depyl">
+                  <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl">
                   <div class="card-body">
                     <h5 class="card-title">Progetto Depyl</h5>
-                    <p class="card-text">Sito dedicato alla presentazione del progetto con focus su chiarezza e conversione.</p>
+                    <p class="card-text">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
                     <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
                   </div>
                 </article>
 
                 <article class="card project-card" data-project-state="live">
-                  <img src="https://images.unsplash.com/photo-1548983965-416c1920352e?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Coffee Studio">
+                  <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio">
                   <div class="card-body">
                     <h5 class="card-title">Landing Prodotto</h5>
-                    <p class="card-text">Layout orientato alla presentazione del servizio e al contatto diretto.</p>
+                    <p class="card-text">Sito vetrina per una caffetteria specialty con identita visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
                     <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
                   </div>
                 </article>
@@ -345,20 +345,20 @@
         </p>
       </div>
 
-      <form action="#" method="post" id="form">
+      <form action="#" method="post" id="form" data-emailjs-public-key="T2bpxcVtjxQ6zZcn9" data-emailjs-service-id="service_ic7rh6l" data-emailjs-template-id="template_lov96ss" data-emailjs-autoreply-template-id="template_deuf5cu" data-success-url="assets/html/form-success.html">
         <label for="text">
           Nome
-          <input type="text" placeholder="Scrivi il tuo nome" id="text" name="nome-utente">
+          <input type="text" placeholder="Scrivi il tuo nome" id="text" name="nome-utente" autocomplete="name" minlength="2" required>
         </label>
 
         <label for="email">
           Email
-          <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente">
+          <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente" autocomplete="email" required>
         </label>
 
         <label for="message">
           Messaggio
-          <textarea name="messaggio" id="message" rows="6" placeholder="Descrivi il tuo progetto, la tua idea o cosa vorresti migliorare"></textarea>
+          <textarea name="messaggio" id="message" rows="6" placeholder="Descrivi il tuo progetto, la tua idea o cosa vorresti migliorare" minlength="15" required></textarea>
         </label>
 
         <label for="lead-magnet" class="lead-magnet-consent">
@@ -366,13 +366,23 @@
           Sì, voglio ricevere anche la checklist gratuita via email.
         </label>
 
-        <button type="submit" class="btn-footer">Invia il messaggio</button>
+        <label for="website" class="form-honeypot" aria-hidden="true">
+          Non compilare questo campo
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </label>
+
+        <button type="submit" class="btn-footer" id="form-submit-button">Invia il messaggio</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </footer>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function () {
       const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"], .metodo-cta-link[href^="#"]');
+      const contactForm = document.querySelector('#form');
+      const formSubmitButton = document.querySelector('#form-submit-button');
+      const formStatus = document.querySelector('#form-status');
       const projectsSection = document.querySelector('#projects');
       const projectsExpandedContent = document.querySelector('#projects-expanded-content');
       const toggleProjectsExpandedButton = document.querySelector('#toggle-projects-expanded');
@@ -743,6 +753,123 @@
         }, 120);
       }
 
+      function setFormStatus(message, isError) {
+        if (!formStatus) return;
+        formStatus.textContent = message;
+        formStatus.classList.toggle('is-error', Boolean(isError));
+        formStatus.classList.toggle('is-success', !isError && message !== '');
+      }
+
+      function setFormSubmitting(isSubmitting) {
+        if (!formSubmitButton) return;
+        formSubmitButton.disabled = isSubmitting;
+        formSubmitButton.textContent = isSubmitting ? 'Invio in corso...' : 'Invia il messaggio';
+      }
+
+      function getEmailJsConfig(form) {
+        const fallbackChecklistUrl = new URL('assets/files/checklist-placeholder.txt', window.location.href).href;
+        return {
+          publicKey: form.dataset.emailjsPublicKey || '',
+          serviceId: form.dataset.emailjsServiceId || '',
+          templateId: form.dataset.emailjsTemplateId || '',
+          autoReplyTemplateId: form.dataset.emailjsAutoreplyTemplateId || '',
+          checklistUrl: form.dataset.checklistUrl || fallbackChecklistUrl,
+          successUrl: form.dataset.successUrl || 'assets/html/form-success.html'
+        };
+      }
+
+      function buildTemplateParams(form) {
+        const nameField = form.querySelector('#text');
+        const emailField = form.querySelector('#email');
+        const messageField = form.querySelector('#message');
+        const checklistField = form.querySelector('#lead-magnet');
+
+        const wantsChecklist = checklistField && checklistField.checked ? 'Si' : 'No';
+
+        return {
+          from_name: nameField ? nameField.value.trim() : '',
+          reply_to: emailField ? emailField.value.trim() : '',
+          message: messageField ? messageField.value.trim() : '',
+          wants_checklist: wantsChecklist,
+          to_name: nameField ? nameField.value.trim() : '',
+          to_email: emailField ? emailField.value.trim() : ''
+        };
+      }
+
+      function setupContactForm() {
+        if (!contactForm) return;
+
+        contactForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          setFormStatus('', false);
+
+          if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+          }
+
+          const honeypotField = contactForm.querySelector('#website');
+          if (honeypotField && honeypotField.value.trim() !== '') {
+            window.location.href = 'assets/html/form-success.html';
+            return;
+          }
+
+          if (!window.emailjs || typeof window.emailjs.send !== 'function') {
+            setFormStatus('Servizio invio non disponibile. Riprova tra qualche minuto.', true);
+            return;
+          }
+
+          const config = getEmailJsConfig(contactForm);
+          if (
+            !config.publicKey ||
+            !config.serviceId ||
+            !config.templateId ||
+            config.publicKey === 'YOUR_EMAILJS_PUBLIC_KEY' ||
+            config.serviceId === 'YOUR_EMAILJS_SERVICE_ID' ||
+            config.templateId === 'YOUR_EMAILJS_TEMPLATE_ID'
+          ) {
+            setFormStatus('Configura EmailJS nel tag form prima di inviare messaggi reali.', true);
+            return;
+          }
+
+          if (config.publicKey.indexOf('@') !== -1) {
+            setFormStatus('Public key non valida: inserisci la Public Key API di EmailJS, non la tua email.', true);
+            return;
+          }
+
+          setFormSubmitting(true);
+
+          window.emailjs.init({ publicKey: config.publicKey });
+          const templateParams = buildTemplateParams(contactForm);
+          templateParams.checklist_url = config.checklistUrl;
+
+          window.emailjs
+            .send(config.serviceId, config.templateId, templateParams)
+            .then(function () {
+              const checklistRequested = templateParams.wants_checklist === 'Si';
+              const autoReplyConfigured = config.autoReplyTemplateId && config.autoReplyTemplateId !== 'YOUR_EMAILJS_AUTOREPLY_TEMPLATE_ID';
+
+              if (!checklistRequested) return;
+              if (!autoReplyConfigured) {
+                throw new Error('Template auto-reply non configurato');
+              }
+
+              return window.emailjs.send(config.serviceId, config.autoReplyTemplateId, templateParams);
+            })
+            .then(function () {
+              window.location.href = config.successUrl;
+            })
+            .catch(function (error) {
+              const errorText = error && (error.text || error.message) ? ' (' + (error.text || error.message) + ')' : '';
+              setFormStatus('Invio non riuscito. Controlla la configurazione EmailJS e riprova.' + errorText, true);
+            })
+            .finally(function () {
+              setFormSubmitting(false);
+            });
+        });
+      }
+
+      setupContactForm();
       focusSectionFromHash();
       window.addEventListener('hashchange', focusSectionFromHash);
     })();
