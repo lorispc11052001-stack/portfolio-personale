@@ -1140,17 +1140,49 @@
         const checklistField = form.querySelector('#lead-magnet');
 
         const checklistRequested = Boolean(checklistField && checklistField.checked);
+        const checklistValue = checklistRequested ? 'yes' : 'no';
         const wantsChecklistLabel = currentLanguage === 'en'
           ? (checklistRequested ? 'Yes' : 'No')
           : (checklistRequested ? 'Si' : 'No');
+        const autoReplyCopy = currentLanguage === 'en'
+          ? {
+            title: 'Message received',
+            intro: 'Hi ' + (nameField ? nameField.value.trim() : '') + ', I received your request.',
+            lineOne: 'I will reply by email within 24 hours.',
+            lineTwo: 'If the project is a good fit, we can schedule a short call.',
+            checklistLabel: 'Checklist requested',
+            downloadLabel: 'Guide download',
+            downloadCta: 'Open guide',
+            footer: 'This is an automated reply.'
+          }
+          : {
+            title: 'Messaggio ricevuto',
+            intro: 'Ciao ' + (nameField ? nameField.value.trim() : '') + ', ho ricevuto la tua richiesta.',
+            lineOne: 'Ti rispondo via email entro 24 ore.',
+            lineTwo: 'Se il progetto e adatto, possiamo sentirci in una breve call.',
+            checklistLabel: 'Hai richiesto la checklist',
+            downloadLabel: 'Download guida',
+            downloadCta: 'Apri guida',
+            footer: 'Questa e una risposta automatica.'
+          };
 
         return {
           from_name: nameField ? nameField.value.trim() : '',
           reply_to: emailField ? emailField.value.trim() : '',
           message: messageField ? messageField.value.trim() : '',
-          wants_checklist: checklistRequested ? 'yes' : 'no',
+          wants_checklist: wantsChecklistLabel,
+          wants_checklist_value: checklistValue,
           wants_checklist_label: wantsChecklistLabel,
           preferred_language: currentLanguage,
+          site_owner_name: 'Loris Battaglini',
+          auto_reply_title: autoReplyCopy.title,
+          auto_reply_intro: autoReplyCopy.intro,
+          auto_reply_line_one: autoReplyCopy.lineOne,
+          auto_reply_line_two: autoReplyCopy.lineTwo,
+          auto_reply_checklist_label: autoReplyCopy.checklistLabel,
+          auto_reply_download_label: autoReplyCopy.downloadLabel,
+          auto_reply_download_cta: autoReplyCopy.downloadCta,
+          auto_reply_footer: autoReplyCopy.footer,
           to_name: nameField ? nameField.value.trim() : '',
           to_email: emailField ? emailField.value.trim() : ''
         };
@@ -1208,7 +1240,7 @@
           window.emailjs
             .send(config.serviceId, config.templateId, templateParams)
             .then(function () {
-              const checklistRequested = templateParams.wants_checklist === 'yes';
+              const checklistRequested = templateParams.wants_checklist_value === 'yes';
               const selectedAutoReplyTemplateId = templateParams.preferred_language === 'en'
                 ? (config.autoReplyTemplateIdEn || config.autoReplyTemplateId)
                 : config.autoReplyTemplateId;
