@@ -1139,40 +1139,55 @@
         const messageField = form.querySelector('#message');
         const checklistField = form.querySelector('#lead-magnet');
 
+        const contactName = nameField ? nameField.value.trim() : '';
         const checklistRequested = Boolean(checklistField && checklistField.checked);
         const checklistValue = checklistRequested ? 'yes' : 'no';
         const wantsChecklistLabel = currentLanguage === 'en'
           ? (checklistRequested ? 'Yes' : 'No')
           : (checklistRequested ? 'Si' : 'No');
+        const autoReplyChecklistValue = checklistRequested ? wantsChecklistLabel : '';
         const autoReplyCopy = currentLanguage === 'en'
           ? {
-            title: 'Message received',
-            intro: 'Hi ' + (nameField ? nameField.value.trim() : '') + ', Thanks for reaching out.',
+            title: contactName ? 'Message received, ' + contactName : 'Message received',
+            intro: contactName ? 'Hi ' + contactName + ', thanks for reaching out.' : 'Hi, thanks for reaching out.',
             lineOne: 'I will carefully review the information you sent and get back to you via email within 24 hours.',
             lineTwo: 'In my follow-up email, I will also include details to schedule a brief call, should you wish to discuss the project structure further.',
-            checklistLabel: 'Checklist requested',
-            downloadLabel: 'Guide download',
-            downloadCta: 'Open guide',
+            checklistLabel: checklistRequested
+              ? 'As promised, you can find the guide below'
+              : 'I am leaving an unexpected extra for you below (even though you skipped the checkbox... &#128521;)',
+            downloadLabel: checklistRequested
+              ? 'Guide download'
+              : 'I figured this guide might come in handy for your project anyway.',
+            downloadCta: checklistRequested
+              ? 'Open guide'
+              : 'Grab it anyway',
             footer: 'This is an automated reply.'
           }
           : {
-            title: 'Messaggio ricevuto',
-            intro: 'Ciao ' + (nameField ? nameField.value.trim() : '') + ', Grazie per avermi contattato!',
+            title: contactName ? 'Messaggio ricevuto, ' + contactName : 'Messaggio ricevuto',
+            intro: contactName ? 'Ciao ' + contactName + ', grazie per avermi contattato!' : 'Ciao, grazie per avermi contattato!',
             lineOne: 'Analizzerò con cura le informazioni che mi hai inviato e ti ricontatterò via email entro 24 ore.',
             lineTwo: 'Nella prossima email troverai anche i dettagli per fissare una breve call, qualora volessi approfondire la struttura del progetto a voce.',
-            checklistLabel: 'Hai richiesto la checklist',
-            downloadLabel: 'Download guida',
-            downloadCta: 'Apri guida',
+            checklistLabel: checklistRequested
+              ? 'Come promesso, trovi la guida qui sotto'
+              : 'Ho deciso di lasciarti comunque un extra qui sotto, nel caso ti fossi dimenticato della casella... &#128521;',
+            downloadLabel: checklistRequested
+              ? 'Download guida'
+              : 'Ho pensato che questa guida potesse esserti utile comunque per il tuo progetto.',
+            downloadCta: checklistRequested
+              ? 'Apri guida'
+              : 'Scaricala lo stesso',
             footer: 'Questa e una risposta automatica.'
           };
 
         return {
-          from_name: nameField ? nameField.value.trim() : '',
+          from_name: contactName,
           reply_to: emailField ? emailField.value.trim() : '',
           message: messageField ? messageField.value.trim() : '',
           wants_checklist: wantsChecklistLabel,
           wants_checklist_value: checklistValue,
           wants_checklist_label: wantsChecklistLabel,
+          auto_reply_checklist_value: autoReplyChecklistValue,
           preferred_language: currentLanguage,
           site_owner_name: 'Loris Battaglini',
           auto_reply_title: autoReplyCopy.title,
@@ -1183,7 +1198,7 @@
           auto_reply_download_label: autoReplyCopy.downloadLabel,
           auto_reply_download_cta: autoReplyCopy.downloadCta,
           auto_reply_footer: autoReplyCopy.footer,
-          to_name: nameField ? nameField.value.trim() : '',
+          to_name: contactName,
           to_email: emailField ? emailField.value.trim() : ''
         };
       }
@@ -1240,13 +1255,11 @@
           window.emailjs
             .send(config.serviceId, config.templateId, templateParams)
             .then(function () {
-              const checklistRequested = templateParams.wants_checklist_value === 'yes';
               const selectedAutoReplyTemplateId = templateParams.preferred_language === 'en'
                 ? (config.autoReplyTemplateIdEn || config.autoReplyTemplateId)
                 : config.autoReplyTemplateId;
               const autoReplyConfigured = selectedAutoReplyTemplateId && selectedAutoReplyTemplateId !== 'YOUR_EMAILJS_AUTOREPLY_TEMPLATE_ID';
 
-              if (!checklistRequested) return;
               if (!autoReplyConfigured) {
                 throw new Error('Template auto-reply non configurato');
               }
