@@ -7,7 +7,7 @@
 .skill-inside-container {
   padding: 1rem;
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, #fff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   border-radius: 0.9rem;
   min-height: 132px;
   display: grid;

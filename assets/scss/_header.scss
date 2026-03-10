@@ -20,7 +20,7 @@ header::after {
 .header-nav-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--line);
@@ -35,6 +35,87 @@ header::after {
 
 .brand-mark:hover {
   color: var(--accent);
+}
+
+.header-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.header-icon-btn {
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--control-bg);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-icon-btn:hover {
+  transform: translateY(-1px);
+  color: var(--accent);
+  border-color: rgba(47, 118, 210, 0.5);
+  box-shadow: 0 8px 16px rgba(20, 34, 59, 0.14);
+}
+
+.header-icon-btn:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(47, 118, 210, 0.22);
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--control-bg);
+}
+
+.language-switch i {
+  color: var(--muted);
+  font-size: 0.92rem;
+  padding-inline: 0.38rem 0.22rem;
+}
+
+.language-option {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  min-height: 1.85rem;
+  min-width: 2.2rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.56rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.language-option:hover {
+  color: var(--accent);
+}
+
+.language-option:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(47, 118, 210, 0.22);
+}
+
+.language-option.is-active {
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+}
+
+.header-nav {
+  margin-inline: auto;
 }
 
 .header-nav ul {
@@ -76,7 +157,7 @@ header::after {
 
 .about-link-header {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--control-bg);
 }
 
 .contattami-header,
@@ -146,7 +227,7 @@ header::after {
   block-size: 2.7rem;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: #fff;
+  background: var(--control-bg);
 }
 
 .btn-linkedin a,
@@ -213,6 +294,10 @@ header::after {
   }
 
   .header-nav {
+    margin-inline: 0;
+  }
+
+  .header-nav {
     order: 3;
     flex-basis: 100%;
   }
@@ -233,6 +318,10 @@ header::after {
 
   .header-cta-row {
     width: 100%;
+  }
+
+  .header-tools {
+    margin-left: auto;
   }
 
   .about-link-header,

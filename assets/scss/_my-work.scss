@@ -9,7 +9,7 @@
   border: 1px solid var(--line);
   border-radius: 1rem;
   overflow: hidden;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: none;
   transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
 }
@@ -103,7 +103,7 @@
 
 .projects-more-link-alt {
   color: var(--text);
-  background: #fff;
+  background: var(--control-bg);
 }
 
 .projects-more-link-alt:hover {
@@ -125,7 +125,7 @@
 .projects-slider-block {
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   padding: 0.85rem;
   display: grid;
   gap: 0.65rem;
@@ -155,7 +155,7 @@
 
 .projects-nav-btn {
   border: 1px solid var(--line-strong);
-  background: #fff;
+  background: var(--control-bg);
   color: var(--text);
   border-radius: 999px;
   min-height: 2.1rem;

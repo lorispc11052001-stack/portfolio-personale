@@ -17,6 +17,35 @@
   --line: #d3ddf0;
   --line-strong: #b9c8e6;
   --shadow: 0 20px 45px rgba(20, 34, 59, 0.1);
+  --card-bg: #ffffff;
+  --card-bg-soft: #f7fbff;
+  --control-bg: #ffffff;
+  --hint-bg: rgba(255, 255, 255, 0.82);
+  --body-orb-accent: rgba(47, 118, 210, 0.18);
+  --body-orb-warm: rgba(229, 139, 99, 0.18);
+  --grid-line: rgba(20, 34, 59, 0.04);
+}
+
+body.theme-dark {
+  --bg: #070f1d;
+  --bg-soft: #111d33;
+  --surface: #0d172a;
+  --surface-strong: #0a1426;
+  --text: #e6eefc;
+  --muted: #a9bddb;
+  --accent: #6ca9ff;
+  --accent-2: #ffb78f;
+  --line: #243550;
+  --line-strong: #3b547a;
+  --shadow: 0 22px 45px rgba(4, 8, 18, 0.52);
+  --card-bg: #101d32;
+  --card-bg-soft: #0c1729;
+  --control-bg: #111e34;
+  --hint-bg: rgba(17, 29, 50, 0.8);
+  --body-orb-accent: rgba(92, 152, 255, 0.24);
+  --body-orb-warm: rgba(255, 180, 143, 0.2);
+  --grid-line: rgba(166, 192, 238, 0.06);
+  color-scheme: dark;
 }
 
 * {
@@ -33,8 +62,8 @@ body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(1100px 500px at 10% -10%, rgba(47, 118, 210, 0.18), transparent 70%),
-    radial-gradient(900px 420px at 90% 0%, rgba(229, 139, 99, 0.18), transparent 72%),
+    radial-gradient(1100px 500px at 10% -10%, var(--body-orb-accent), transparent 70%),
+    radial-gradient(900px 420px at 90% 0%, var(--body-orb-warm), transparent 72%),
     var(--bg);
   // Prevent horizontal scroll introduced by animated lanes / wide cards.
   overflow-x: hidden;
@@ -52,8 +81,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(transparent 97%, rgba(20, 34, 59, 0.04) 98%),
-    linear-gradient(90deg, transparent 97%, rgba(20, 34, 59, 0.04) 98%);
+    linear-gradient(transparent 97%, var(--grid-line) 98%),
+    linear-gradient(90deg, transparent 97%, var(--grid-line) 98%);
   background-size: 42px 42px;
   opacity: 0.2;
   z-index: -1;
@@ -129,7 +158,7 @@ footer {
 .section-focus .skill-inside-container,
 .section-focus .metodo-track,
 .section-focus .metodo-item p {
-  background: linear-gradient(180deg, #ffffff, #f4f9ff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
 }
 
 @keyframes section-focus-fade {

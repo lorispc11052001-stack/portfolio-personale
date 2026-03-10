@@ -14,33 +14,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
   <div class="site-shell about-shell">
     <header class="about-hero" id="top">
       <div class="header-nav-row">
-        <a href="../../index.html#top" class="brand-mark">Loris Battaglini</a>
+        <a href="../../index.html#top" class="brand-mark" data-i18n="brandMark">Loris Battaglini</a>
+
+        <div class="header-tools" aria-label="Strumenti header" data-i18n-aria-label="headerToolsAriaLabel">
+          <button type="button" class="header-icon-btn" id="theme-toggle" aria-label="Attiva modalità scura" data-i18n-aria-label="themeToggleAriaLabel">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+          <div class="language-switch" role="group" aria-label="Selettore lingua" data-i18n-aria-label="languageSwitchAriaLabel">
+            <i class="fa-solid fa-language" aria-hidden="true"></i>
+            <button type="button" class="language-option is-active" data-language-option data-lang="it" aria-pressed="true">IT</button>
+            <button type="button" class="language-option" data-language-option data-lang="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
 
         <nav class="header-nav" aria-label="Menu About">
           <ul>
-            <li><a href="#visione">Dove sto andando</a></li>
-            <li><a href="#mentalita">Mentalita</a></li>
-            <li><a href="#contatto">Contatto</a></li>
+            <li><a href="#visione" data-i18n="aboutNavVision">Dove sto andando</a></li>
+            <li><a href="#mentalita" data-i18n="aboutNavMindset">Mentalità</a></li>
+            <li><a href="#contatto" data-i18n="aboutNavContact">Contatto</a></li>
           </ul>
         </nav>
 
         <div class="header-cta-row">
-          <a href="../../index.html" class="about-link-header">Home</a>
-          <a href="../../index.html#form" class="contattami-header">Contattami</a>
+          <a href="../../index.html" class="about-link-header" data-i18n="aboutHomeLink">Home</a>
+          <a href="../../index.html#form" class="contattami-header" data-i18n="aboutContactLink">Contattami</a>
         </div>
       </div>
 
       <div class="about-hero-inner">
         <div class="about-hero-text">
-          <p class="about-eyebrow">About Me</p>
-          <h1>Costruisco risultati nel tempo, non pagine vuote.</h1>
-          <p class="about-lead">
-            Mi chiamo Loris Battaglini, sono un aspirante full-stack web developer in formazione.
+          <p class="about-eyebrow" data-i18n="aboutEyebrow">About Me</p>
+          <h1 data-i18n="aboutHeroTitle">Costruisco risultati nel tempo, non pagine vuote.</h1>
+          <p class="about-lead" data-i18n="aboutHeroLead">
+            Mi chiamo Loris Battaglini, sono in formazione come full-stack web developer.
             Studio ogni giorno per aiutare professionisti e piccoli progetti a trasformare un'idea
             in una presenza online chiara, credibile e concreta.
           </p>
@@ -53,37 +65,37 @@
     </header>
 
     <main class="about-story">
-      <section class="about-manifesto" aria-label="Manifesto personale" data-reveal>
-        <p>Credo nel costruire prima di parlare</p>
+      <section class="about-manifesto" aria-label="Manifesto personale" data-i18n-aria-label="aboutManifestoAriaLabel" data-reveal>
+        <p data-i18n="aboutManifestoText">Credo nel costruire prima di parlare</p>
       </section>
 
       <section class="about-section about-vision-section" id="visione" data-reveal>
         <div class="about-vision-layout">
           <div class="about-copy-block about-vision-main">
-            <p class="about-kicker">Dove sto andando</p>
-            <h2>Dal freelance operativo alla costruzione di prodotti digitali.</h2>
-            <p>
+            <p class="about-kicker" data-i18n="aboutVisionKicker">Dove sto andando</p>
+            <h2 data-i18n="aboutVisionTitle">Dal freelance operativo alla costruzione di prodotti digitali.</h2>
+            <p data-i18n="aboutVisionParagraph1">
              Nel breve periodo voglio collaborare con professionisti, creator e piccoli business che hanno bisogno di una presenza online chiara e credibile. Allo stesso tempo sono aperto anche a collaborazioni con aziende e team di sviluppo, per crescere nel lavoro di squadra su progetti più strutturati e continuare ad alzare il livello.
             </p>
-            <p>
+            <p data-i18n="aboutVisionParagraph2">
               Nel medio-lungo periodo voglio ampliare il raggio: non solo servizi, ma anche MVP
               e prodotti digitali proprietari. L'obiettivo è costruire una carriera autonoma,
               solida e scalabile.
             </p>
           </div>
 
-          <aside class="about-vision-method" aria-label="Come ragiono quando costruisco">
-            <p class="about-kicker">Come ragiono quando costruisco</p>
-            <h3>Tre principi che guidano ogni progetto.</h3>
+          <aside class="about-vision-method" aria-label="Come ragiono quando costruisco" data-i18n-aria-label="aboutPrinciplesAriaLabel">
+            <p class="about-kicker" data-i18n="aboutPrinciplesKicker">Come ragiono quando costruisco</p>
+            <h3 data-i18n="aboutPrinciplesTitle">Tre principi che guidano ogni progetto.</h3>
             <ol class="about-principles-list">
               <li>
-                <h4>Chiarezza prima del codice</h4>
+                <h4 data-i18n="aboutPrinciple1">Chiarezza prima del codice</h4>
               </li>
               <li>
-                <h4>Struttura che guida l'utente</h4>
+                <h4 data-i18n="aboutPrinciple2">Struttura che guida l'utente</h4>
               </li>
               <li>
-                <h4>Codice pulito, pronto a evolvere</h4>
+                <h4 data-i18n="aboutPrinciple3">Codice pulito, pronto a evolvere</h4>
               </li>
             </ol>
           </aside>
@@ -101,50 +113,235 @@
               max="100"
               value="50"
               class="about-before-after-range"
-              aria-label="Confronta foto prima e dopo">
+              aria-label="Confronta foto prima e dopo"
+              data-i18n-aria-label="aboutCompareAriaLabel">
             <span class="about-before-after-divider" aria-hidden="true"></span>
-            <span class="about-before-after-hint about-before-label" aria-hidden="true">Prima</span>
-            <span class="about-before-after-hint about-after-label" aria-hidden="true">Dopo</span>
+            <span class="about-before-after-hint about-before-label" aria-hidden="true" data-i18n="aboutBeforeLabel">Prima</span>
+            <span class="about-before-after-hint about-after-label" aria-hidden="true" data-i18n="aboutAfterLabel">Dopo</span>
           </div>
-          <figcaption>Sposta il cursore a sinistra e destra per confrontare il prima e il dopo.</figcaption>
+          <figcaption data-i18n="aboutCompareCaption">Sposta il cursore a sinistra e destra per confrontare il prima e il dopo.</figcaption>
         </figure>
 
         <div class="about-copy-block">
-          <p class="about-kicker">La mentalità</p>
-          <h2>Disciplina e continuità: il mio standard di lavoro.</h2>
-          <p>
+          <p class="about-kicker" data-i18n="aboutMindsetKicker">La mentalità</p>
+          <h2 data-i18n="aboutMindsetTitle">Disciplina e continuità: il mio standard di lavoro.</h2>
+          <p data-i18n="aboutMindsetParagraph1">
             In passato pesavo circa 130 kg. Con disciplina, allenamento e costanza ho portato
             il mio fisico a 80 kg. Non lo uso come storia motivazionale.
             Lo considero una prova operativa: se definisco un obiettivo, imposto un metodo e lo seguo.
           </p>
-          <p>
+          <p data-i18n="aboutMindsetParagraph2">
             Nello sviluppo applico la stessa logica: processo chiaro, esecuzione costante e miglioramento progressivo.
           </p>
-          <blockquote>
-            I risultati arrivano quando il metodo è più forte  dell'improvvisazione
+          <blockquote data-i18n="aboutMindsetQuote">
+            I risultati arrivano quando il metodo è più forte dell'improvvisazione
           </blockquote>
         </div>
       </section>
-
       <section class="about-section about-contact-bridge about-closure" id="contatto" data-reveal>
-        <p class="about-kicker">Perche puoi fidarti</p>
-        <h2>Perche lavoro con metodo, trasparenza e continuita.</h2>
-        <p>
+        <p class="about-kicker" data-i18n="aboutTrustKicker">Perché puoi fidarti</p>
+        <h2 data-i18n="aboutTrustTitle">Perché lavoro con metodo, trasparenza e continuità.</h2>
+        <p data-i18n="aboutTrustParagraph">
           Se hai un'idea e vuoi trasformarla in un progetto web ordinato e credibile,
-          parliamone. Ti rispondo con una proposta chiara, senza giri di parole.
+          parliamone. Ti rispondo con un primo feedback in solo 24 ore.
         </p>
-        <a href="../../index.html#form" class="about-contact-link">Vai al form di contatto</a>
+        <a href="../../index.html#form" class="about-contact-link" data-i18n="aboutTrustButton">Vai al form di contatto</a>
       </section>
     </main>
   </div>
   <script>
     (function () {
+      const STORAGE_KEYS = {
+        theme: 'lb-theme',
+        language: 'lb-language'
+      };
+      const SUPPORTED_LANGUAGES = ['it', 'en'];
+      const DEFAULT_LANGUAGE = 'it';
+      const PAGE_TITLES = {
+        it: 'About Me | Loris Battaglini',
+        en: 'About Me | Loris Battaglini'
+      };
+      const DYNAMIC_STRINGS = {
+        it: {
+          themeToggleAriaLabelLight: 'Attiva modalità scura',
+          themeToggleAriaLabelDark: 'Torna alla modalità chiara'
+        },
+        en: {
+          themeToggleAriaLabelLight: 'Enable dark mode',
+          themeToggleAriaLabelDark: 'Back to light mode'
+        }
+      };
+      const ENGLISH_TEXT = {
+        aboutNavVision: 'Vision',
+        aboutNavMindset: 'Mindset',
+        aboutNavContact: 'Contact',
+        aboutContactLink: 'Contact me',
+        aboutHeroTitle: 'I build long-term results, not empty pages.',
+        aboutHeroLead: 'My name is Loris Battaglini, and I am training as a full-stack web developer. Every day I study to help professionals and small projects turn an idea into a clear, credible, and concrete online presence.',
+        aboutManifestoText: 'I believe in building before talking.',
+        aboutVisionKicker: 'Where I am heading',
+        aboutVisionTitle: 'From operational freelance work to building digital products.',
+        aboutVisionParagraph1: 'In the short term I want to collaborate with professionals, creators, and small businesses that need a clear and credible online presence. At the same time, I am also open to collaborations with companies and development teams to grow in teamwork on more structured projects and keep raising my level.',
+        aboutVisionParagraph2: 'In the medium to long term I want to expand the scope: not only services, but also MVPs and proprietary digital products. The goal is to build an autonomous, solid, and scalable career.',
+        aboutPrinciplesKicker: 'How I think while building',
+        aboutPrinciplesTitle: 'Three principles that guide every project.',
+        aboutPrinciple1: 'Clarity before code',
+        aboutPrinciple2: 'Structure that guides users',
+        aboutPrinciple3: 'Clean code, ready to evolve',
+        aboutBeforeLabel: 'Before',
+        aboutAfterLabel: 'After',
+        aboutCompareCaption: 'Move the slider left and right to compare before and after.',
+        aboutMindsetKicker: 'Mindset',
+        aboutMindsetTitle: 'Discipline and consistency: my work standard.',
+        aboutMindsetParagraph1: 'I used to weigh around 130 kg. With discipline, training, and consistency, I brought my body down to 80 kg. I do not use it as a motivational story. I consider it operational proof: if I define a goal, I set a method and follow it.',
+        aboutMindsetParagraph2: 'In development I apply the same logic: clear process, consistent execution, and progressive improvement.',
+        aboutMindsetQuote: 'Results come when method is stronger than improvisation.',
+        aboutTrustKicker: 'Why you can trust me',
+        aboutTrustTitle: 'Because I work with method, transparency, and consistency.',
+        aboutTrustParagraph: 'If you have an idea and want to turn it into an organized and credible web project, let\'s talk. I reply with initial feedback within 24 hours.',
+        aboutTrustButton: 'Go to contact form'
+      };
+      const ENGLISH_ARIA_LABELS = {
+        headerToolsAriaLabel: 'Header tools',
+        themeToggleAriaLabel: 'Enable dark mode',
+        languageSwitchAriaLabel: 'Language switcher',
+        aboutManifestoAriaLabel: 'Personal manifesto',
+        aboutPrinciplesAriaLabel: 'How I think when building',
+        aboutCompareAriaLabel: 'Compare before and after photos'
+      };
+
       const navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
       const aboutShell = document.querySelector('.about-shell');
       const revealTargets = document.querySelectorAll('[data-reveal]');
       const manifestoText = document.querySelector('.about-manifesto p');
+      const themeToggleButton = document.querySelector('#theme-toggle');
+      const themeToggleIcon = themeToggleButton ? themeToggleButton.querySelector('i') : null;
+      const languageOptionButtons = Array.from(document.querySelectorAll('[data-language-option]'));
       let activeTimer = null;
       let activeSection = null;
+      let currentLanguage = DEFAULT_LANGUAGE;
+
+      const italianSnapshot = {
+        text: Object.create(null),
+        aria: Object.create(null)
+      };
+
+      document.querySelectorAll('[data-i18n]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.text, key)) return;
+        italianSnapshot.text[key] = node.innerHTML;
+      });
+
+      document.querySelectorAll('[data-i18n-aria-label]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n-aria-label');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.aria, key)) return;
+        italianSnapshot.aria[key] = node.getAttribute('aria-label') || '';
+      });
+
+      function safeStorageGet(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function safeStorageSet(key, value) {
+        try {
+          window.localStorage.setItem(key, value);
+        } catch (error) {
+          // Storage unavailable.
+        }
+      }
+
+      function getStoredLanguage() {
+        const language = safeStorageGet(STORAGE_KEYS.language);
+        return SUPPORTED_LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
+      }
+
+      function getStoredTheme() {
+        const theme = safeStorageGet(STORAGE_KEYS.theme);
+        return theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function getDynamicString(key) {
+        const languagePack = DYNAMIC_STRINGS[currentLanguage] || DYNAMIC_STRINGS.it;
+        return languagePack && Object.prototype.hasOwnProperty.call(languagePack, key) ? languagePack[key] : '';
+      }
+
+      function updateThemeToggleAccessibility() {
+        if (!themeToggleButton || !themeToggleIcon) return;
+        const isDarkTheme = document.body.classList.contains('theme-dark');
+        themeToggleIcon.classList.toggle('fa-moon', !isDarkTheme);
+        themeToggleIcon.classList.toggle('fa-sun', isDarkTheme);
+        themeToggleButton.dataset.themeState = isDarkTheme ? 'dark' : 'light';
+        themeToggleButton.setAttribute('aria-label', getDynamicString(isDarkTheme ? 'themeToggleAriaLabelDark' : 'themeToggleAriaLabelLight'));
+      }
+
+      function applyTheme(theme, shouldPersist) {
+        const nextTheme = theme === 'dark' ? 'dark' : 'light';
+        document.body.classList.toggle('theme-dark', nextTheme === 'dark');
+        updateThemeToggleAccessibility();
+        if (shouldPersist) {
+          safeStorageSet(STORAGE_KEYS.theme, nextTheme);
+        }
+      }
+
+      function applyTranslations() {
+        document.documentElement.lang = currentLanguage;
+        document.title = PAGE_TITLES[currentLanguage] || PAGE_TITLES.it;
+
+        document.querySelectorAll('[data-i18n]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n');
+          if (!key) return;
+          if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_TEXT, key)) {
+            node.innerHTML = ENGLISH_TEXT[key];
+            return;
+          }
+          node.innerHTML = italianSnapshot.text[key] || '';
+        });
+
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n-aria-label');
+          if (!key) return;
+          if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_ARIA_LABELS, key)) {
+            node.setAttribute('aria-label', ENGLISH_ARIA_LABELS[key]);
+            return;
+          }
+          node.setAttribute('aria-label', italianSnapshot.aria[key] || '');
+        });
+
+        languageOptionButtons.forEach(function (button) {
+          const isActive = button.dataset.lang === currentLanguage;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        updateThemeToggleAccessibility();
+      }
+
+      function setLanguage(language, shouldPersist) {
+        currentLanguage = SUPPORTED_LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
+        applyTranslations();
+        if (shouldPersist) {
+          safeStorageSet(STORAGE_KEYS.language, currentLanguage);
+        }
+      }
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', function () {
+          const isDarkTheme = document.body.classList.contains('theme-dark');
+          applyTheme(isDarkTheme ? 'light' : 'dark', true);
+        });
+      }
+
+      languageOptionButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const nextLanguage = button.dataset.lang;
+          if (!nextLanguage || nextLanguage === currentLanguage) return;
+          setLanguage(nextLanguage, true);
+        });
+      });
 
       const compareBlocks = document.querySelectorAll('[data-before-after]');
 
@@ -288,8 +485,11 @@
         });
       });
 
+      applyTheme(getStoredTheme(), false);
+      setLanguage(getStoredLanguage(), false);
       setupRevealOnScroll();
     })();
   </script>
 </body>
 </html>
+

@@ -15,7 +15,7 @@
   --item-pad-left: 2.5rem;
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: #fff;
+  background: var(--card-bg);
   padding: 1rem;
   display: grid;
   gap: 0.78rem;
@@ -99,7 +99,7 @@
   transform: translate(-50%, -50%);
   border-radius: 50%;
   border: 3px solid var(--track-main);
-  background: #fff;
+  background: var(--card-bg);
   z-index: 1;
 }
 
@@ -112,7 +112,7 @@
   border-bottom: 1px solid var(--line);
   border-left: 1px solid var(--line);
   border-radius: 0.74rem 0.74rem 0.74rem 0.74rem;
-  background: linear-gradient(180deg, #ffffff, var(--surface-strong));
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   color: var(--muted);
   line-height: 1.58;
   padding: 0.72rem 0.8rem;
@@ -133,7 +133,7 @@
   padding: 0.82rem 0.92rem;
   border: 1px dashed var(--line-strong);
   border-radius: 0.86rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   display: flex;
   align-items: center;
   justify-content: space-between;
