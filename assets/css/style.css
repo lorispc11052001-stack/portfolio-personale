@@ -20,7 +20,7 @@ header::after {
 .header-nav-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--line);
@@ -35,6 +35,89 @@ header::after {
 
 .brand-mark:hover {
   color: var(--accent);
+}
+
+.header-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.header-icon-btn {
+  inline-size: 2.4rem;
+  block-size: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--control-bg);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-icon-btn:hover {
+  transform: translateY(-1px);
+  color: var(--accent);
+  border-color: rgba(47, 118, 210, 0.5);
+  box-shadow: 0 8px 16px rgba(20, 34, 59, 0.14);
+}
+
+.header-icon-btn:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(47, 118, 210, 0.22);
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  gap: 0.18rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--control-bg);
+}
+
+.language-switch i {
+  color: var(--muted);
+  font-size: 0.92rem;
+  padding-inline: 0.38rem 0.22rem;
+}
+
+.language-option {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  min-height: 1.85rem;
+  min-width: 2.2rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.56rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.language-option:hover {
+  color: var(--accent);
+}
+
+.language-option:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(47, 118, 210, 0.22);
+}
+
+.language-option.is-active {
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+}
+
+.header-nav {
+  margin-inline: auto;
 }
 
 .header-nav ul {
@@ -76,7 +159,7 @@ header::after {
 
 .about-link-header {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--control-bg);
 }
 
 .contattami-header,
@@ -146,7 +229,7 @@ header::after {
   block-size: 2.7rem;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  background: #fff;
+  background: var(--control-bg);
 }
 
 .btn-linkedin a,
@@ -212,6 +295,9 @@ header::after {
     row-gap: 0.7rem;
   }
   .header-nav {
+    margin-inline: 0;
+  }
+  .header-nav {
     order: 3;
     flex-basis: 100%;
   }
@@ -229,6 +315,9 @@ header::after {
   .header-cta-row {
     width: 100%;
   }
+  .header-tools {
+    margin-left: auto;
+  }
   .about-link-header,
   .contattami-header {
     flex: 1 1 150px;
@@ -243,7 +332,7 @@ header::after {
 .skill-inside-container {
   padding: 1rem;
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, #fff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   border-radius: 0.9rem;
   min-height: 132px;
   display: grid;
@@ -294,7 +383,7 @@ header::after {
   --item-pad-left: 2.5rem;
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: #fff;
+  background: var(--card-bg);
   padding: 1rem;
   display: grid;
   gap: 0.78rem;
@@ -378,7 +467,7 @@ header::after {
   transform: translate(-50%, -50%);
   border-radius: 50%;
   border: 3px solid var(--track-main);
-  background: #fff;
+  background: var(--card-bg);
   z-index: 1;
 }
 
@@ -390,7 +479,7 @@ header::after {
   border-bottom: 1px solid var(--line);
   border-left: 1px solid var(--line);
   border-radius: 0.74rem 0.74rem 0.74rem 0.74rem;
-  background: linear-gradient(180deg, #ffffff, var(--surface-strong));
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   color: var(--muted);
   line-height: 1.58;
   padding: 0.72rem 0.8rem;
@@ -411,7 +500,7 @@ header::after {
   padding: 0.82rem 0.92rem;
   border: 1px dashed var(--line-strong);
   border-radius: 0.86rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -487,7 +576,7 @@ header::after {
   border: 1px solid var(--line);
   border-radius: 1rem;
   overflow: hidden;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: none;
   transition: transform 0.26s ease, box-shadow 0.26s ease, border-color 0.26s ease;
 }
@@ -580,7 +669,7 @@ header::after {
 
 .projects-more-link-alt {
   color: var(--text);
-  background: #fff;
+  background: var(--control-bg);
 }
 
 .projects-more-link-alt:hover {
@@ -601,7 +690,7 @@ header::after {
 .projects-slider-block {
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   padding: 0.85rem;
   display: grid;
   gap: 0.65rem;
@@ -631,7 +720,7 @@ header::after {
 
 .projects-nav-btn {
   border: 1px solid var(--line-strong);
-  background: #fff;
+  background: var(--control-bg);
   color: var(--text);
   border-radius: 999px;
   min-height: 2.1rem;
@@ -777,7 +866,7 @@ header::after {
 }
 
 footer {
-  background: linear-gradient(180deg, #f9fcff, #eef4ff);
+  background: linear-gradient(180deg, var(--surface), var(--surface-strong));
 }
 
 .footer-lead-magnet {
@@ -825,7 +914,7 @@ footer textarea {
   border: 1px solid var(--line-strong);
   border-radius: 0.7rem;
   padding: 0.72rem 0.85rem;
-  background: #fff;
+  background: var(--control-bg);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1076,7 +1165,7 @@ footer textarea:focus {
 .about-vision-method {
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   padding: 1rem;
   display: grid;
   gap: 0.6rem;
@@ -1138,7 +1227,7 @@ footer textarea:focus {
   border: 1px solid var(--line);
   border-radius: 1rem;
   overflow: hidden;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: 0 14px 26px rgba(20, 34, 59, 0.14);
 }
 
@@ -1200,7 +1289,7 @@ footer textarea:focus {
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
   border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--hint-bg);
   color: var(--text);
   font-size: 0.75rem;
   font-weight: 700;
@@ -1389,6 +1478,35 @@ footer textarea:focus {
   --line: #d3ddf0;
   --line-strong: #b9c8e6;
   --shadow: 0 20px 45px rgba(20, 34, 59, 0.1);
+  --card-bg: #ffffff;
+  --card-bg-soft: #f7fbff;
+  --control-bg: #ffffff;
+  --hint-bg: rgba(255, 255, 255, 0.82);
+  --body-orb-accent: rgba(47, 118, 210, 0.18);
+  --body-orb-warm: rgba(229, 139, 99, 0.18);
+  --grid-line: rgba(20, 34, 59, 0.04);
+}
+
+body.theme-dark {
+  --bg: #070f1d;
+  --bg-soft: #111d33;
+  --surface: #0d172a;
+  --surface-strong: #0a1426;
+  --text: #e6eefc;
+  --muted: #a9bddb;
+  --accent: #6ca9ff;
+  --accent-2: #ffb78f;
+  --line: #243550;
+  --line-strong: #3b547a;
+  --shadow: 0 22px 45px rgba(4, 8, 18, 0.52);
+  --card-bg: #101d32;
+  --card-bg-soft: #0c1729;
+  --control-bg: #111e34;
+  --hint-bg: rgba(17, 29, 50, 0.8);
+  --body-orb-accent: rgba(92, 152, 255, 0.24);
+  --body-orb-warm: rgba(255, 180, 143, 0.2);
+  --grid-line: rgba(166, 192, 238, 0.06);
+  color-scheme: dark;
 }
 
 * {
@@ -1404,7 +1522,7 @@ html {
 body {
   font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--text);
-  background: radial-gradient(1100px 500px at 10% -10%, rgba(47, 118, 210, 0.18), transparent 70%), radial-gradient(900px 420px at 90% 0%, rgba(229, 139, 99, 0.18), transparent 72%), var(--bg);
+  background: radial-gradient(1100px 500px at 10% -10%, var(--body-orb-accent), transparent 70%), radial-gradient(900px 420px at 90% 0%, var(--body-orb-warm), transparent 72%), var(--bg);
   overflow-x: hidden;
 }
 
@@ -1418,7 +1536,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(transparent 97%, rgba(20, 34, 59, 0.04) 98%), linear-gradient(90deg, transparent 97%, rgba(20, 34, 59, 0.04) 98%);
+  background: linear-gradient(transparent 97%, var(--grid-line) 98%), linear-gradient(90deg, transparent 97%, var(--grid-line) 98%);
   background-size: 42px 42px;
   opacity: 0.2;
   z-index: -1;
@@ -1492,7 +1610,7 @@ footer {
 .section-focus .skill-inside-container,
 .section-focus .metodo-track,
 .section-focus .metodo-item p {
-  background: linear-gradient(180deg, #ffffff, #f4f9ff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
 }
 
 @keyframes section-focus-fade {

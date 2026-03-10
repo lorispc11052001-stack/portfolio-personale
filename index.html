@@ -20,29 +20,42 @@
   <div class="site-shell">
     <header id="top">
       <div class="header-nav-row">
-        <a href="#top" class="brand-mark">Loris Battaglini</a>
+        <a href="#top" class="brand-mark" data-i18n="brandMark">Loris Battaglini</a>
+
+        <div class="header-tools" aria-label="Strumenti header" data-i18n-aria-label="headerToolsAriaLabel">
+          <button type="button" class="header-icon-btn" id="theme-toggle" aria-label="Attiva modalità scura" data-i18n-aria-label="themeToggleAriaLabel">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
+          <div class="language-switch" role="group" aria-label="Selettore lingua" data-i18n-aria-label="languageSwitchAriaLabel">
+            <i class="fa-solid fa-language" aria-hidden="true"></i>
+            <div>
+            <button type="button" class="language-option is-active" data-language-option data-lang="it" aria-pressed="true">IT</button>
+            <button type="button" class="language-option" data-language-option data-lang="en" aria-pressed="false">EN</button>
+            </div>
+          </div>
+        </div>
 
         <nav class="header-nav" aria-label="Menu principale">
           <ul>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#metodo">Metodo</a></li>
-            <li><a href="#projects">My Work</a></li>
+            <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+            <li><a href="#metodo" data-i18n="navMethod">Metodo</a></li>
+            <li><a href="#projects" data-i18n="navWork">I miei progetti</a></li>
           </ul>
         </nav>
 
         <div class="header-cta-row">
-          <a href="assets/html/about.html" class="about-link-header" target="_blank">About me</a>
-          <a href="#form" class="contattami-header">Contattami</a>
+          <a href="assets/html/about.html" class="about-link-header" target="_blank" data-i18n="headerAboutLink">About me</a>
+          <a href="#form" class="contattami-header" data-i18n="headerContactLink">Contattami</a>
         </div>
       </div>
 
       <div class="header-main-row">
         <section class="left-container-header">
           <div class="text-container-header">
-            <h1>Ciao, mi chiamo Loris Battaglini</h1>
-            <h4>In formazione come</h4>
-            <h2>Full-Stack Web Developer</h2>
-            <p>
+            <h1 data-i18n="heroTitle">Ciao, mi chiamo Loris Battaglini</h1>
+            <h4 data-i18n="heroSubtitle">In formazione come</h4>
+            <h2 data-i18n="heroRole">Full-Stack Web Developer</h2>
+            <p data-i18n="heroParagraph">
               Progetto e sviluppo siti web chiari, veloci e orientati al risultato.
               Ogni sezione viene costruita per valorizzare il tuo lavoro e guidare
               l'utente verso il contatto.
@@ -51,24 +64,24 @@
 
           <ul class="link-container-header">
             <li>
-              <a href="#" class="btn-cv">Scarica Curriculum</a>
+              <a href="#" class="btn-cv" data-i18n="downloadCvButton">Scarica Curriculum</a>
             </li>
             <li class="btn-linkedin">
-              <a href="http://www.linkedin.com/in/loris-battaglini-web" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo LinkedIn">
+              <a href="http://www.linkedin.com/in/loris-battaglini-web" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo LinkedIn" data-i18n-aria-label="openLinkedinAriaLabel">
                 <img src="assets/img/linkedin/LI-In-Bug.png" alt="LinkedIn">
               </a>
             </li>
             <li class="btn-instagram">
-              <a href="https://www.instagram.com/loris_battaglini/" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo Instagram">
+              <a href="https://www.instagram.com/loris_battaglini/" target="_blank" rel="noopener noreferrer" aria-label="Apri profilo Instagram" data-i18n-aria-label="openInstagramAriaLabel">
                 <img src="assets/img/logo-instagram/01 Gradient Glyph/Instagram_Glyph_Gradient.png" alt="Instagram">
               </a>
             </li>
           </ul>
 
           <ul class="info-container-header">
-            <li><i class="fa-solid fa-location-dot"></i>Caprarola, Italia</li>
-            <li><i class="fa-regular fa-address-card"></i>24 anni</li>
-            <li><i class="fa-solid fa-bolt"></i>Siti moderni e su misura</li>
+            <li><i class="fa-solid fa-location-dot"></i><span data-i18n="heroInfoLocation">Caprarola, Italia</span></li>
+            <li><i class="fa-regular fa-address-card"></i><span data-i18n="heroInfoAge">24 anni</span></li>
+            <li><i class="fa-solid fa-bolt"></i><span data-i18n="heroInfoTagline">Siti moderni e su misura</span></li>
           </ul>
         </section>
 
@@ -82,49 +95,49 @@
 
     <section class="skill-container" id="skills">
       <div class="section-heading">
-        <h3>Competenze principali</h3>
-        <p>Tecnologie selezionate per costruire prodotti affidabili, aggiornabili e performanti.</p>
+        <h3 data-i18n="skillsHeading">Competenze principali</h3>
+        <p data-i18n="skillsIntro">Tecnologie selezionate per costruire prodotti affidabili, aggiornabili e performanti.</p>
       </div>
 
       <div class="skill-grid">
         <article class="skill-inside-container">
           <h4>HTML</h4>
-          <p>Struttura semantica e accessibile.</p>
+          <p data-i18n="skillHtmlText">Struttura semantica e accessibile.</p>
         </article>
         <article class="skill-inside-container">
           <h4>CSS / SCSS</h4>
-          <p>Layout responsive e UI professionali.</p>
+          <p data-i18n="skillCssText">Layout responsive e UI professionali.</p>
         </article>
         <article class="skill-inside-container">
           <h4>Git / GitHub</h4>
-          <p>Versionamento pulito e workflow ordinato.</p>
+          <p data-i18n="skillGitText">Versionamento pulito e workflow ordinato.</p>
         </article> 
       </div>
 
       <details class="learning-dropdown" id="learning-skills">
-        <summary>Competenze che sto studiando</summary>
-        <p class="learning-intro">Le sto approfondendo con progetti pratici, quindi le tengo separate dalle competenze principali.</p>
+        <summary data-i18n="learningSummary">Competenze che sto studiando</summary>
+        <p class="learning-intro" data-i18n="learningIntro">Le sto approfondendo con progetti pratici, quindi le tengo separate dalle competenze principali.</p>
 
         <div class="learning-skill-grid">
           <article class="skill-inside-container learning-item">
             <h4>JavaScript</h4>
-            <p>Logica e interattivita lato client.</p>
+            <p data-i18n="learningJavascriptText">Logica e interattività lato client.</p>
           </article>
           <article class="skill-inside-container learning-item">
             <h4>TypeScript</h4>
-            <p>Tipizzazione per codice piu robusto.</p>
+            <p data-i18n="learningTypescriptText">Tipizzazione per codice più robusto.</p>
           </article>
           <article class="skill-inside-container learning-item">
             <h4>React</h4>
-            <p>Componenti riusabili per interfacce moderne.</p>
+            <p data-i18n="learningReactText">Componenti riusabili per interfacce moderne.</p>
           </article>
           <article class="skill-inside-container learning-item">
             <h4>Node.js</h4>
-            <p>Basi backend e gestione API.</p>
+            <p data-i18n="learningNodeText">Basi backend e gestione API.</p>
           </article>
           <article class="skill-inside-container learning-item">
             <h4>Agenti AI</h4>
-            <p>Workflow assistiti per produttivita e automazione.</p>
+            <p data-i18n="learningAiText">Workflow assistiti per produttività e automazione.</p>
           </article>
         </div>
       </details>
@@ -132,50 +145,50 @@
 
     <section class="metodo-section" id="metodo">
       <div class="section-heading">
-        <h3>Come trasformo un'idea in un sito che funziona</h3>
-        <p>Ogni progetto nasce da un obiettivo chiaro e viene costruito con un metodo preciso</p>
+        <h3 data-i18n="methodHeading">Come trasformo un'idea in un sito che funziona</h3>
+        <p data-i18n="methodIntro">Ogni progetto nasce da un obiettivo chiaro e viene costruito con un metodo preciso</p>
       </div>
 
       <div class="metodo-grid">
         <article class="metodo-track metodo-track-value">
-          <h3>Risultato</h3>
+          <h3 data-i18n="methodResultTitle">Risultato</h3>
           <ul class="metodo-timeline">
             <li class="metodo-item">
-              <p>Trasformo la tua idea in un sito professionale orientato agli obiettivi.</p>
+              <p data-i18n="methodResultItem1">Trasformo la tua idea in un sito professionale orientato agli obiettivi.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Organizzo i contenuti in sezioni che fanno percepire subito il valore dei tuoi servizi.</p>
+              <p data-i18n="methodResultItem2">Organizzo i contenuti in sezioni che fanno percepire subito il valore dei tuoi servizi.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Costruisco pagine che guidano il visitatore  verso la richiesta di contatto.</p>
+              <p data-i18n="methodResultItem3">Costruisco pagine che guidano il visitatore verso la richiesta di contatto.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Ti consegno una base solida pronta a crescere con il tuo progetto.</p>
+              <p data-i18n="methodResultItem4">Ti consegno una base solida pronta a crescere con il tuo progetto.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
           </ul>
         </article>
 
         <article class="metodo-track metodo-track-process">
-          <h3>Metodo</h3>
+          <h3 data-i18n="methodProcessTitle">Metodo</h3>
           <ul class="metodo-timeline">
             <li class="metodo-item">
-              <p>Definisco obiettivi, target, messaggio e tono prima di scrivere il codice.</p>
+              <p data-i18n="methodProcessItem1">Definisco obiettivi, target, messaggio e tono prima di scrivere il codice.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Disegno struttura e gerarchia visiva per guidare attenzione, comprensione e decisione.</p>
+              <p data-i18n="methodProcessItem2">Disegno struttura e gerarchia visiva per guidare attenzione, comprensione e decisione.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Sviluppo in modo modulare e responsive, con codice semplice da mantenere e ampliare nel tempo.</p>
+              <p data-i18n="methodProcessItem3">Sviluppo in modo modulare e responsive, con codice semplice da mantenere e ampliare nel tempo.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
             <li class="metodo-item">
-              <p>Eseguo ottimizzazioni finali su performance, leggibilitÃ  e UX prima della consegna.</p>
+              <p data-i18n="methodProcessItem4">Eseguo ottimizzazioni finali su performance, leggibilità e UX prima della consegna.</p>
               <span class="metodo-point" aria-hidden="true"></span>
             </li>
           </ul>
@@ -183,70 +196,70 @@
       </div>
 
       <div class="metodo-cta">
-        <p>Hai un progetto in mente? Scrivimi qui sotto e raccontami la tua idea. 
+        <p data-i18n="methodCtaText">Hai un progetto in mente? Scrivimi qui sotto e raccontami la tua idea.
         </p>
-        <a href="#form" class="metodo-cta-link">Parliamo del tuo progetto</a>
+        <a href="#form" class="metodo-cta-link" data-i18n="methodCtaButton">Parliamo del tuo progetto</a>
       </div>
     </section>
 
     <section class="progetti-card" id="projects">
       <div class="section-heading">
-        <h3>I miei progetti</h3>
-        <p>Una selezione essenziale dei miei lavori principali. Se vuoi espanderla clicca il pulsante "Vedi tutti i progetti"</p>
+        <h3 data-i18n="projectsHeading">I miei progetti</h3>
+        <p data-i18n="projectsIntro">Una selezione essenziale dei miei lavori principali. Se vuoi espanderla clicca il pulsante "Vedi tutti i progetti"</p>
       </div>
 
       <div class="projects-grid projects-grid-static">
         <article class="card project-card card-left" data-project-state="live">
-          <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl">
+          <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl" data-i18n-alt="projectDepylAlt">
           <div class="card-body">
-            <h5 class="card-title">Progetto Depyl</h5>
-            <p class="card-text">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
-            <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+            <h5 class="card-title" data-i18n="projectDepylTitle">Progetto Depyl</h5>
+            <p class="card-text" data-i18n="projectDepylText">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
+            <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="projectVisitButton">Visita il sito</a>
           </div>
         </article>
 
         <article class="card project-card card-right" data-project-state="live">
-          <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio">
+          <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio" data-i18n-alt="projectCoffeeAlt">
           <div class="card-body">
-            <h5 class="card-title">Landing Prodotto</h5>
-            <p class="card-text">Sito vetrina per una caffetteria specialty con identita visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
-            <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+            <h5 class="card-title" data-i18n="projectCoffeeTitle">Landing Prodotto</h5>
+            <p class="card-text" data-i18n="projectCoffeeText">Sito vetrina per una caffetteria specialty con identità visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
+            <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="projectVisitButton">Visita il sito</a>
           </div>
         </article>
       </div>
 
       <div class="projects-expand-row">
         <button type="button" class="projects-more-link" id="toggle-projects-expanded" aria-expanded="false" aria-controls="projects-expanded-content">
-          Vedi tutti i progetti
+          <span data-i18n="projectsShowAllButton">Vedi tutti i progetti</span>
         </button>
       </div>
 
       <div class="projects-expanded-content" id="projects-expanded-content" hidden>
         <article class="projects-slider-block">
-          <h4 class="progetti-completati-lavorazione">Progetti completati</h4>
-          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti completati">
-            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra">&larr;</button>
-            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false">Blocca Scorrimento</button>
-            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra">&rarr;</button>
+          <h4 class="progetti-completati-lavorazione" data-i18n="completedProjectsHeading">Progetti completati</h4>
+          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti completati" data-i18n-aria-label="completedControlsAriaLabel">
+            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra" data-i18n-aria-label="sliderPrevAriaLabel">&larr;</button>
+            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false" data-i18n="sliderPauseButton">Blocca Scorrimento</button>
+            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra" data-i18n-aria-label="sliderNextAriaLabel">&rarr;</button>
           </div>
-          <div class="projects-slider" aria-label="Carosello progetti completati">
+          <div class="projects-slider" aria-label="Carosello progetti completati" data-i18n-aria-label="completedCarouselAriaLabel">
             <div class="projects-track">
               <div class="projects-lane">
                 <article class="card project-card" data-project-state="live">
-                  <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl">
+                  <img src="assets/img/siti/depyl-card.jpg" class="card-img-top" alt="Anteprima progetto Depyl" data-i18n-alt="projectDepylAlt">
                   <div class="card-body">
-                    <h5 class="card-title">Progetto Depyl</h5>
-                    <p class="card-text">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
-                    <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+                    <h5 class="card-title" data-i18n="projectDepylTitle">Progetto Depyl</h5>
+                    <p class="card-text" data-i18n="projectDepylText">Landing informativa per Depyl con focus su problema, soluzione e vantaggi in una struttura chiara orientata al contatto.</p>
+                    <a href="https://lorispc11052001-stack.github.io/depyl-per-portfolio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="projectVisitButton">Visita il sito</a>
                   </div>
                 </article>
 
                 <article class="card project-card" data-project-state="live">
-                  <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio">
+                  <img src="assets/img/siti/coffe-studio-card.jpg" class="card-img-top" alt="Anteprima progetto Coffee Studio" data-i18n-alt="projectCoffeeAlt">
                   <div class="card-body">
-                    <h5 class="card-title">Landing Prodotto</h5>
-                    <p class="card-text">Sito vetrina per una caffetteria specialty con identita visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
-                    <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visita il sito</a>
+                    <h5 class="card-title" data-i18n="projectCoffeeTitle">Landing Prodotto</h5>
+                    <p class="card-text" data-i18n="projectCoffeeText">Sito vetrina per una caffetteria specialty con identità visiva curata, menu in evidenza e call to action verso prenotazione e contatto.</p>
+                    <a href="https://lorispc11052001-stack.github.io/Coffe-Studio/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="projectVisitButton">Visita il sito</a>
                   </div>
                 </article>
               </div>
@@ -255,72 +268,52 @@
         </article>
 
         <article class="projects-slider-block projects-slider-block-working">
-          <h4 class="progetti-completati-lavorazione">Progetti in lavorazione</h4>
-          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti in lavorazione">
-            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra">&larr;</button>
-            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false">Blocca Scorrimento</button>
-            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra">&rarr;</button>
+          <h4 class="progetti-completati-lavorazione" data-i18n="workingProjectsHeading">Progetti in lavorazione</h4>
+          <div class="projects-slider-controls" role="group" aria-label="Controlli progetti in lavorazione" data-i18n-aria-label="workingControlsAriaLabel">
+            <button type="button" class="projects-nav-btn" data-action="prev" aria-label="Scorri a sinistra" data-i18n-aria-label="sliderPrevAriaLabel">&larr;</button>
+            <button type="button" class="projects-nav-btn projects-nav-toggle" data-action="toggle" aria-pressed="false" data-i18n="sliderPauseButton">Blocca Scorrimento</button>
+            <button type="button" class="projects-nav-btn" data-action="next" aria-label="Scorri a destra" data-i18n-aria-label="sliderNextAriaLabel">&rarr;</button>
           </div>
-          <div class="projects-slider projects-slider-soon" aria-label="Carosello progetti in lavorazione">
+          <div class="projects-slider projects-slider-soon" aria-label="Carosello progetti in lavorazione" data-i18n-aria-label="workingCarouselAriaLabel">
             <div class="projects-track">
               <div class="projects-lane">
                 <article class="card project-card" data-project-state="soon">
-                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto E-commerce Artigiano">
+                  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto E-commerce Artigiano" data-i18n-alt="projectCraftEcommerceAlt">
                   <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">E-commerce Artigiano</h5>
-                    <p class="card-text">Store essenziale pensato per prodotti locali e checkout semplificato.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                    <span class="project-status" data-i18n="comingSoonBadge">Coming soon</span>
+                    <h5 class="card-title" data-i18n="projectCraftEcommerceTitle">E-commerce Artigiano</h5>
+                    <p class="card-text" data-i18n="projectCraftEcommerceText">Store essenziale pensato per prodotti locali e checkout semplificato.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled data-i18n="inProgressButton">In lavorazione</button>
                   </div>
                 </article>
 
                 <article class="card project-card" data-project-state="soon">
-                  <img src="https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Portfolio Foto">
+                  <img src="https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Portfolio Foto" data-i18n-alt="projectPhotoPortfolioAlt">
                   <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">Portfolio Foto</h5>
-                    <p class="card-text">Esperienza immersiva per fotografi con galleria ad alto impatto visivo.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
-                  </div>
-                </article>
-
-                <article class="card project-card" data-project-state="soon">
-                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto CRM Team">
-                  <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">CRM Team</h5>
-                    <p class="card-text">Piattaforma interna per gestione lead, task condivisi e calendario commerciale.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
-                  </div>
-                </article>
-
-                <article class="card project-card" data-project-state="soon">
-                  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto App Eventi">
-                  <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">App Eventi</h5>
-                    <p class="card-text">Portale eventi con filtri geolocalizzati, ticketing e profili organizzatori.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                    <span class="project-status" data-i18n="comingSoonBadge">Coming soon</span>
+                    <h5 class="card-title" data-i18n="projectPhotoPortfolioTitle">Portfolio Foto</h5>
+                    <p class="card-text" data-i18n="projectPhotoPortfolioText">Esperienza immersiva per fotografi con galleria ad alto impatto visivo.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled data-i18n="inProgressButton">In lavorazione</button>
                   </div>
                 </article>
 
                 <article class="card project-card" data-project-state="live">
-                  <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Dashboard SEO">
+                  <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Dashboard SEO" data-i18n-alt="projectSeoDashboardAlt">
                   <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">Dashboard SEO</h5>
-                    <p class="card-text">Report automatici e panoramica metriche per monitorare performance mensili.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                    <span class="project-status" data-i18n="comingSoonBadge">Coming soon</span>
+                    <h5 class="card-title" data-i18n="projectSeoDashboardTitle">Dashboard SEO</h5>
+                    <p class="card-text" data-i18n="projectSeoDashboardText">Report automatici e panoramica metriche per monitorare performance mensili.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled data-i18n="inProgressButton">In lavorazione</button>
                   </div>
                 </article>
 
                 <article class="card project-card" data-project-state="live">
-                  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Landing Restaurant">
+                  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&auto=format&fit=crop&q=80" class="card-img-top" alt="Anteprima progetto Landing Restaurant" data-i18n-alt="projectRestaurantAlt">
                   <div class="card-body">
-                    <span class="project-status">Coming soon</span>
-                    <h5 class="card-title">Landing Restaurant</h5>
-                    <p class="card-text">Sito vetrina ad alto impatto per prenotazioni rapide e menu in evidenza.</p>
-                    <button type="button" class="btn btn-primary disabled-project-link" disabled>In lavorazione</button>
+                    <span class="project-status" data-i18n="comingSoonBadge">Coming soon</span>
+                    <h5 class="card-title" data-i18n="projectRestaurantTitle">Landing Restaurant</h5>
+                    <p class="card-text" data-i18n="projectRestaurantText">Sito vetrina ad alto impatto per prenotazioni rapide e menu in evidenza.</p>
+                    <button type="button" class="btn btn-primary disabled-project-link" disabled data-i18n="inProgressButton">In lavorazione</button>
                   </div>
                 </article>
 
@@ -333,45 +326,45 @@
 
     <footer>
       <div class="section-heading">
-        <h3>Raccontami il tuo progetto</h3>
-        <p>Scrivimi qui sotto e spiegami cosa vuoi costruire. Ti rispondo entro 24 ore. <br>Se preferisci, possiamo anche parlarne in una breve call.</p>
+        <h3 data-i18n="contactHeading">Raccontami il tuo progetto</h3>
+        <p data-i18n="contactIntro">Scrivimi qui sotto e spiegami cosa vuoi costruire. Ti rispondo entro 24 ore. <br>Se preferisci, possiamo anche parlarne in una breve call.</p>
       </div>
 
       <div class="footer-lead-magnet" aria-label="Regalo di benvenuto">
-        <h4>Checklist gratuita</h4>
-        <p>
+        <h4 data-i18n="leadMagnetHeading">Checklist gratuita</h4>
+        <p data-i18n="leadMagnetText">
           Riceverai anche una guida utile:
           <strong>"Prima presenza online credibile (anche se parti da zero)"</strong>
         </p>
       </div>
 
-      <form action="#" method="post" id="form" data-emailjs-public-key="T2bpxcVtjxQ6zZcn9" data-emailjs-service-id="service_ic7rh6l" data-emailjs-template-id="template_lov96ss" data-emailjs-autoreply-template-id="template_deuf5cu" data-checklist-url="assets/html/guida-presenza-online.html" data-success-url="assets/html/form-success.html">
+      <form action="#" method="post" id="form" data-emailjs-public-key="T2bpxcVtjxQ6zZcn9" data-emailjs-service-id="service_ic7rh6l" data-emailjs-template-id="template_lov96ss" data-emailjs-autoreply-template-id="template_deuf5cu" data-emailjs-autoreply-template-id-en="" data-checklist-url="assets/html/guida-presenza-online.html" data-checklist-url-en="assets/html/guida-presenza-online-en.html" data-success-url="assets/html/form-success.html">
         <label for="text">
-          Nome
-          <input type="text" placeholder="Scrivi il tuo nome" id="text" name="nome-utente" autocomplete="name" minlength="2" required>
+          <span data-i18n="formNameLabel">Nome</span>
+          <input type="text" placeholder="Scrivi il tuo nome" id="text" name="nome-utente" autocomplete="name" minlength="2" required data-i18n-placeholder="formNamePlaceholder">
         </label>
 
         <label for="email">
-          Email
-          <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente" autocomplete="email" required>
+          <span data-i18n="formEmailLabel">Email</span>
+          <input type="email" id="email" placeholder="Inserisci la tua email" name="email-utente" autocomplete="email" required data-i18n-placeholder="formEmailPlaceholder">
         </label>
 
         <label for="message">
-          Messaggio
-          <textarea name="messaggio" id="message" rows="6" placeholder="Descrivi il tuo progetto, la tua idea o cosa vorresti migliorare" minlength="15" required></textarea>
+          <span data-i18n="formMessageLabel">Messaggio</span>
+          <textarea name="messaggio" id="message" rows="6" placeholder="Descrivi il tuo progetto, la tua idea o cosa vorresti migliorare" minlength="15" required data-i18n-placeholder="formMessagePlaceholder"></textarea>
         </label>
 
         <label for="lead-magnet" class="lead-magnet-consent">
           <input type="checkbox" id="lead-magnet" name="lead-magnet" value="mini-guida">
-          Sì, voglio ricevere anche la checklist gratuita via email.
+          <span data-i18n="formChecklistConsent">Sì, voglio ricevere anche la checklist gratuita via email.</span>
         </label>
 
         <label for="website" class="form-honeypot" aria-hidden="true">
-          Non compilare questo campo
+          <span data-i18n="formHoneypotLabel">Non compilare questo campo</span>
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </label>
 
-        <button type="submit" class="btn-footer" id="form-submit-button">Invia il messaggio</button>
+        <button type="submit" class="btn-footer" id="form-submit-button" data-i18n="formSubmitButton">Invia il messaggio</button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
     </footer>
@@ -379,6 +372,138 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function () {
+      const STORAGE_KEYS = {
+        theme: 'lb-theme',
+        language: 'lb-language'
+      };
+      const SUPPORTED_LANGUAGES = ['it', 'en'];
+      const DEFAULT_LANGUAGE = 'it';
+      const PAGE_TITLES = {
+        it: 'Loris Battaglini | Full-Stack Web Developer',
+        en: 'Loris Battaglini | Full-Stack Web Developer'
+      };
+      const DYNAMIC_STRINGS = {
+        it: {
+          themeToggleAriaLabelLight: 'Attiva modalità scura',
+          themeToggleAriaLabelDark: 'Torna alla modalità chiara',
+          projectsShowAllButton: 'Vedi tutti i progetti',
+          projectsHideAllButton: 'Torna alla griglia base',
+          sliderPauseButton: 'Pausa',
+          sliderResumeButton: 'Riprendi',
+          formSubmitButton: 'Invia il messaggio',
+          formSubmittingButton: 'Invio in corso...',
+          formServiceUnavailable: 'Servizio invio non disponibile. Riprova tra qualche minuto.',
+          formConfigMissing: 'Configura EmailJS nel tag form prima di inviare messaggi reali.',
+          formPublicKeyInvalid: 'Public key non valida: inserisci la Public Key API di EmailJS, non la tua email.',
+          formSubmitErrorPrefix: 'Invio non riuscito. Controlla la configurazione EmailJS e riprova.'
+        },
+        en: {
+          themeToggleAriaLabelLight: 'Enable dark mode',
+          themeToggleAriaLabelDark: 'Back to light mode',
+          projectsShowAllButton: 'See all projects',
+          projectsHideAllButton: 'Back to base grid',
+          sliderPauseButton: 'Pause',
+          sliderResumeButton: 'Resume',
+          formSubmitButton: 'Send message',
+          formSubmittingButton: 'Sending...',
+          formServiceUnavailable: 'Sending service unavailable. Please try again in a few minutes.',
+          formConfigMissing: 'Configure EmailJS in the form tag before sending real messages.',
+          formPublicKeyInvalid: 'Invalid public key: use your EmailJS Public Key API, not your email address.',
+          formSubmitErrorPrefix: 'Message not sent. Check EmailJS configuration and try again.'
+        }
+      };
+      const ENGLISH_TEXT = {
+        navMethod: 'Method',
+        navWork: 'My Work',
+        headerContactLink: 'Contact me',
+        heroTitle: 'Hi, I am Loris Battaglini',
+        heroSubtitle: 'Training as a',
+        heroParagraph: 'I design and develop clear, fast, goal-oriented websites. Every section is built to highlight your work and guide users toward contact.',
+        downloadCvButton: 'Download Resume',
+        heroInfoLocation: 'Caprarola, Italy',
+        heroInfoAge: '24 years old',
+        heroInfoTagline: 'Modern custom websites',
+        skillsHeading: 'Core skills',
+        skillsIntro: 'Selected technologies to build reliable, maintainable, high-performance products.',
+        skillHtmlText: 'Semantic and accessible structure.',
+        skillCssText: 'Responsive layouts and professional UIs.',
+        skillGitText: 'Clean versioning and organized workflow.',
+        learningSummary: 'Skills I am currently studying',
+        learningIntro: 'I am deepening these with practical projects, so I keep them separate from my core skills.',
+        learningJavascriptText: 'Client-side logic and interactivity.',
+        learningTypescriptText: 'Typing for more robust code.',
+        learningReactText: 'Reusable components for modern interfaces.',
+        learningNodeText: 'Backend fundamentals and API management.',
+        learningAiText: 'AI-assisted workflows for productivity and automation.',
+        methodHeading: 'How I turn an idea into a website that works',
+        methodIntro: 'Each project starts from a clear goal and is built with a precise method',
+        methodResultTitle: 'Outcome',
+        methodResultItem1: 'I turn your idea into a professional website focused on your goals.',
+        methodResultItem2: 'I organize content into sections that immediately communicate the value of your services.',
+        methodResultItem3: 'I build pages that guide visitors toward contacting you.',
+        methodResultItem4: 'I deliver a solid foundation ready to grow with your project.',
+        methodProcessTitle: 'Method',
+        methodProcessItem1: 'I define goals, target audience, message, and tone before writing code.',
+        methodProcessItem2: 'I design structure and visual hierarchy to guide attention, understanding, and decisions.',
+        methodProcessItem3: 'I develop in a modular, responsive way with code that is easy to maintain and extend over time.',
+        methodProcessItem4: 'I perform final optimizations on performance, readability, and UX before delivery.',
+        methodCtaText: 'Do you have a project in mind? Write to me below and tell me about your idea.',
+        methodCtaButton: 'Let\'s talk about your project',
+        projectsHeading: 'My projects',
+        projectsIntro: 'A focused selection of my main works. If you want to expand it, click \"See all projects\".',
+        completedProjectsHeading: 'Completed projects',
+        workingProjectsHeading: 'Projects in progress',
+        projectDepylTitle: 'Depyl Project',
+        projectDepylText: 'Informational landing page for Depyl focused on problem, solution, and benefits in a clear contact-oriented structure.',
+        projectCoffeeTitle: 'Product Landing Page',
+        projectCoffeeText: 'Showcase website for a specialty coffee shop with curated visual identity, highlighted menu, and CTAs for booking and contact.',
+        projectVisitButton: 'Visit website',
+        projectCraftEcommerceTitle: 'Craft E-commerce',
+        projectCraftEcommerceText: 'Essential store designed for local products with a simplified checkout.',
+        projectPhotoPortfolioTitle: 'Photo Portfolio',
+        projectPhotoPortfolioText: 'Immersive experience for photographers with a high-impact visual gallery.',
+        projectSeoDashboardTitle: 'SEO Dashboard',
+        projectSeoDashboardText: 'Automated reports and metrics overview to monitor monthly performance.',
+        projectRestaurantTitle: 'Restaurant Landing',
+        projectRestaurantText: 'High-impact showcase site for fast bookings and menu highlights.',
+        inProgressButton: 'In progress',
+        contactHeading: 'Tell me about your project',
+        contactIntro: 'Write below and explain what you want to build. I reply within 24 hours. <br>If you prefer, we can also discuss it in a short call.',
+        leadMagnetHeading: 'Free checklist',
+        leadMagnetText: 'You will also receive a useful guide: <strong>\"Your first credible online presence (even if you are starting from zero)\"</strong>',
+        formNameLabel: 'Name',
+        formEmailLabel: 'Email',
+        formMessageLabel: 'Message',
+        formChecklistConsent: 'Yes, I also want to receive the free checklist by email.',
+        formHoneypotLabel: 'Do not fill in this field'
+      };
+      const ENGLISH_PLACEHOLDERS = {
+        formNamePlaceholder: 'Type your name',
+        formEmailPlaceholder: 'Enter your email',
+        formMessagePlaceholder: 'Describe your project, your idea, or what you would like to improve'
+      };
+      const ENGLISH_ARIA_LABELS = {
+        headerToolsAriaLabel: 'Header tools',
+        themeToggleAriaLabel: 'Enable dark mode',
+        languageSwitchAriaLabel: 'Language switcher',
+        openLinkedinAriaLabel: 'Open LinkedIn profile',
+        openInstagramAriaLabel: 'Open Instagram profile',
+        completedControlsAriaLabel: 'Completed projects controls',
+        sliderPrevAriaLabel: 'Scroll left',
+        sliderNextAriaLabel: 'Scroll right',
+        completedCarouselAriaLabel: 'Completed projects carousel',
+        workingControlsAriaLabel: 'Projects in progress controls',
+        workingCarouselAriaLabel: 'Projects in progress carousel'
+      };
+      const ENGLISH_ALTS = {
+        projectDepylAlt: 'Depyl project preview',
+        projectCoffeeAlt: 'Coffee Studio project preview',
+        projectCraftEcommerceAlt: 'Craft E-commerce project preview',
+        projectPhotoPortfolioAlt: 'Photo Portfolio project preview',
+        projectSeoDashboardAlt: 'SEO Dashboard project preview',
+        projectRestaurantAlt: 'Restaurant Landing project preview'
+      };
+
       const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"], .metodo-cta-link[href^="#"]');
       const contactForm = document.querySelector('#form');
       const formSubmitButton = document.querySelector('#form-submit-button');
@@ -386,15 +511,218 @@
       const projectsSection = document.querySelector('#projects');
       const projectsExpandedContent = document.querySelector('#projects-expanded-content');
       const toggleProjectsExpandedButton = document.querySelector('#toggle-projects-expanded');
+      const toggleProjectsExpandedLabel = toggleProjectsExpandedButton ? toggleProjectsExpandedButton.querySelector('[data-i18n]') : null;
+      const themeToggleButton = document.querySelector('#theme-toggle');
+      const themeToggleIcon = themeToggleButton ? themeToggleButton.querySelector('i') : null;
+      const languageOptionButtons = Array.from(document.querySelectorAll('[data-language-option]'));
       const projectSliderStates = [];
       let activeTimer = null;
       let activeSection = null;
-
       let projectAnimationFrameId = null;
       let projectAnimationLastTime = 0;
+      let currentLanguage = DEFAULT_LANGUAGE;
+      let isFormSubmitting = false;
 
-      function getLaneGap(state) {
-        const styles = window.getComputedStyle(state.lane);
+      const italianSnapshot = {
+        text: Object.create(null),
+        placeholder: Object.create(null),
+        aria: Object.create(null),
+        alt: Object.create(null)
+      };
+
+      document.querySelectorAll('[data-i18n]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.text, key)) return;
+        italianSnapshot.text[key] = node.innerHTML;
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n-placeholder');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.placeholder, key)) return;
+        italianSnapshot.placeholder[key] = node.getAttribute('placeholder') || '';
+      });
+
+      document.querySelectorAll('[data-i18n-aria-label]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n-aria-label');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.aria, key)) return;
+        italianSnapshot.aria[key] = node.getAttribute('aria-label') || '';
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach(function (node) {
+        const key = node.getAttribute('data-i18n-alt');
+        if (!key || Object.prototype.hasOwnProperty.call(italianSnapshot.alt, key)) return;
+        italianSnapshot.alt[key] = node.getAttribute('alt') || '';
+      });
+
+      function safeStorageGet(key) {
+        try {
+          return window.localStorage.getItem(key);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function safeStorageSet(key, value) {
+        try {
+          window.localStorage.setItem(key, value);
+        } catch (error) {
+          // Storage unavailable, continue without persistence.
+        }
+      }
+
+      function getDynamicString(key) {
+        const languagePack = DYNAMIC_STRINGS[currentLanguage] || DYNAMIC_STRINGS.it;
+        return languagePack && Object.prototype.hasOwnProperty.call(languagePack, key) ? languagePack[key] : '';
+      }
+
+      function getStoredLanguage() {
+        const language = safeStorageGet(STORAGE_KEYS.language);
+        return SUPPORTED_LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
+      }
+
+      function getStoredTheme() {
+        const theme = safeStorageGet(STORAGE_KEYS.theme);
+        return theme === 'dark' ? 'dark' : 'light';
+      }
+
+      function getTranslatedText(key) {
+        if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_TEXT, key)) {
+          return ENGLISH_TEXT[key];
+        }
+        return italianSnapshot.text[key] || '';
+      }
+
+      function getTranslatedPlaceholder(key) {
+        if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_PLACEHOLDERS, key)) {
+          return ENGLISH_PLACEHOLDERS[key];
+        }
+        return italianSnapshot.placeholder[key] || '';
+      }
+
+      function getTranslatedAriaLabel(key) {
+        if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_ARIA_LABELS, key)) {
+          return ENGLISH_ARIA_LABELS[key];
+        }
+        return italianSnapshot.aria[key] || '';
+      }
+
+      function getTranslatedAlt(key) {
+        if (currentLanguage === 'en' && Object.prototype.hasOwnProperty.call(ENGLISH_ALTS, key)) {
+          return ENGLISH_ALTS[key];
+        }
+        return italianSnapshot.alt[key] || '';
+      }
+
+      function updateThemeToggleAccessibility() {
+        if (!themeToggleButton || !themeToggleIcon) return;
+        const isDarkTheme = document.body.classList.contains('theme-dark');
+        themeToggleIcon.classList.toggle('fa-moon', !isDarkTheme);
+        themeToggleIcon.classList.toggle('fa-sun', isDarkTheme);
+        themeToggleButton.dataset.themeState = isDarkTheme ? 'dark' : 'light';
+        themeToggleButton.setAttribute('aria-label', getDynamicString(isDarkTheme ? 'themeToggleAriaLabelDark' : 'themeToggleAriaLabelLight'));
+      }
+
+      function setProjectsExpandedButtonText(isExpanded) {
+        const text = getDynamicString(isExpanded ? 'projectsHideAllButton' : 'projectsShowAllButton');
+        if (toggleProjectsExpandedLabel) {
+          toggleProjectsExpandedLabel.textContent = text;
+          return;
+        }
+        if (toggleProjectsExpandedButton) {
+          toggleProjectsExpandedButton.textContent = text;
+        }
+      }
+
+      function refreshSliderToggleButtonsText() {
+        projectSliderStates.forEach(function (state) {
+          state.toggleButton.textContent = state.isAutoPaused ? getDynamicString('sliderResumeButton') : getDynamicString('sliderPauseButton');
+        });
+      }
+
+      function applyTranslations() {
+        document.documentElement.lang = currentLanguage;
+        document.title = PAGE_TITLES[currentLanguage] || PAGE_TITLES.it;
+
+        document.querySelectorAll('[data-i18n]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n');
+          if (!key) return;
+          node.innerHTML = getTranslatedText(key);
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n-placeholder');
+          if (!key) return;
+          node.setAttribute('placeholder', getTranslatedPlaceholder(key));
+        });
+
+        document.querySelectorAll('[data-i18n-aria-label]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n-aria-label');
+          if (!key) return;
+          node.setAttribute('aria-label', getTranslatedAriaLabel(key));
+        });
+
+        document.querySelectorAll('[data-i18n-alt]').forEach(function (node) {
+          const key = node.getAttribute('data-i18n-alt');
+          if (!key) return;
+          node.setAttribute('alt', getTranslatedAlt(key));
+        });
+
+        languageOptionButtons.forEach(function (button) {
+          const isActive = button.dataset.lang === currentLanguage;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+
+        if (contactForm) {
+          const activeChecklistUrl = currentLanguage === 'en' && contactForm.dataset.checklistUrlEn
+            ? contactForm.dataset.checklistUrlEn
+            : contactForm.dataset.checklistUrl;
+          if (activeChecklistUrl) {
+            contactForm.dataset.activeChecklistUrl = activeChecklistUrl;
+          }
+        }
+
+        updateThemeToggleAccessibility();
+        const isExpanded = toggleProjectsExpandedButton && toggleProjectsExpandedButton.getAttribute('aria-expanded') === 'true';
+        setProjectsExpandedButtonText(Boolean(isExpanded));
+        refreshSliderToggleButtonsText();
+        setFormSubmitting(isFormSubmitting);
+      }
+
+      function setLanguage(language, shouldPersist) {
+        currentLanguage = SUPPORTED_LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
+        applyTranslations();
+        if (shouldPersist) {
+          safeStorageSet(STORAGE_KEYS.language, currentLanguage);
+        }
+      }
+
+      function applyTheme(theme, shouldPersist) {
+        const nextTheme = theme === 'dark' ? 'dark' : 'light';
+        document.body.classList.toggle('theme-dark', nextTheme === 'dark');
+        updateThemeToggleAccessibility();
+        if (shouldPersist) {
+          safeStorageSet(STORAGE_KEYS.theme, nextTheme);
+        }
+      }
+
+      if (themeToggleButton) {
+        themeToggleButton.addEventListener('click', function () {
+          const isDarkTheme = document.body.classList.contains('theme-dark');
+          applyTheme(isDarkTheme ? 'light' : 'dark', true);
+        });
+      }
+
+      languageOptionButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          const nextLanguage = button.dataset.lang;
+          if (!nextLanguage || nextLanguage === currentLanguage) return;
+          setLanguage(nextLanguage, true);
+        });
+      });
+
+      function getLaneGap(lane) {
+        const styles = window.getComputedStyle(lane);
         const rawGap = styles.columnGap || styles.gap || '0';
         const gap = Number.parseFloat(rawGap);
         return Number.isNaN(gap) ? 0 : gap;
@@ -406,22 +734,41 @@
         return Number.isNaN(edgeOffset) ? 0 : edgeOffset;
       }
 
-      function ensureMinimumCards(lane, minCards) {
-        const originalCards = Array.from(lane.children);
+      function ensureMinimumCards(lane, slider) {
+        const originalCards = Array.from(lane.children).filter(function (card) {
+          return !card.hasAttribute('data-cloned-card');
+        });
         if (originalCards.length === 0) return;
-        let cloneIndex = 0;
 
-        while (lane.children.length < minCards) {
-          const sourceCard = originalCards[cloneIndex % originalCards.length];
-          const clonedCard = sourceCard.cloneNode(true);
-          clonedCard.setAttribute('data-cloned-card', 'true');
-          lane.appendChild(clonedCard);
-          cloneIndex += 1;
+        lane.querySelectorAll('[data-cloned-card="true"]').forEach(function (clonedCard) {
+          clonedCard.remove();
+        });
+
+        if (originalCards.length === 1) return;
+
+        const gap = getLaneGap(lane);
+        const originalLaneWidth = originalCards.reduce(function (sum, card) {
+          return sum + card.getBoundingClientRect().width;
+        }, 0) + gap * Math.max(0, originalCards.length - 1);
+
+        let requiredLoops = 2;
+        if (originalLaneWidth > 0) {
+          const targetWidth = Math.max(slider.clientWidth * 2.4, originalLaneWidth * 2);
+          requiredLoops = Math.ceil(targetWidth / originalLaneWidth);
+        }
+        requiredLoops = Math.max(2, Math.min(6, requiredLoops));
+
+        for (let loopIndex = 1; loopIndex < requiredLoops; loopIndex += 1) {
+          originalCards.forEach(function (sourceCard) {
+            const clonedCard = sourceCard.cloneNode(true);
+            clonedCard.setAttribute('data-cloned-card', 'true');
+            lane.appendChild(clonedCard);
+          });
         }
       }
 
       function getCardStep(card, state) {
-        return card.getBoundingClientRect().width + getLaneGap(state);
+        return card.getBoundingClientRect().width + getLaneGap(state.lane);
       }
 
       function applyLaneTransform(state) {
@@ -433,7 +780,7 @@
         if (cards.length === 0) return;
 
         const firstCard = cards[0];
-        const gap = getLaneGap(state);
+        const gap = getLaneGap(state.lane);
         const cardsTotalWidth = cards.reduce(function (sum, card) {
           return sum + card.getBoundingClientRect().width;
         }, 0);
@@ -508,7 +855,7 @@
       function setSliderPaused(state, shouldPause, alignOnPause) {
         state.isAutoPaused = shouldPause;
         state.toggleButton.setAttribute('aria-pressed', shouldPause ? 'true' : 'false');
-        state.toggleButton.textContent = shouldPause ? 'Riprendi' : 'Pausa';
+        state.toggleButton.textContent = shouldPause ? getDynamicString('sliderResumeButton') : getDynamicString('sliderPauseButton');
         if (shouldPause && alignOnPause !== false) {
           snapLaneToCenter(state, 220);
         }
@@ -612,7 +959,7 @@
           const nextButton = block.querySelector('[data-action="next"]');
           if (!slider || !lane || !toggleButton || !prevButton || !nextButton) return;
 
-          ensureMinimumCards(lane, 6);
+          ensureMinimumCards(lane, slider);
 
           const state = {
             slider: slider,
@@ -646,6 +993,8 @@
           projectSliderStates.push(state);
         });
 
+        refreshSliderToggleButtonsText();
+
         window.addEventListener('resize', function () {
           projectSliderStates.forEach(function (state) {
             updateSliderEdgeOffset(state);
@@ -662,7 +1011,7 @@
         projectsSection.classList.toggle('projects-expanded', isExpanded);
         projectsExpandedContent.hidden = !isExpanded;
         toggleProjectsExpandedButton.setAttribute('aria-expanded', String(isExpanded));
-        toggleProjectsExpandedButton.textContent = isExpanded ? 'Torna alla griglia base' : 'Vedi tutti i progetti';
+        setProjectsExpandedButtonText(isExpanded);
 
         if (isExpanded) {
           setupProjectSliders();
@@ -761,19 +1110,25 @@
       }
 
       function setFormSubmitting(isSubmitting) {
+        isFormSubmitting = isSubmitting;
         if (!formSubmitButton) return;
         formSubmitButton.disabled = isSubmitting;
-        formSubmitButton.textContent = isSubmitting ? 'Invio in corso...' : 'Invia il messaggio';
+        formSubmitButton.textContent = isSubmitting ? getDynamicString('formSubmittingButton') : getDynamicString('formSubmitButton');
       }
 
       function getEmailJsConfig(form) {
         const fallbackChecklistUrl = new URL('assets/files/checklist-placeholder.txt', window.location.href).href;
+        const checklistUrlIt = form.dataset.checklistUrl || fallbackChecklistUrl;
+        const checklistUrlEn = form.dataset.checklistUrlEn || checklistUrlIt;
         return {
           publicKey: form.dataset.emailjsPublicKey || '',
           serviceId: form.dataset.emailjsServiceId || '',
           templateId: form.dataset.emailjsTemplateId || '',
           autoReplyTemplateId: form.dataset.emailjsAutoreplyTemplateId || '',
-          checklistUrl: form.dataset.checklistUrl || fallbackChecklistUrl,
+          autoReplyTemplateIdEn: form.dataset.emailjsAutoreplyTemplateIdEn || '',
+          checklistUrl: form.dataset.activeChecklistUrl || checklistUrlIt,
+          checklistUrlIt: checklistUrlIt,
+          checklistUrlEn: checklistUrlEn,
           successUrl: form.dataset.successUrl || 'assets/html/form-success.html'
         };
       }
@@ -784,13 +1139,18 @@
         const messageField = form.querySelector('#message');
         const checklistField = form.querySelector('#lead-magnet');
 
-        const wantsChecklist = checklistField && checklistField.checked ? 'Si' : 'No';
+        const checklistRequested = Boolean(checklistField && checklistField.checked);
+        const wantsChecklistLabel = currentLanguage === 'en'
+          ? (checklistRequested ? 'Yes' : 'No')
+          : (checklistRequested ? 'Si' : 'No');
 
         return {
           from_name: nameField ? nameField.value.trim() : '',
           reply_to: emailField ? emailField.value.trim() : '',
           message: messageField ? messageField.value.trim() : '',
-          wants_checklist: wantsChecklist,
+          wants_checklist: checklistRequested ? 'yes' : 'no',
+          wants_checklist_label: wantsChecklistLabel,
+          preferred_language: currentLanguage,
           to_name: nameField ? nameField.value.trim() : '',
           to_email: emailField ? emailField.value.trim() : ''
         };
@@ -815,7 +1175,7 @@
           }
 
           if (!window.emailjs || typeof window.emailjs.send !== 'function') {
-            setFormStatus('Servizio invio non disponibile. Riprova tra qualche minuto.', true);
+            setFormStatus(getDynamicString('formServiceUnavailable'), true);
             return;
           }
 
@@ -828,12 +1188,12 @@
             config.serviceId === 'YOUR_EMAILJS_SERVICE_ID' ||
             config.templateId === 'YOUR_EMAILJS_TEMPLATE_ID'
           ) {
-            setFormStatus('Configura EmailJS nel tag form prima di inviare messaggi reali.', true);
+            setFormStatus(getDynamicString('formConfigMissing'), true);
             return;
           }
 
           if (config.publicKey.indexOf('@') !== -1) {
-            setFormStatus('Public key non valida: inserisci la Public Key API di EmailJS, non la tua email.', true);
+            setFormStatus(getDynamicString('formPublicKeyInvalid'), true);
             return;
           }
 
@@ -841,27 +1201,32 @@
 
           window.emailjs.init({ publicKey: config.publicKey });
           const templateParams = buildTemplateParams(contactForm);
-          templateParams.checklist_url = config.checklistUrl;
+          templateParams.checklist_url = new URL(config.checklistUrl, window.location.href).href;
+          templateParams.checklist_url_it = new URL(config.checklistUrlIt, window.location.href).href;
+          templateParams.checklist_url_en = new URL(config.checklistUrlEn, window.location.href).href;
 
           window.emailjs
             .send(config.serviceId, config.templateId, templateParams)
             .then(function () {
-              const checklistRequested = templateParams.wants_checklist === 'Si';
-              const autoReplyConfigured = config.autoReplyTemplateId && config.autoReplyTemplateId !== 'YOUR_EMAILJS_AUTOREPLY_TEMPLATE_ID';
+              const checklistRequested = templateParams.wants_checklist === 'yes';
+              const selectedAutoReplyTemplateId = templateParams.preferred_language === 'en'
+                ? (config.autoReplyTemplateIdEn || config.autoReplyTemplateId)
+                : config.autoReplyTemplateId;
+              const autoReplyConfigured = selectedAutoReplyTemplateId && selectedAutoReplyTemplateId !== 'YOUR_EMAILJS_AUTOREPLY_TEMPLATE_ID';
 
               if (!checklistRequested) return;
               if (!autoReplyConfigured) {
                 throw new Error('Template auto-reply non configurato');
               }
 
-              return window.emailjs.send(config.serviceId, config.autoReplyTemplateId, templateParams);
+              return window.emailjs.send(config.serviceId, selectedAutoReplyTemplateId, templateParams);
             })
             .then(function () {
               window.location.href = config.successUrl;
             })
             .catch(function (error) {
               const errorText = error && (error.text || error.message) ? ' (' + (error.text || error.message) + ')' : '';
-              setFormStatus('Invio non riuscito. Controlla la configurazione EmailJS e riprova.' + errorText, true);
+              setFormStatus(getDynamicString('formSubmitErrorPrefix') + errorText, true);
             })
             .finally(function () {
               setFormSubmitting(false);
@@ -869,6 +1234,8 @@
         });
       }
 
+      applyTheme(getStoredTheme(), false);
+      setLanguage(getStoredLanguage(), false);
       setupContactForm();
       focusSectionFromHash();
       window.addEventListener('hashchange', focusSectionFromHash);

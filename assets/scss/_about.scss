@@ -179,7 +179,7 @@
 .about-vision-method {
   border: 1px solid var(--line);
   border-radius: 1rem;
-  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
   padding: 1rem;
   display: grid;
   gap: 0.6rem;
@@ -241,7 +241,7 @@
   border: 1px solid var(--line);
   border-radius: 1rem;
   overflow: hidden;
-  background: #fff;
+  background: var(--card-bg);
   box-shadow: 0 14px 26px rgba(20, 34, 59, 0.14);
 }
 
@@ -303,7 +303,7 @@
   padding: 0.2rem 0.5rem;
   border-radius: 999px;
   border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--hint-bg);
   color: var(--text);
   font-size: 0.75rem;
   font-weight: 700;

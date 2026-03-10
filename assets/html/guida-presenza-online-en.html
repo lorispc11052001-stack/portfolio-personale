@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Guide: your first credible online presence (even if you start from zero)</title>
+  <meta name="description" content="An operational guide for professionals, creators, freelancers, and small businesses who want a clear online presence and better inbound contacts.">
+  <style>
+    :root {
+      --bg: #f3f7ff;
+      --paper: #ffffff;
+      --text: #1b2437;
+      --muted: #51617f;
+      --line: #d8e2f2;
+      --line-strong: #b7c7e3;
+      --accent: #2f76d2;
+      --accent-2: #e58b63;
+      --accent-soft: #eef5ff;
+      --good: #1f7a4e;
+      --warn: #a85a24;
+      --shadow: 0 14px 30px rgba(20, 36, 62, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Sora", "Segoe UI", Tahoma, sans-serif;
+      background:
+        radial-gradient(900px 420px at 90% 0%, rgba(47, 118, 210, 0.16), transparent 72%),
+        radial-gradient(800px 380px at 0% 100%, rgba(229, 139, 99, 0.14), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      letter-spacing: 0.002em;
+    }
+
+    .shell {
+      width: min(1080px, 94vw);
+      margin: 1.35rem auto 2.2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 1.3rem;
+      background: linear-gradient(125deg, #ffffff 0%, #f2f7ff 58%, #fff5ee 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -25% -50% auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(47, 118, 210, 0.16), rgba(47, 118, 210, 0));
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(47, 118, 210, 0.28);
+      background: rgba(47, 118, 210, 0.07);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      margin: 0.7rem 0 0;
+      font-size: clamp(1.55rem, 2.9vw, 2.35rem);
+      line-height: 1.22;
+      max-width: 24ch;
+    }
+
+    .hero-subtitle {
+      margin: 0.7rem 0 0;
+      max-width: 70ch;
+      color: var(--muted);
+    }
+
+    .chips {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.33;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .section-head {
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head p {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 0.85rem;
+      padding: 0.85rem;
+      background: #fcfdff;
+    }
+
+    .card p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      padding: 0.24rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: #fff;
+      color: #33486f;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .list {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .diagnostic {
+      margin-top: 0.7rem;
+      display: grid;
+      gap: 0.58rem;
+      list-style: none;
+      padding: 0;
+    }
+
+    .diagnostic li {
+      padding: 0.62rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 0.7rem;
+      display: grid;
+      grid-template-columns: 1.35rem 1fr;
+      gap: 0.6rem;
+      align-items: start;
+      background: #fbfdff;
+    }
+
+    .box {
+      width: 1.02rem;
+      height: 1.02rem;
+      border: 2px solid #96aacc;
+      border-radius: 0.28rem;
+      margin-top: 0.1rem;
+      background: #fff;
+    }
+
+    .phase {
+      border: 1px solid var(--line);
+      border-radius: 0.88rem;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .phase-head {
+      padding: 0.72rem 0.85rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--accent-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .phase-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #223a60;
+    }
+
+    .phase-time {
+      font-size: 0.8rem;
+      color: #476089;
+      font-weight: 700;
+    }
+
+    .phase-body {
+      padding: 0.82rem 0.85rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .step-block {
+      border-left: 3px solid #d0def4;
+      padding-left: 0.7rem;
+    }
+
+    .step-block strong {
+      display: inline-block;
+      margin-bottom: 0.22rem;
+    }
+
+    .step-note {
+      margin-top: 0.35rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .mini-cta {
+      margin-top: 0.78rem;
+      background: linear-gradient(120deg, rgba(47, 118, 210, 0.11), rgba(229, 139, 99, 0.13));
+      border-color: rgba(47, 118, 210, 0.28);
+    }
+
+    .mini-cta p {
+      margin: 0.4rem 0 0;
+      color: #2e436a;
+    }
+
+    .mini-actions {
+      margin-top: 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .warning {
+      border: 1px dashed rgba(168, 90, 36, 0.45);
+      border-radius: 0.75rem;
+      background: rgba(229, 139, 99, 0.09);
+      padding: 0.8rem;
+    }
+
+    .warning h3 {
+      color: #7d3f17;
+      margin-bottom: 0.42rem;
+    }
+
+    .warning ul {
+      margin: 0;
+      padding-left: 1.05rem;
+      display: grid;
+      gap: 0.38rem;
+    }
+
+    .timeline {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .timeline li {
+      border: 1px solid var(--line);
+      border-radius: 0.75rem;
+      padding: 0.7rem;
+      background: #fff;
+    }
+
+    .timeline li strong {
+      color: #284b79;
+    }
+
+    .criteria-box {
+      background: linear-gradient(120deg, #ffffff, #f4f8ff);
+      border-color: rgba(47, 118, 210, 0.26);
+    }
+
+    .criteria-list {
+      margin: 0.65rem 0 0;
+      padding-left: 1.05rem;
+      display: grid;
+      gap: 0.48rem;
+    }
+
+    .criteria-list li {
+      color: #243754;
+    }
+
+    .cta {
+      background: linear-gradient(120deg, rgba(47, 118, 210, 0.12), rgba(229, 139, 99, 0.16));
+      border: 1px solid rgba(47, 118, 210, 0.3);
+    }
+
+    .cta p {
+      color: #2a3d61;
+      margin: 0.5rem 0 0;
+    }
+
+    .cta-actions {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.55rem;
+      border-radius: 999px;
+      padding: 0.55rem 1.05rem;
+      border: 1px solid transparent;
+      font-size: 0.93rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 18px rgba(47, 118, 210, 0.24);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: #fff;
+      border-color: var(--line-strong);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .shell {
+        width: min(1080px, 95vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel hero">
+      <p class="eyebrow">Free practical guide</p>
+      <h1>Your first credible online presence, even if you do not have a website yet</h1>
+      <p class="hero-subtitle">
+        Designed for professionals, creators, freelancers, and small businesses starting from zero who want a clear, organized, contact-oriented presence.
+      </p>
+      <div class="chips">
+        <span class="chip">Reading time: 6-8 minutes</span>
+        <span class="chip">Style: practical</span>
+        <span class="chip">Goal: better contacts</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Why this guide can truly help you</h2>
+        <p>This is not theory. It shows, in order, what you need to move from a confusing presence to one that builds trust.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="pill">Typical problem</span>
+          <h3>Unclear message</h3>
+          <p>Visitors do not immediately understand what you do and who you work for.</p>
+        </article>
+        <article class="card">
+          <span class="pill">Impact</span>
+          <h3>Off-target requests</h3>
+          <p>You receive low-value, messy inquiries with the wrong expectations.</p>
+        </article>
+        <article class="card">
+          <span class="pill">Solution</span>
+          <h3>Simple, structured method</h3>
+          <p>With a few well-built blocks, you improve lead quality and save time.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>Quick self-check</h2>
+        <p>If you score fewer than 4 checks, your foundation is still weak. That is normal when you are just starting.</p>
+      </div>
+      <ul class="diagnostic">
+        <li><span class="box" aria-hidden="true"></span><span>In 10 seconds, users understand <strong>who you help</strong> and <strong>what result</strong> you deliver.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>You have one main page where contacts always land.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Your services are clear and concrete, without vague wording.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>Your form already filters goal, timeline, and indicative budget.</span></li>
+        <li><span class="box" aria-hidden="true"></span><span>After submission, users know what happens next and when they will hear back.</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>The method in 4 phases</h2>
+        <p>These are the minimum activities to execute well to build an online presence that actually works.</p>
+      </div>
+
+      <article class="phase">
+        <div class="phase-head">
+          <span class="phase-title">Phase 1: messaging and positioning</span>
+          <span class="phase-time">2-3 hours</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>What to prepare</strong>
+            <p>A clear sentence: I help [target] achieve [result] through [method].</p>
+            <p class="step-note">Minimum output: headline, subheadline, and 3 core services.</p>
+          </div>
+          <div class="step-block">
+            <strong>Mistake to avoid</strong>
+            <p>Writing generic or overly technical copy: visitors do not understand and do not contact you.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Phase 2: minimum page structure</span>
+          <span class="phase-time">4-5 hours</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>What to include</strong>
+            <p>Clear hero, services, trust signals, simple contact, and one primary CTA.</p>
+            <p class="step-note">Minimum output: mobile-readable page and a frictionless contact path.</p>
+          </div>
+          <div class="step-block">
+            <strong>Mistake to avoid</strong>
+            <p>Adding too many sections without priorities: the page gets long but does not convert.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Phase 3: form and follow-up</span>
+          <span class="phase-time">2-3 hours</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>What to set up</strong>
+            <p>Form with useful fields, post-submit confirmation, automated email, and clear next steps.</p>
+          </div>
+          <div class="step-block">
+            <strong>Mistake to avoid</strong>
+            <p>A “silent” form: users submit and remain uncertain, trust drops immediately.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phase" style="margin-top: 0.78rem;">
+        <div class="phase-head">
+          <span class="phase-title">Phase 4: initial testing and optimization</span>
+          <span class="phase-time">2 hours</span>
+        </div>
+        <div class="phase-body">
+          <div class="step-block">
+            <strong>What to test</strong>
+            <p>Mobile experience, form delivery, email receipt, CTA clarity, and perceived response times.</p>
+          </div>
+          <div class="step-block">
+            <strong>Mistake to avoid</strong>
+            <p>Publishing without real tests: you discover issues too late and lose leads.</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel grid-2">
+      <article class="warning">
+        <h3>Costly mistakes to avoid</h3>
+        <ul>
+          <li>Vague copy like “innovative solutions” with no concrete outcome.</li>
+          <li>Too many different CTAs on the same page.</li>
+          <li>A form that is either too long or too poor in detail.</li>
+          <li>No follow-up: people submit and do not know when they will be contacted.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Signs you are moving in the right direction</h3>
+        <ul class="list">
+          <li>Requests are clearer and more aligned with your target audience.</li>
+          <li>You spend less time repeating the same explanations.</li>
+          <li>Conversations start from concrete goals.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <h2>10-day practical plan</h2>
+        <p>Compact version, designed for people with limited time who still want to do things properly.</p>
+      </div>
+      <ol class="timeline">
+        <li><strong>Days 1-2:</strong> define message, target audience, and promised result.</li>
+        <li><strong>Days 3-4:</strong> write core content: hero, services, proof, contact.</li>
+        <li><strong>Days 5-6:</strong> build the page and primary CTA.</li>
+        <li><strong>Days 7-8:</strong> integrate form, email automation, and post-submit confirmation.</li>
+        <li><strong>Days 9-10:</strong> test everything on mobile, fix weak points, and publish.</li>
+      </ol>
+    </section>
+
+    <section class="panel criteria-box">
+      <div class="section-head">
+        <h2>When it makes sense to work with me right away</h2>
+        <p>If you identify with at least 2 points below, it is better to start together rather than lose time in long trial-and-error cycles.</p>
+      </div>
+      <ul class="criteria-list">
+        <li>You have little time to build everything alone but still want a solid result.</li>
+        <li>You want to avoid weeks of attempts, mistakes, and endless corrections.</li>
+        <li>You want to start with a clear structure already focused on contacts, not only aesthetics.</li>
+      </ul>
+    </section>
+
+    <section class="panel cta">
+      <h2>Closing: the concrete value of method</h2>
+      <p>
+        A credible online presence does not depend on one single detail, but on coherence between message, structure, contact, and follow-up.
+      </p>
+      <p>
+        Even starting from zero, working with a method helps you avoid confusion, reduce errors, and build a solid foundation that stays useful over time.
+      </p>
+      <p>
+        In the next few days we will discuss your project in practical terms, so we can define which steps to apply immediately and in which priority.
+      </p>
+    </section>
+
+    <p class="note">
+      Start simple, but structured: it is the fastest way to get results without rebuilding everything later.
+    </p>
+  </main>
+</body>
+</html>
+
+
+

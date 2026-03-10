@@ -1,5 +1,5 @@
 footer {
-  background: linear-gradient(180deg, #f9fcff, #eef4ff);
+  background: linear-gradient(180deg, var(--surface), var(--surface-strong));
 }
 
 .footer-lead-magnet {
@@ -47,7 +47,7 @@ footer textarea {
   border: 1px solid var(--line-strong);
   border-radius: 0.7rem;
   padding: 0.72rem 0.85rem;
-  background: #fff;
+  background: var(--control-bg);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
