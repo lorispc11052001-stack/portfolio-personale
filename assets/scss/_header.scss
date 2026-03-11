@@ -195,6 +195,9 @@ header::after {
 
 .radial-menu-toggle {
   display: none;
+  position: fixed;
+  top: 1.05rem;
+  left: 0.9rem;
   inline-size: 2.55rem;
   block-size: 2.55rem;
   border: 1px solid var(--line-strong);
@@ -207,6 +210,9 @@ header::after {
   gap: 0.22rem;
   flex-direction: column;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  isolation: isolate;
+  pointer-events: auto;
+  z-index: 2147483646;
 }
 
 .radial-menu-toggle:hover {
@@ -238,7 +244,8 @@ header::after {
 .radial-menu-panel {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 2147483644;
+  isolation: isolate;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -254,80 +261,125 @@ header::after {
   inset: 0;
   border: 0;
   cursor: pointer;
-  background: linear-gradient(120deg, rgba(5, 8, 16, 0.4), rgba(5, 8, 16, 0.2));
+  background: transparent;
 }
 
 .radial-menu-shell {
-  position: absolute;
-  top: clamp(4.3rem, 8vw, 5.9rem);
-  left: clamp(0.5rem, 2.6vw, 1.4rem);
-  width: min(90vw, 430px);
-  height: min(74vh, 540px);
-  border: 1px solid var(--line-strong);
-  border-radius: 1.2rem;
-  background:
-    radial-gradient(380px 260px at 8% 16%, rgba(47, 118, 210, 0.2), transparent 70%),
-    linear-gradient(170deg, color-mix(in srgb, var(--surface) 94%, transparent), color-mix(in srgb, var(--surface-strong) 94%, transparent));
-  box-shadow: 0 24px 40px rgba(10, 16, 32, 0.36);
-  transform: translate3d(-16px, 0, 0) scale(0.94);
-  transform-origin: left center;
-  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
-  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483645;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+  overflow: visible;
   user-select: none;
   touch-action: none;
-  perspective: 1200px;
+  perspective: 1400px;
 }
 
-.radial-menu-open .radial-menu-shell {
-  transform: translate3d(0, 0, 0) scale(1);
+body.radial-menu-open {
+  overflow: hidden;
+}
+
+body.radial-menu-open header {
+  overflow: visible;
 }
 
 .radial-menu-hint {
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0.9rem 1rem 0.3rem;
+  display: none;
 }
 
 .radial-menu-orbit {
-  --radial-radius: clamp(7.2rem, 22vw, 9.3rem);
-  position: relative;
-  width: 100%;
-  height: calc(100% - 2.3rem);
+  --wheel-center-x: -220px;
+  --wheel-center-y: 210px;
+  --wheel-radius: clamp(250px, 60vw, 340px);
+  --wheel-step-angle: 11;
+  --wheel-tilt-factor: 0.42;
+  --wheel-scale-min: 0.8;
+  --wheel-fade-min: 0.3;
+  position: absolute;
+  inset: 0;
   transform-style: preserve-3d;
 }
 
 .radial-menu-item {
-  position: absolute;
-  top: 52%;
-  left: 16%;
-  min-width: 8.7rem;
-  text-align: center;
+  --item-x: 0px;
+  --item-y: 0px;
+  --item-tilt: 0deg;
+  --item-scale: 1;
+  --item-opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 0;
+  text-align: left;
+  justify-content: flex-start;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
-  color: var(--text);
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--text) 90%, transparent);
+  opacity: var(--item-opacity);
   font-weight: 700;
-  padding: 0.62rem 1rem;
+  font-size: 1rem;
+  padding: 0.22rem 0.2rem;
   line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  z-index: 2;
+  isolation: isolate;
   transform-style: preserve-3d;
-  transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transform:
+    translate3d(var(--item-x), var(--item-y), 0)
+    rotateZ(var(--item-tilt))
+    scale(var(--item-scale));
+  transform-origin: left center;
+  transition:
+    transform 0.56s ease-out,
+    opacity 0.56s ease-out,
+    color 0.36s ease-out,
+    background-color 0.36s ease-out,
+    box-shadow 0.36s ease-out;
+}
+
+.radial-menu-item::before {
+  content: "";
+  position: absolute;
+  inset: -0.22rem -0.34rem;
+  border-radius: 999px;
+  background: rgba(13, 24, 40, 0.1);
+  backdrop-filter: blur(4px) saturate(108%);
+  -webkit-backdrop-filter: blur(4px) saturate(108%);
+  box-shadow: 0 4px 10px rgba(8, 15, 28, 0.11);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.36s ease-out, transform 0.36s ease-out;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .radial-menu-item:hover,
 .radial-menu-item:focus-visible {
-  border-color: rgba(47, 118, 210, 0.58);
-  box-shadow: 0 10px 22px rgba(47, 118, 210, 0.25);
+  color: color-mix(in srgb, var(--accent) 82%, var(--text) 18%);
   outline: none;
 }
 
-.radial-menu-item.is-center,
 .radial-menu-item.is-active {
-  border-color: transparent;
+  opacity: 1;
   color: #fff;
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
-  box-shadow: 0 14px 26px rgba(47, 118, 210, 0.34);
+  padding: 0.56rem 1rem;
+  box-shadow: 0 9px 18px rgba(47, 118, 210, 0.24);
+  z-index: 3;
+}
+
+.radial-menu-item.is-active::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .header-main-row {
@@ -491,10 +543,12 @@ header::after {
     flex-wrap: nowrap;
     gap: 0.55rem;
     padding-bottom: 0.7rem;
+    padding-left: 2.95rem;
   }
 
   .has-radial-menu .radial-menu-toggle {
     display: inline-flex;
+    z-index: 2147483646;
   }
 
   .has-radial-menu .header-nav,
@@ -530,18 +584,22 @@ header::after {
   }
 
   .has-radial-menu .radial-menu-shell {
-    width: min(92vw, 390px);
-    height: min(72vh, 500px);
-    left: 0.4rem;
+    touch-action: none;
   }
 
   .has-radial-menu .radial-menu-orbit {
-    --radial-radius: clamp(6.7rem, 24vw, 8.5rem);
+    --wheel-radius: clamp(238px, 62vw, 320px);
+    --wheel-step-angle: 10;
   }
 
   .has-radial-menu .radial-menu-item {
-    min-width: 7.8rem;
-    padding: 0.52rem 0.76rem;
-    font-size: 0.87rem;
+    font-size: 0.93rem;
+    padding: 0.2rem 0.16rem;
   }
+
+  .has-radial-menu .radial-menu-item.is-active {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.98rem;
+  }
+
 }

@@ -35,23 +35,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body class="has-radial-menu">
+  <button
+    type="button"
+    class="radial-menu-toggle"
+    id="radial-menu-toggle"
+    aria-expanded="false"
+    aria-controls="radial-menu-panel"
+    aria-label="Apri menu orbitale"
+    data-i18n-aria-label="radialMenuToggleAriaLabel"
+  >
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+
+  <div class="radial-menu-panel" id="radial-menu-panel" aria-hidden="true">
+    <button type="button" class="radial-menu-overlay" data-radial-close aria-label="Chiudi menu" data-i18n-aria-label="radialMenuCloseAriaLabel"></button>
+    <div class="radial-menu-shell" id="radial-menu-shell" role="dialog" aria-modal="true" tabindex="-1" aria-label="Navigazione orbitale" data-i18n-aria-label="radialMenuDialogAriaLabel">
+      <div class="radial-menu-orbit" id="radial-menu-orbit">
+        <a href="#top" class="radial-menu-item is-active" data-radial-item data-i18n="radialMenuHome">Home</a>
+        <a href="assets/html/about.html" class="radial-menu-item" data-radial-item data-i18n="radialMenuAbout">About Me</a>
+        <a href="#form" class="radial-menu-item" data-radial-item data-i18n="radialMenuContacts">Contatti</a>
+      </div>
+    </div>
+  </div>
+
   <div class="site-shell">
     <header id="top">
       <div class="header-nav-row">
-        <button
-          type="button"
-          class="radial-menu-toggle"
-          id="radial-menu-toggle"
-          aria-expanded="false"
-          aria-controls="radial-menu-panel"
-          aria-label="Apri menu orbitale"
-          data-i18n-aria-label="radialMenuToggleAriaLabel"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-
         <a href="#top" class="brand-mark" data-i18n="brandMark">Loris Battaglini</a>
 
         <div class="header-tools" aria-label="Strumenti header" data-i18n-aria-label="headerToolsAriaLabel">
@@ -78,18 +89,6 @@
         <div class="header-cta-row">
           <a href="assets/html/about.html" class="about-link-header" data-i18n="headerAboutLink">About me</a>
           <a href="#form" class="contattami-header" data-i18n="headerContactLink">Contattami</a>
-        </div>
-      </div>
-
-      <div class="radial-menu-panel" id="radial-menu-panel" aria-hidden="true">
-        <button type="button" class="radial-menu-overlay" data-radial-close aria-label="Chiudi menu" data-i18n-aria-label="radialMenuCloseAriaLabel"></button>
-        <div class="radial-menu-shell" id="radial-menu-shell" role="dialog" aria-modal="true" tabindex="-1" aria-label="Navigazione orbitale" data-i18n-aria-label="radialMenuDialogAriaLabel">
-          <p class="radial-menu-hint" data-i18n="radialMenuHint">Trascina o scorri per selezionare</p>
-          <div class="radial-menu-orbit" id="radial-menu-orbit">
-            <a href="#top" class="radial-menu-item is-active" data-radial-item data-i18n="radialMenuHome">Home</a>
-            <a href="assets/html/about.html" class="radial-menu-item" data-radial-item data-i18n="radialMenuAbout">About Me</a>
-            <a href="#form" class="radial-menu-item" data-radial-item data-i18n="radialMenuContacts">Contatti</a>
-          </div>
         </div>
       </div>
 
@@ -461,7 +460,6 @@
         radialMenuHome: 'Home',
         radialMenuAbout: 'About Me',
         radialMenuContacts: 'Contacts',
-        radialMenuHint: 'Drag or scroll to select',
         navMethod: 'Method',
         navWork: 'My Work',
         headerContactLink: 'Contact me',
@@ -579,7 +577,6 @@
       let projectAnimationLastTime = 0;
       let currentLanguage = DEFAULT_LANGUAGE;
       let isFormSubmitting = false;
-      let radialMenuAnimationId = null;
 
       const italianSnapshot = {
         text: Object.create(null),
@@ -1169,14 +1166,6 @@
         return offset;
       }
 
-      function getClosestWrappedDelta(currentPosition, targetIndex, count) {
-        const wrappedCurrent = toPositiveModulo(currentPosition, count);
-        let delta = targetIndex - wrappedCurrent;
-        if (delta > count / 2) delta -= count;
-        if (delta < -count / 2) delta += count;
-        return delta;
-      }
-
       function setupRadialMenu() {
         if (
           !radialMenuToggleButton ||
@@ -1188,94 +1177,86 @@
           return;
         }
 
+        const radialMenuOrbit = radialMenuShell.querySelector('.radial-menu-orbit');
+        if (!radialMenuOrbit) return;
+
         const radialState = {
           isOpen: false,
-          itemCount: radialMenuItems.length,
-          currentPosition: 0,
-          targetPosition: 0,
+          activeIndex: 0,
+          wheelAccumulator: 0,
           isDragging: false,
           pointerId: null,
-          lastPointerY: 0,
-          lastInputAt: 0,
+          dragStartY: 0,
+          hasSteppedInDrag: false,
+          suppressBackgroundTap: false,
+          inputLockUntil: 0,
           navigateTimeoutId: 0
         };
+        const itemCount = radialMenuItems.length;
 
         function isPhoneViewport() {
           return window.matchMedia(PHONE_MEDIA_QUERY).matches;
         }
 
-        function getActiveIndex() {
-          return toPositiveModulo(Math.round(radialState.currentPosition), radialState.itemCount);
+        function getCssNumber(variableName, fallbackValue) {
+          const rawValue = window.getComputedStyle(radialMenuOrbit).getPropertyValue(variableName);
+          const parsedValue = Number.parseFloat(rawValue);
+          return Number.isNaN(parsedValue) ? fallbackValue : parsedValue;
         }
 
-        function updateRadialItems() {
-          const angleStep = 22;
-          radialMenuItems.forEach(function (item, index) {
-            const offset = getCircularOffset(index, radialState.currentPosition, radialState.itemCount);
-            const absOffset = Math.abs(offset);
-            const angle = offset * angleStep;
-            const scale = Math.max(0.68, 1 - absOffset * 0.14);
-            const opacity = Math.max(0.24, 1 - absOffset * 0.24);
-            const depth = Math.max(-150, 70 - absOffset * 90);
-            const tilt = angle * 0.42;
-            const isCentered = absOffset < 0.34;
+        function syncWheelGeometry() {
+          const radius = getCssNumber('--wheel-radius', 280);
+          const toggleRect = radialMenuToggleButton.getBoundingClientRect();
+          const centerX = toggleRect.left - radius + toggleRect.width * 0.62;
+          const centerY = toggleRect.bottom + 86;
+          radialMenuOrbit.style.setProperty('--wheel-center-x', centerX + 'px');
+          radialMenuOrbit.style.setProperty('--wheel-center-y', centerY + 'px');
+        }
 
-            item.style.transform =
-              'translate(-50%, -50%) ' +
-              'rotate(' + angle + 'deg) ' +
-              'translateX(var(--radial-radius)) ' +
-              'translateZ(' + depth + 'px) ' +
-              'rotate(' + (-angle + tilt) + 'deg) ' +
-              'scale(' + scale + ')';
-            item.style.opacity = String(opacity);
-            item.style.zIndex = String(Math.round(220 - absOffset * 28));
-            item.classList.toggle('is-center', isCentered);
-            item.classList.toggle('is-active', isCentered);
-            item.setAttribute('aria-current', isCentered ? 'true' : 'false');
+        function getActiveIndex() {
+          return toPositiveModulo(radialState.activeIndex, itemCount);
+        }
+
+        function renderWheel() {
+          const radius = getCssNumber('--wheel-radius', 280);
+          const centerX = getCssNumber('--wheel-center-x', -220);
+          const centerY = getCssNumber('--wheel-center-y', 220);
+          const stepAngle = getCssNumber('--wheel-step-angle', 16);
+          const tiltFactor = getCssNumber('--wheel-tilt-factor', 0.42);
+          const minScale = getCssNumber('--wheel-scale-min', 0.8);
+          const minOpacity = getCssNumber('--wheel-fade-min', 0.3);
+
+          radialMenuItems.forEach(function (item, index) {
+            const offset = getCircularOffset(index, radialState.activeIndex, itemCount);
+            const absOffset = Math.abs(offset);
+            const angle = offset * stepAngle;
+            const radians = angle * (Math.PI / 180);
+            const x = centerX + radius * Math.cos(radians);
+            const y = centerY + radius * Math.sin(radians);
+            const scale = Math.max(minScale, 1 - absOffset * 0.16);
+            const opacity = Math.max(minOpacity, 1 - absOffset * 0.35);
+            const tilt = offset === 0 ? 0 : angle * tiltFactor;
+            const isActive = offset === 0;
+
+            item.style.setProperty('--item-x', x + 'px');
+            item.style.setProperty('--item-y', y + 'px');
+            item.style.setProperty('--item-tilt', tilt + 'deg');
+            item.style.setProperty('--item-scale', String(scale));
+            item.style.setProperty('--item-opacity', String(opacity));
+            item.classList.toggle('is-active', isActive);
+            item.setAttribute('aria-current', isActive ? 'true' : 'false');
           });
         }
 
-        function queueRadialFrame() {
-          if (radialMenuAnimationId) return;
-          radialMenuAnimationId = requestAnimationFrame(animateRadialMenu);
-        }
+        function stepWheel(direction) {
+          const now = performance.now();
+          if (now < radialState.inputLockUntil) return false;
+          if (direction === 0) return false;
 
-        function animateRadialMenu(now) {
-          const shouldSnap = !radialState.isDragging && now - radialState.lastInputAt > 130;
-          if (shouldSnap) {
-            radialState.targetPosition = Math.round(radialState.targetPosition);
-          }
-
-          const delta = radialState.targetPosition - radialState.currentPosition;
-          radialState.currentPosition += delta * 0.18;
-
-          if (Math.abs(delta) < 0.001 && shouldSnap) {
-            radialState.currentPosition = radialState.targetPosition;
-          }
-
-          updateRadialItems();
-
-          const stillAnimating =
-            radialState.isOpen ||
-            radialState.isDragging ||
-            Math.abs(radialState.targetPosition - radialState.currentPosition) > 0.0015;
-
-          if (stillAnimating) {
-            radialMenuAnimationId = requestAnimationFrame(animateRadialMenu);
-            return;
-          }
-
-          radialMenuAnimationId = null;
-        }
-
-        function moveTargetToIndex(index) {
-          radialState.targetPosition = radialState.currentPosition + getClosestWrappedDelta(
-            radialState.currentPosition,
-            index,
-            radialState.itemCount
-          );
-          radialState.lastInputAt = performance.now();
-          queueRadialFrame();
+          radialState.activeIndex = toPositiveModulo(radialState.activeIndex + (direction > 0 ? 1 : -1), itemCount);
+          radialState.inputLockUntil = now + 560;
+          renderWheel();
+          return true;
         }
 
         function setRadialMenuOpen(nextOpen) {
@@ -1286,13 +1267,18 @@
           radialMenuPanel.setAttribute('aria-hidden', String(!radialState.isOpen));
 
           if (radialState.isOpen) {
-            radialState.lastInputAt = performance.now();
+            syncWheelGeometry();
+            radialState.wheelAccumulator = 0;
+            radialState.hasSteppedInDrag = false;
+            radialState.dragStartY = 0;
+            radialState.inputLockUntil = 0;
             radialMenuShell.focus({ preventScroll: true });
-            queueRadialFrame();
+            renderWheel();
             return;
           }
 
           radialState.isDragging = false;
+          radialState.pointerId = null;
         }
 
         radialMenuToggleButton.addEventListener('click', function () {
@@ -1306,47 +1292,72 @@
         radialMenuShell.addEventListener('wheel', function (event) {
           if (!radialState.isOpen) return;
           event.preventDefault();
-          radialState.targetPosition += event.deltaY * 0.0042;
-          radialState.lastInputAt = performance.now();
-          queueRadialFrame();
+          radialState.wheelAccumulator += event.deltaY;
+          if (Math.abs(radialState.wheelAccumulator) < 72) return;
+          const direction = radialState.wheelAccumulator > 0 ? 1 : -1;
+          stepWheel(direction);
+          radialState.wheelAccumulator = 0;
         }, { passive: false });
 
         radialMenuShell.addEventListener('pointerdown', function (event) {
           if (!radialState.isOpen) return;
+          if (event.target && event.target.closest('[data-radial-item]')) return;
           radialState.isDragging = true;
           radialState.pointerId = event.pointerId;
-          radialState.lastPointerY = event.clientY;
-          radialState.lastInputAt = performance.now();
+          radialState.dragStartY = event.clientY;
+          radialState.hasSteppedInDrag = false;
+          radialState.suppressBackgroundTap = false;
           radialMenuShell.setPointerCapture(event.pointerId);
-          queueRadialFrame();
         });
 
         radialMenuShell.addEventListener('pointermove', function (event) {
           if (!radialState.isDragging || event.pointerId !== radialState.pointerId) return;
-          const deltaY = event.clientY - radialState.lastPointerY;
-          radialState.lastPointerY = event.clientY;
-          radialState.targetPosition -= deltaY * 0.025;
-          radialState.lastInputAt = performance.now();
-          queueRadialFrame();
+          const deltaY = event.clientY - radialState.dragStartY;
+          if (Math.abs(deltaY) > 6) {
+            radialState.suppressBackgroundTap = true;
+          }
+          if (radialState.hasSteppedInDrag || Math.abs(deltaY) < 40) return;
+          const direction = deltaY > 0 ? -1 : 1;
+          radialState.hasSteppedInDrag = stepWheel(direction);
         });
 
         radialMenuShell.addEventListener('pointerup', function (event) {
           if (event.pointerId !== radialState.pointerId) return;
           radialState.isDragging = false;
-          radialState.lastInputAt = performance.now();
+          radialState.pointerId = null;
+          radialState.dragStartY = 0;
+          radialState.hasSteppedInDrag = false;
           radialMenuShell.releasePointerCapture(event.pointerId);
         });
 
         radialMenuShell.addEventListener('pointercancel', function (event) {
           if (event.pointerId !== radialState.pointerId) return;
           radialState.isDragging = false;
-          radialState.lastInputAt = performance.now();
+          radialState.pointerId = null;
+          radialState.dragStartY = 0;
+          radialState.hasSteppedInDrag = false;
+        });
+
+        radialMenuShell.addEventListener('click', function (event) {
+          if (!radialState.isOpen) return;
+          if (event.target && event.target.closest('[data-radial-item]')) return;
+          if (radialState.suppressBackgroundTap) {
+            radialState.suppressBackgroundTap = false;
+            return;
+          }
+          setRadialMenuOpen(false);
         });
 
         radialMenuItems.forEach(function (item, index) {
+          item.addEventListener('pointerdown', function (event) {
+            event.stopPropagation();
+          });
+
           item.addEventListener('click', function (event) {
             event.preventDefault();
-            moveTargetToIndex(index);
+            radialState.activeIndex = index;
+            radialState.inputLockUntil = performance.now() + 560;
+            renderWheel();
 
             if (radialState.navigateTimeoutId) {
               window.clearTimeout(radialState.navigateTimeoutId);
@@ -1361,7 +1372,7 @@
                 return;
               }
               window.location.href = targetHref;
-            }, 320);
+            }, 560);
           });
         });
 
@@ -1376,17 +1387,13 @@
 
           if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
             event.preventDefault();
-            radialState.targetPosition += 1;
-            radialState.lastInputAt = performance.now();
-            queueRadialFrame();
+            stepWheel(1);
             return;
           }
 
           if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
             event.preventDefault();
-            radialState.targetPosition -= 1;
-            radialState.lastInputAt = performance.now();
-            queueRadialFrame();
+            stepWheel(-1);
             return;
           }
 
@@ -1400,10 +1407,23 @@
         window.addEventListener('resize', function () {
           if (!isPhoneViewport() && radialState.isOpen) {
             setRadialMenuOpen(false);
+            return;
+          }
+          if (radialState.isOpen) {
+            syncWheelGeometry();
+            renderWheel();
           }
         });
 
-        updateRadialItems();
+        window.addEventListener('scroll', function () {
+          if (radialState.isOpen) {
+            syncWheelGeometry();
+            renderWheel();
+          }
+        }, { passive: true });
+
+        syncWheelGeometry();
+        renderWheel();
       }
 
       function focusSectionFromHash() {
