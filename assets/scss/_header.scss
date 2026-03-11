@@ -339,11 +339,11 @@ body.radial-menu-open header {
     scale(var(--item-scale));
   transform-origin: left center;
   transition:
-    transform 0.56s ease-out,
-    opacity 0.56s ease-out,
-    color 0.36s ease-out,
-    background-color 0.36s ease-out,
-    box-shadow 0.36s ease-out;
+    transform 0.24s ease-out,
+    opacity 0.24s ease-out,
+    color 0.22s ease-out,
+    background-color 0.22s ease-out,
+    box-shadow 0.22s ease-out;
 }
 
 .radial-menu-item::before {

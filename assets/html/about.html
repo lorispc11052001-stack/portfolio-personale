@@ -563,7 +563,7 @@
           if (direction === 0) return false;
 
           radialState.activeIndex = toPositiveModulo(radialState.activeIndex + (direction > 0 ? 1 : -1), itemCount);
-          radialState.inputLockUntil = now + 560;
+          radialState.inputLockUntil = now + 260;
           renderWheel();
           return true;
         }
@@ -664,7 +664,7 @@
               return;
             }
             radialState.activeIndex = index;
-            radialState.inputLockUntil = performance.now() + 560;
+            radialState.inputLockUntil = performance.now() + 260;
             renderWheel();
 
             if (radialState.navigateTimeoutId) {
@@ -680,7 +680,7 @@
                 return;
               }
               window.location.href = targetHref;
-            }, 560);
+            }, 260);
           });
         });
 
