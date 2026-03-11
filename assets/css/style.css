@@ -193,6 +193,141 @@ header::after {
   box-shadow: 0 12px 22px rgba(47, 118, 210, 0.24);
 }
 
+.radial-menu-toggle {
+  display: none;
+  inline-size: 2.55rem;
+  block-size: 2.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.8rem;
+  background: var(--control-bg);
+  color: var(--text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 0.22rem;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.radial-menu-toggle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(47, 118, 210, 0.45);
+  box-shadow: 0 8px 16px rgba(20, 34, 59, 0.16);
+}
+
+.radial-menu-toggle span {
+  inline-size: 1.14rem;
+  block-size: 2px;
+  border-radius: 999px;
+  background: currentcolor;
+  transition: transform 0.26s ease, opacity 0.2s ease;
+}
+
+.radial-menu-toggle[aria-expanded=true] span:nth-child(1) {
+  transform: translateY(6px) rotate(44deg);
+}
+
+.radial-menu-toggle[aria-expanded=true] span:nth-child(2) {
+  opacity: 0;
+}
+
+.radial-menu-toggle[aria-expanded=true] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-44deg);
+}
+
+.radial-menu-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.radial-menu-open .radial-menu-panel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.radial-menu-overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(120deg, rgba(5, 8, 16, 0.4), rgba(5, 8, 16, 0.2));
+}
+
+.radial-menu-shell {
+  position: absolute;
+  top: clamp(4.3rem, 8vw, 5.9rem);
+  left: clamp(0.5rem, 2.6vw, 1.4rem);
+  width: min(90vw, 430px);
+  height: min(74vh, 540px);
+  border: 1px solid var(--line-strong);
+  border-radius: 1.2rem;
+  background: radial-gradient(380px 260px at 8% 16%, rgba(47, 118, 210, 0.2), transparent 70%), linear-gradient(170deg, color-mix(in srgb, var(--surface) 94%, transparent), color-mix(in srgb, var(--surface-strong) 94%, transparent));
+  box-shadow: 0 24px 40px rgba(10, 16, 32, 0.36);
+  transform: translate3d(-16px, 0, 0) scale(0.94);
+  transform-origin: left center;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+  perspective: 1200px;
+}
+
+.radial-menu-open .radial-menu-shell {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.radial-menu-hint {
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.9rem 1rem 0.3rem;
+}
+
+.radial-menu-orbit {
+  --radial-radius: clamp(7.2rem, 22vw, 9.3rem);
+  position: relative;
+  width: 100%;
+  height: calc(100% - 2.3rem);
+  transform-style: preserve-3d;
+}
+
+.radial-menu-item {
+  position: absolute;
+  top: 52%;
+  left: 16%;
+  min-width: 8.7rem;
+  text-align: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--text);
+  font-weight: 700;
+  padding: 0.62rem 1rem;
+  line-height: 1.2;
+  transform-style: preserve-3d;
+  transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.radial-menu-item:hover,
+.radial-menu-item:focus-visible {
+  border-color: rgba(47, 118, 210, 0.58);
+  box-shadow: 0 10px 22px rgba(47, 118, 210, 0.25);
+  outline: none;
+}
+
+.radial-menu-item.is-center,
+.radial-menu-item.is-active {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  box-shadow: 0 14px 26px rgba(47, 118, 210, 0.34);
+}
+
 .header-main-row {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
@@ -325,19 +460,67 @@ header::after {
     justify-content: flex-start;
   }
 }
-@media (max-width: 640px) {
-  .header-nav ul {
-    flex-wrap: wrap;
+@media (min-width: 641px) and (max-width: 992px) {
+  .has-radial-menu .header-nav {
+    display: none;
   }
-  .header-cta-row {
-    width: 100%;
+  .has-radial-menu .header-nav-row {
+    flex-wrap: nowrap;
+    row-gap: 0;
   }
-  .header-tools {
+  .has-radial-menu .brand-mark {
+    margin-right: auto;
+  }
+  .has-radial-menu .header-cta-row {
     margin-left: auto;
   }
-  .about-link-header,
-  .contattami-header {
-    flex: 1 1 150px;
+}
+@media (max-width: 640px) {
+  .has-radial-menu .header-nav-row {
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    padding-bottom: 0.7rem;
+  }
+  .has-radial-menu .radial-menu-toggle {
+    display: inline-flex;
+  }
+  .has-radial-menu .header-nav,
+  .has-radial-menu .header-cta-row {
+    display: none;
+  }
+  .has-radial-menu .brand-mark {
+    margin-right: auto;
+  }
+  .has-radial-menu .radial-menu-toggle {
+    inline-size: 2.34rem;
+    block-size: 2.34rem;
+  }
+  .has-radial-menu .brand-mark {
+    font-size: 0.9rem;
+  }
+  .has-radial-menu .header-icon-btn {
+    inline-size: 2.2rem;
+    block-size: 2.2rem;
+  }
+  .has-radial-menu .header-tools {
+    margin-left: 0;
+    gap: 0.42rem;
+  }
+  .has-radial-menu .language-switch {
+    padding-inline: 0.35rem 0.2rem;
+  }
+  .has-radial-menu .radial-menu-shell {
+    width: min(92vw, 390px);
+    height: min(72vh, 500px);
+    left: 0.4rem;
+  }
+  .has-radial-menu .radial-menu-orbit {
+    --radial-radius: clamp(6.7rem, 24vw, 8.5rem);
+  }
+  .has-radial-menu .radial-menu-item {
+    min-width: 7.8rem;
+    padding: 0.52rem 0.76rem;
+    font-size: 0.87rem;
   }
 }
 .skill-grid {
