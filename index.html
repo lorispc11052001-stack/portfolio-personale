@@ -970,6 +970,9 @@
         if (state.isManualAnimating) return;
 
         setSliderPaused(state, true, false);
+        if (Math.abs(state.offset) > 0.5) {
+          snapLaneToCenter(state, 0);
+        }
 
         if (direction > 0) {
           const firstCard = state.lane.firstElementChild;
@@ -1053,8 +1056,6 @@
           state.dragIsHorizontal = false;
           state.dragDeltaX = 0;
           state.dragSuppressClick = false;
-          setSliderPaused(state, true, false);
-          syncProjectAnimationLoopState();
         }
 
         function moveDrag(clientX, clientY, nativeEvent) {
