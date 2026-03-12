@@ -200,9 +200,9 @@ header::after {
   left: 0.9rem;
   inline-size: 2.55rem;
   block-size: 2.55rem;
-  border: 1px solid var(--line-strong);
+  border: 1px solid color-mix(in srgb, var(--line-strong) 76%, var(--accent) 24%);
   border-radius: 0.8rem;
-  background: var(--control-bg);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--surface) 88%, var(--accent) 12%), color-mix(in srgb, var(--surface-strong) 86%, var(--accent-2) 14%));
   color: var(--text);
   cursor: pointer;
   align-items: center;
@@ -212,13 +212,14 @@ header::after {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   isolation: isolate;
   pointer-events: auto;
+  box-shadow: 0 10px 20px rgba(8, 15, 28, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.42);
   z-index: 2147483646;
 }
 
 .radial-menu-toggle:hover {
   transform: translateY(-1px);
-  border-color: rgba(47, 118, 210, 0.45);
-  box-shadow: 0 8px 16px rgba(20, 34, 59, 0.16);
+  border-color: color-mix(in srgb, var(--accent) 68%, var(--accent-2) 32%);
+  box-shadow: 0 12px 24px rgba(8, 15, 28, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .radial-menu-toggle span {
@@ -278,6 +279,7 @@ header::after {
   user-select: none;
   touch-action: none;
   perspective: 1400px;
+  isolation: isolate;
 }
 
 body.radial-menu-open {
@@ -303,6 +305,7 @@ body.radial-menu-open header {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
+  z-index: 2147483646;
 }
 
 .radial-menu-item {
@@ -318,24 +321,27 @@ body.radial-menu-open header {
   text-align: left;
   justify-content: flex-start;
   border-radius: 999px;
-  border: 0;
-  background: transparent;
-  color: color-mix(in srgb, var(--text) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line-strong) 78%, var(--accent) 22%);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--surface) 90%, var(--accent) 10%), color-mix(in srgb, var(--surface-strong) 82%, var(--accent-2) 18%));
+  color: var(--text);
   opacity: var(--item-opacity);
   font-weight: 700;
   font-size: 1rem;
-  padding: 0.22rem 0.2rem;
+  padding: 0.42rem 0.84rem;
   line-height: 1.2;
   letter-spacing: 0.01em;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  z-index: 2;
+  z-index: 2147483646;
   isolation: isolate;
   transform-style: preserve-3d;
   transform: translate3d(var(--item-x), var(--item-y), 0) rotateZ(var(--item-tilt)) scale(var(--item-scale));
   transform-origin: left center;
-  transition: transform 0.24s ease-out, opacity 0.24s ease-out, color 0.22s ease-out, background-color 0.22s ease-out, box-shadow 0.22s ease-out;
+  box-shadow: 0 9px 18px rgba(8, 15, 28, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(8px) saturate(116%);
+  -webkit-backdrop-filter: blur(8px) saturate(116%);
+  transition: transform 0.24s ease-out, opacity 0.24s ease-out, color 0.22s ease-out, background 0.22s ease-out, border-color 0.22s ease-out, box-shadow 0.22s ease-out;
 }
 
 .radial-menu-item::before {
@@ -343,12 +349,12 @@ body.radial-menu-open header {
   position: absolute;
   inset: -0.22rem -0.34rem;
   border-radius: 999px;
-  background: rgba(13, 24, 40, 0.1);
+  background: radial-gradient(120% 120% at 0% 50%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 64%);
   backdrop-filter: blur(4px) saturate(108%);
   -webkit-backdrop-filter: blur(4px) saturate(108%);
-  box-shadow: 0 4px 10px rgba(8, 15, 28, 0.11);
-  opacity: 0;
-  transform: scale(0.92);
+  box-shadow: 0 5px 12px rgba(8, 15, 28, 0.12);
+  opacity: 0.45;
+  transform: scale(0.96);
   transition: opacity 0.36s ease-out, transform 0.36s ease-out;
   pointer-events: none;
   z-index: -1;
@@ -356,7 +362,10 @@ body.radial-menu-open header {
 
 .radial-menu-item:hover,
 .radial-menu-item:focus-visible {
-  color: color-mix(in srgb, var(--accent) 82%, var(--text) 18%);
+  color: color-mix(in srgb, var(--accent) 62%, var(--text) 38%);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--accent-2) 30%);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--surface) 70%, var(--accent) 30%), color-mix(in srgb, var(--surface-strong) 58%, var(--accent-2) 42%));
+  box-shadow: 0 11px 22px rgba(8, 15, 28, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.52);
   outline: none;
 }
 
@@ -364,9 +373,10 @@ body.radial-menu-open header {
   opacity: 1;
   color: #fff;
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  border-color: transparent;
   padding: 0.56rem 1rem;
-  box-shadow: 0 9px 18px rgba(47, 118, 210, 0.24);
-  z-index: 3;
+  box-shadow: 0 12px 24px rgba(47, 118, 210, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  z-index: 2147483647;
 }
 
 .radial-menu-item.is-active::before {
@@ -562,11 +572,11 @@ body.radial-menu-open header {
   }
   .has-radial-menu .radial-menu-orbit {
     --wheel-radius: clamp(238px, 62vw, 320px);
-    --wheel-step-angle: 10;
+    --wheel-step-angle: 12;
   }
   .has-radial-menu .radial-menu-item {
     font-size: 0.93rem;
-    padding: 0.2rem 0.16rem;
+    padding: 0.34rem 0.74rem;
   }
   .has-radial-menu .radial-menu-item.is-active {
     padding: 0.5rem 0.9rem;
