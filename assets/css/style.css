@@ -1026,6 +1026,8 @@ body.radial-menu-open header {
   position: relative;
   overflow: hidden;
   padding-block: 0.25rem;
+  touch-action: pan-y;
+  overscroll-behavior-x: contain;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
@@ -1033,6 +1035,9 @@ body.radial-menu-open header {
 .projects-track {
   display: flex;
   width: max-content;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .projects-lane {

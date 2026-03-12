@@ -857,6 +857,21 @@
         state.speed = isSmallViewport ? 0.026 : 0.045;
       }
 
+      function isTouchPrimaryInput() {
+        const hasCoarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+        return hasCoarsePointer || ('ontouchstart' in window && window.matchMedia('(max-width: 992px)').matches);
+      }
+
+      function findTouchByIdentifier(touchList, identifier) {
+        if (!touchList || identifier === null || typeof identifier === 'undefined') return null;
+        for (let index = 0; index < touchList.length; index += 1) {
+          if (touchList[index].identifier === identifier) {
+            return touchList[index];
+          }
+        }
+        return null;
+      }
+
       function normalizeForwardLoop(state) {
         let firstCard = state.lane.firstElementChild;
         while (firstCard) {
@@ -866,6 +881,16 @@
           state.offset += step;
           state.lane.appendChild(firstCard);
           firstCard = state.lane.firstElementChild;
+        }
+      }
+
+      function normalizeBackwardLoop(state) {
+        let lastCard = state.lane.lastElementChild;
+        while (lastCard && state.offset > 0) {
+          const step = getCardStep(lastCard, state);
+          state.offset -= step;
+          state.lane.insertBefore(lastCard, state.lane.firstElementChild);
+          lastCard = state.lane.lastElementChild;
         }
       }
 
@@ -981,6 +1006,7 @@
 
         projectSliderStates.forEach(function (state) {
           if (!state.isVisible || state.isAutoPaused || state.isManualAnimating) return;
+          normalizeBackwardLoop(state);
           state.offset -= state.speed * elapsed;
           normalizeForwardLoop(state);
           applyLaneTransform(state);
@@ -1002,10 +1028,95 @@
         projectAnimationLastTime = 0;
       }
 
+      function syncProjectAnimationLoopState() {
+        const hasActiveSlider = projectSliderStates.some(function (state) {
+          return state.isVisible && !state.isAutoPaused && !state.isManualAnimating;
+        });
+        if (hasActiveSlider) {
+          startProjectAnimationLoop();
+          return;
+        }
+        stopProjectAnimationLoop();
+      }
+
+      function setupSliderTouchInteractions(state) {
+        if (!state.slider) return;
+
+        state.slider.addEventListener('touchstart', function (event) {
+          const initialTouch = event.changedTouches && event.changedTouches.length > 0
+            ? event.changedTouches[0]
+            : null;
+          if (!initialTouch) return;
+          state.touchIdentifier = initialTouch.identifier;
+          state.touchStartX = initialTouch.clientX;
+          state.touchStartY = initialTouch.clientY;
+          state.touchStartOffset = state.offset;
+          state.touchDirectionLocked = false;
+          state.touchIsHorizontal = false;
+          state.touchSuppressClick = false;
+          setSliderPaused(state, true, false);
+          syncProjectAnimationLoopState();
+        }, { passive: true });
+
+        state.slider.addEventListener('touchmove', function (event) {
+          if (state.touchIdentifier === null) return;
+          const trackedTouch = findTouchByIdentifier(event.touches, state.touchIdentifier);
+          if (!trackedTouch) return;
+
+          const deltaX = trackedTouch.clientX - state.touchStartX;
+          const deltaY = trackedTouch.clientY - state.touchStartY;
+          const absX = Math.abs(deltaX);
+          const absY = Math.abs(deltaY);
+
+          if (!state.touchDirectionLocked) {
+            if (absX < 6 && absY < 6) return;
+            state.touchDirectionLocked = true;
+            state.touchIsHorizontal = absX > absY * 1.1;
+          }
+
+          if (!state.touchIsHorizontal) return;
+
+          event.preventDefault();
+          state.touchSuppressClick = true;
+          state.offset = state.touchStartOffset + deltaX;
+          normalizeForwardLoop(state);
+          normalizeBackwardLoop(state);
+          applyLaneTransform(state);
+        }, { passive: false });
+
+        function finishTouch(event) {
+          if (state.touchIdentifier === null) return;
+          if (event.type !== 'touchcancel') {
+            const endedTouch = findTouchByIdentifier(event.changedTouches, state.touchIdentifier);
+            if (!endedTouch) return;
+          }
+
+          state.touchIdentifier = null;
+          state.touchDirectionLocked = false;
+          state.touchIsHorizontal = false;
+          state.touchStartOffset = state.offset;
+          normalizeForwardLoop(state);
+          normalizeBackwardLoop(state);
+          applyLaneTransform(state);
+          syncProjectAnimationLoopState();
+        }
+
+        state.slider.addEventListener('touchend', finishTouch, { passive: true });
+        state.slider.addEventListener('touchcancel', finishTouch, { passive: true });
+
+        state.slider.addEventListener('click', function (event) {
+          if (!state.touchSuppressClick) return;
+          event.preventDefault();
+          event.stopPropagation();
+          state.touchSuppressClick = false;
+        }, true);
+      }
+
       function setupProjectSliders() {
         if (!projectsExpandedContent) return;
         if (projectSliderStates.length > 0) return;
 
+        const shouldStartPausedOnTouch = isTouchPrimaryInput();
         const sliderBlocks = projectsExpandedContent.querySelectorAll('.projects-slider-block');
         sliderBlocks.forEach(function (block) {
           const slider = block.querySelector('.projects-slider');
@@ -1021,11 +1132,18 @@
             slider: slider,
             lane: lane,
             toggleButton: toggleButton,
-            isAutoPaused: false,
+            isAutoPaused: shouldStartPausedOnTouch,
             isManualAnimating: false,
             isVisible: false,
             offset: 0,
-            speed: 0.045
+            speed: 0.045,
+            touchIdentifier: null,
+            touchStartX: 0,
+            touchStartY: 0,
+            touchStartOffset: 0,
+            touchDirectionLocked: false,
+            touchIsHorizontal: false,
+            touchSuppressClick: false
           };
 
           prevButton.addEventListener('click', function () {
@@ -1038,11 +1156,10 @@
 
           toggleButton.addEventListener('click', function () {
             setSliderPaused(state, !state.isAutoPaused, true);
-            if (!state.isAutoPaused) {
-              startProjectAnimationLoop();
-            }
+            syncProjectAnimationLoopState();
           });
 
+          setupSliderTouchInteractions(state);
           updateSliderEdgeOffset(state);
           updateSliderSpeed(state);
           applyLaneTransform(state);
@@ -1053,11 +1170,19 @@
 
         window.addEventListener('resize', function () {
           projectSliderStates.forEach(function (state) {
+            if (state.touchIdentifier !== null) return;
             updateSliderEdgeOffset(state);
             updateSliderSpeed(state);
+            if (isTouchPrimaryInput()) {
+              normalizeForwardLoop(state);
+              normalizeBackwardLoop(state);
+              applyLaneTransform(state);
+              return;
+            }
             snapLaneToCenter(state, 0);
             applyLaneTransform(state);
           });
+          syncProjectAnimationLoopState();
         });
       }
 
@@ -1074,10 +1199,15 @@
           projectSliderStates.forEach(function (state) {
             state.isVisible = true;
             updateSliderEdgeOffset(state);
-            snapLaneToCenter(state, 0);
+            if (isTouchPrimaryInput()) {
+              normalizeForwardLoop(state);
+              normalizeBackwardLoop(state);
+            } else {
+              snapLaneToCenter(state, 0);
+            }
             applyLaneTransform(state);
           });
-          startProjectAnimationLoop();
+          syncProjectAnimationLoopState();
           return;
         }
 
