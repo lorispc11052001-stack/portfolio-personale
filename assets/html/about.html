@@ -345,6 +345,32 @@
         }
       }
 
+      function isPhoneViewportNow() {
+        return window.matchMedia(PHONE_MEDIA_QUERY).matches;
+      }
+
+      function getManifestoForcedBreakIndex(text) {
+        if (!text || !isPhoneViewportNow()) return -1;
+        const targetWord = currentLanguage === 'en' ? 'before' : 'prima';
+        const wordIndex = text.toLowerCase().indexOf(targetWord);
+        if (wordIndex === -1) return -1;
+        return wordIndex + targetWord.length;
+      }
+
+      function applyManifestoMobileBreak() {
+        if (!manifestoText) return;
+        const fullText = manifestoText.textContent.trim();
+        if (!fullText) return;
+        const breakIndex = getManifestoForcedBreakIndex(fullText);
+        if (breakIndex <= 0 || breakIndex >= fullText.length) return;
+        const firstPart = fullText.slice(0, breakIndex).trimEnd();
+        const secondPart = fullText.slice(breakIndex).trimStart();
+        manifestoText.textContent = '';
+        manifestoText.appendChild(document.createTextNode(firstPart));
+        manifestoText.appendChild(document.createElement('br'));
+        manifestoText.appendChild(document.createTextNode(secondPart));
+      }
+
       function applyTranslations() {
         document.documentElement.lang = currentLanguage;
         document.title = PAGE_TITLES[currentLanguage] || PAGE_TITLES.it;
@@ -375,6 +401,7 @@
           button.setAttribute('aria-pressed', String(isActive));
         });
 
+        applyManifestoMobileBreak();
         updateThemeToggleAccessibility();
       }
 
@@ -460,6 +487,21 @@
           highlightSection(targetId);
         }, 460);
         return true;
+      }
+
+      function clearHashFromUrl() {
+        if (!window.location.hash || !window.history || typeof window.history.replaceState !== 'function') return;
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
+      function focusSectionFromHash() {
+        const targetId = window.location.hash;
+        if (!targetId || targetId === '#') return;
+        if (!navigateToTarget(targetId)) {
+          clearHashFromUrl();
+          return;
+        }
+        window.setTimeout(clearHashFromUrl, 740);
       }
 
       function toPositiveModulo(value, modulo) {
@@ -737,12 +779,14 @@
       function playManifestoTyping() {
         if (!manifestoText || manifestoText.dataset.typed === 'true') return;
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          applyManifestoMobileBreak();
           manifestoText.dataset.typed = 'true';
           return;
         }
 
-        const fullText = manifestoText.textContent.trim();
+        const fullText = manifestoText.textContent.replace(/\s+/g, ' ').trim();
         if (!fullText) return;
+        const forcedBreakIndex = getManifestoForcedBreakIndex(fullText);
 
         const startDelay = 260;
 
@@ -751,17 +795,20 @@
         manifestoText.textContent = '';
 
         const charNodes = [];
-        fullText.split('').forEach(function (char) {
+        fullText.split('').forEach(function (char, index) {
           if (char === ' ') {
             manifestoText.appendChild(document.createTextNode(' '));
-            return;
+          } else {
+            const charSpan = document.createElement('span');
+            charSpan.className = 'manifesto-char';
+            charSpan.textContent = char;
+            manifestoText.appendChild(charSpan);
+            charNodes.push(charSpan);
           }
 
-          const charSpan = document.createElement('span');
-          charSpan.className = 'manifesto-char';
-          charSpan.textContent = char;
-          manifestoText.appendChild(charSpan);
-          charNodes.push(charSpan);
+          if (forcedBreakIndex !== -1 && index + 1 === forcedBreakIndex) {
+            manifestoText.appendChild(document.createElement('br'));
+          }
         });
 
         let totalDelay = startDelay;
@@ -826,6 +873,7 @@
       setLanguage(getStoredLanguage(), false);
       setupRadialMenu();
       setupRevealOnScroll();
+      focusSectionFromHash();
     })();
   </script>
 </body>

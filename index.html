@@ -554,7 +554,7 @@
         projectRestaurantAlt: 'Restaurant Landing project preview'
       };
 
-      const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"], .metodo-cta-link[href^="#"]');
+      const navLinks = document.querySelectorAll('.header-nav a[href^="#"], .contattami-header[href^="#"], .metodo-cta-link[href^="#"], .brand-mark[href^="#"]');
       const radialMenuToggleButton = document.querySelector('#radial-menu-toggle');
       const radialMenuPanel = document.querySelector('#radial-menu-panel');
       const radialMenuShell = document.querySelector('#radial-menu-shell');
@@ -1144,6 +1144,11 @@
         return true;
       }
 
+      function clearHashFromUrl() {
+        if (!window.location.hash || !window.history || typeof window.history.replaceState !== 'function') return;
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+
       navLinks.forEach(function (link) {
         link.addEventListener('click', function (event) {
           const targetId = link.getAttribute('href');
@@ -1430,12 +1435,16 @@
         const targetId = window.location.hash;
         if (!targetId || targetId === '#') return;
         const targetSection = document.querySelector(targetId);
-        if (!targetSection) return;
+        if (!targetSection) {
+          clearHashFromUrl();
+          return;
+        }
 
         setTimeout(function () {
           scrollToCenter(targetSection);
           setTimeout(function () {
             highlightSection(targetId);
+            clearHashFromUrl();
           }, 260);
         }, 120);
       }
