@@ -390,7 +390,7 @@ body.radial-menu-open header {
 }
 
 /* Light-mode radial menu: cinematic priority and contrast */
-body.radial-menu-open:not(.theme-dark) .radial-menu-overlay {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-overlay {
   background:
     radial-gradient(980px 620px at 14% 24%, rgba(8, 20, 72, 0.2), rgba(8, 20, 72, 0.44) 56%, rgba(6, 14, 44, 0.58) 100%),
     radial-gradient(540px 340px at 82% 78%, rgba(253, 0, 255, 0.16), transparent 76%),
@@ -399,7 +399,7 @@ body.radial-menu-open:not(.theme-dark) .radial-menu-overlay {
   -webkit-backdrop-filter: blur(6px) saturate(124%);
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::before {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-orbit::before {
   content: "";
   position: fixed;
   left: var(--wheel-center-x);
@@ -417,7 +417,7 @@ body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::before {
   animation: radial-light-aura-pulse 4.8s ease-in-out infinite;
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::after {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-orbit::after {
   content: "";
   position: fixed;
   left: var(--wheel-center-x);
@@ -435,7 +435,7 @@ body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::after {
   animation: radial-light-ring-spin 20s linear infinite;
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-item {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item {
   border-color: rgba(255, 255, 255, 0.4);
   background: linear-gradient(132deg, rgba(8, 24, 86, 0.96), rgba(0, 81, 255, 0.9) 56%, rgba(228, 24, 255, 0.9));
   color: #f5faff;
@@ -447,14 +447,14 @@ body.radial-menu-open:not(.theme-dark) .radial-menu-item {
   -webkit-backdrop-filter: blur(11px) saturate(165%);
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-item::before {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item::before {
   background: radial-gradient(138% 138% at 14% 50%, rgba(140, 162, 255, 0.64), rgba(140, 162, 255, 0) 65%);
   box-shadow: 0 10px 20px rgba(7, 16, 36, 0.2);
   opacity: 0.84;
   transform: scale(1);
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-item::after {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item::after {
   content: "";
   position: absolute;
   inset: -1px;
@@ -464,15 +464,15 @@ body.radial-menu-open:not(.theme-dark) .radial-menu-item::after {
   mix-blend-mode: screen;
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-item:hover,
-body.radial-menu-open:not(.theme-dark) .radial-menu-item:focus-visible {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item:hover,
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item:focus-visible {
   color: #ffffff;
   border-color: rgba(255, 255, 255, 0.56);
   background: linear-gradient(132deg, rgba(16, 40, 130, 0.98), rgba(0, 81, 255, 0.92) 52%, rgba(253, 0, 255, 0.9));
   box-shadow: 0 20px 38px rgba(6, 14, 31, 0.52), 0 0 30px rgba(128, 112, 255, 0.64), inset 0 1px 0 rgba(255, 255, 255, 0.36);
 }
 
-body.radial-menu-open:not(.theme-dark) .radial-menu-item.is-active {
+html:not(.theme-dark) body.radial-menu-open .radial-menu-item.is-active {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.68);
   background: linear-gradient(122deg, #0051ff 0%, #5a29ff 44%, #fd00ff 100%);
@@ -1983,8 +1983,8 @@ footer textarea:focus {
     transition: none;
   }
   .universe-canvas,
-  body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::before,
-  body.radial-menu-open:not(.theme-dark) .radial-menu-orbit::after,
+  html:not(.theme-dark) body.radial-menu-open .radial-menu-orbit::before,
+  html:not(.theme-dark) body.radial-menu-open .radial-menu-orbit::after,
   body.radial-menu-open.theme-dark .radial-menu-orbit::before,
   body.radial-menu-open.theme-dark .radial-menu-orbit::after,
   html.theme-dark body.radial-menu-open .radial-menu-orbit::before,
@@ -2058,7 +2058,7 @@ body {
   isolation: isolate;
 }
 
-body:not(.theme-dark) {
+html:not(.theme-dark) body {
   background:
     radial-gradient(1160px 580px at 8% 6%, rgba(0, 81, 255, 0.2), rgba(0, 81, 255, 0) 72%),
     radial-gradient(1100px 640px at 92% 14%, rgba(253, 0, 255, 0.13), rgba(253, 0, 255, 0) 74%),
@@ -2068,7 +2068,7 @@ body:not(.theme-dark) {
     linear-gradient(128deg, #edf0ff 0%, #f6f4ff 44%, #fbf8ff 100%);
 }
 
-body:not(.theme-dark)::after {
+html:not(.theme-dark) body::after {
   content: "";
   position: fixed;
   inset: -10% -6% -14%;
@@ -2141,7 +2141,7 @@ body::before {
   transition: opacity 0.35s ease;
 }
 
-body:not(.theme-dark) .universe-canvas {
+html:not(.theme-dark) body .universe-canvas {
   opacity: 0.9;
   mix-blend-mode: screen;
   filter:
@@ -2157,9 +2157,9 @@ html.theme-dark body .universe-canvas {
   filter: saturate(126%) contrast(112%);
 }
 
-body:not(.theme-dark) header,
-body:not(.theme-dark) section,
-body:not(.theme-dark) footer {
+html:not(.theme-dark) body header,
+html:not(.theme-dark) body section,
+html:not(.theme-dark) body footer {
   background: linear-gradient(180deg, rgba(252, 253, 255, 0.9), rgba(243, 241, 255, 0.84));
   border-color: rgba(141, 154, 248, 0.56);
   box-shadow: 0 16px 30px rgba(49, 63, 136, 0.12), 0 0 16px rgba(95, 88, 246, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.78);
@@ -2167,136 +2167,136 @@ body:not(.theme-dark) footer {
   -webkit-backdrop-filter: blur(1.2px) saturate(118%);
 }
 
-body:not(.theme-dark) .project-card {
+html:not(.theme-dark) body .project-card {
   background: linear-gradient(164deg, rgba(252, 253, 255, 0.95), rgba(239, 238, 255, 0.9));
   border-color: rgba(146, 158, 247, 0.66);
   box-shadow: 0 16px 30px rgba(60, 73, 150, 0.14), 0 0 14px rgba(112, 118, 255, 0.14);
 }
 
-body:not(.theme-dark) .project-card:hover {
+html:not(.theme-dark) body .project-card:hover {
   border-color: rgba(137, 112, 255, 0.92);
   box-shadow: 0 18px 30px rgba(58, 74, 150, 0.18), 0 0 18px rgba(122, 106, 255, 0.24);
 }
 
-body:not(.theme-dark) .project-card .card-img-top {
+html:not(.theme-dark) body .project-card .card-img-top {
   filter: saturate(1.14) contrast(1.06);
 }
 
-body:not(.theme-dark) h1,
-body:not(.theme-dark) h2,
-body:not(.theme-dark) h3,
-body:not(.theme-dark) h4,
-body:not(.theme-dark) h5 {
+html:not(.theme-dark) body h1,
+html:not(.theme-dark) body h2,
+html:not(.theme-dark) body h3,
+html:not(.theme-dark) body h4,
+html:not(.theme-dark) body h5 {
   color: #131f56;
 }
 
-body:not(.theme-dark) .text-container-header p,
-body:not(.theme-dark) .about-lead,
-body:not(.theme-dark) .project-card .card-text,
-body:not(.theme-dark) footer label,
-body:not(.theme-dark) .lead-magnet-consent,
-body:not(.theme-dark) .projects-expand-row p {
+html:not(.theme-dark) body .text-container-header p,
+html:not(.theme-dark) body .about-lead,
+html:not(.theme-dark) body .project-card .card-text,
+html:not(.theme-dark) body footer label,
+html:not(.theme-dark) body .lead-magnet-consent,
+html:not(.theme-dark) body .projects-expand-row p {
   color: #3b4b8a;
 }
 
-body:not(.theme-dark) .header-icon-btn,
-body:not(.theme-dark) .language-switch,
-body:not(.theme-dark) .about-link-header,
-body:not(.theme-dark) .projects-more-link-alt,
-body:not(.theme-dark) .projects-nav-btn,
-body:not(.theme-dark) .btn-linkedin,
-body:not(.theme-dark) .btn-instagram {
+html:not(.theme-dark) body .header-icon-btn,
+html:not(.theme-dark) body .language-switch,
+html:not(.theme-dark) body .about-link-header,
+html:not(.theme-dark) body .projects-more-link-alt,
+html:not(.theme-dark) body .projects-nav-btn,
+html:not(.theme-dark) body .btn-linkedin,
+html:not(.theme-dark) body .btn-instagram {
   border-color: rgba(139, 150, 245, 0.56);
   background: linear-gradient(142deg, rgba(253, 253, 255, 0.93), rgba(236, 236, 255, 0.92));
   color: #223474;
   box-shadow: 0 8px 16px rgba(57, 71, 140, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.78);
 }
 
-body:not(.theme-dark) .header-icon-btn:hover,
-body:not(.theme-dark) .about-link-header:hover,
-body:not(.theme-dark) .projects-more-link-alt:hover,
-body:not(.theme-dark) .projects-nav-btn:hover {
+html:not(.theme-dark) body .header-icon-btn:hover,
+html:not(.theme-dark) body .about-link-header:hover,
+html:not(.theme-dark) body .projects-more-link-alt:hover,
+html:not(.theme-dark) body .projects-nav-btn:hover {
   border-color: rgba(108, 98, 255, 0.74);
   color: #1d3fff;
   box-shadow: 0 8px 16px rgba(45, 60, 150, 0.16), 0 0 8px rgba(130, 106, 255, 0.2);
 }
 
-body:not(.theme-dark) .contattami-header,
-body:not(.theme-dark) .btn-cv,
-body:not(.theme-dark) .project-card .btn-primary,
-body:not(.theme-dark) .projects-more-link,
-body:not(.theme-dark) .btn-footer {
+html:not(.theme-dark) body .contattami-header,
+html:not(.theme-dark) body .btn-cv,
+html:not(.theme-dark) body .project-card .btn-primary,
+html:not(.theme-dark) body .projects-more-link,
+html:not(.theme-dark) body .btn-footer {
   color: #ffffff;
   background: linear-gradient(122deg, #0051ff 0%, #5a29ff 42%, #fd00ff 100%);
   box-shadow: 0 10px 20px rgba(41, 69, 169, 0.22), 0 0 10px rgba(162, 82, 255, 0.28);
 }
 
-body:not(.theme-dark) .contattami-header:hover,
-body:not(.theme-dark) .btn-cv:hover,
-body:not(.theme-dark) .project-card .btn-primary:hover,
-body:not(.theme-dark) .projects-more-link:hover,
-body:not(.theme-dark) .btn-footer:hover {
+html:not(.theme-dark) body .contattami-header:hover,
+html:not(.theme-dark) body .btn-cv:hover,
+html:not(.theme-dark) body .project-card .btn-primary:hover,
+html:not(.theme-dark) body .projects-more-link:hover,
+html:not(.theme-dark) body .btn-footer:hover {
   box-shadow: 0 12px 22px rgba(36, 56, 148, 0.25), 0 0 12px rgba(184, 80, 255, 0.32);
 }
 
-body:not(.theme-dark) .projects-nav-toggle {
+html:not(.theme-dark) body .projects-nav-toggle {
   background: linear-gradient(122deg, rgba(0, 81, 255, 0.16), rgba(253, 0, 255, 0.16));
 }
 
-body:not(.theme-dark) .projects-slider-block-working.is-emphasis {
+html:not(.theme-dark) body .projects-slider-block-working.is-emphasis {
   border-color: rgba(105, 104, 255, 0.58);
   box-shadow: 0 0 0 4px rgba(105, 104, 255, 0.16);
 }
 
-body:not(.theme-dark) .project-status {
+html:not(.theme-dark) body .project-status {
   border-color: rgba(122, 92, 255, 0.56);
   color: #4133b0;
   background: rgba(126, 93, 255, 0.14);
 }
 
-body:not(.theme-dark) .project-card[data-project-state=soon] {
+html:not(.theme-dark) body .project-card[data-project-state=soon] {
   border-color: rgba(126, 95, 255, 0.46);
 }
 
-body:not(.theme-dark) footer input,
-body:not(.theme-dark) footer textarea {
+html:not(.theme-dark) body footer input,
+html:not(.theme-dark) body footer textarea {
   border-color: rgba(147, 158, 246, 0.7);
   background: linear-gradient(180deg, rgba(253, 254, 255, 0.92), rgba(239, 239, 255, 0.9));
 }
 
-body:not(.theme-dark) footer input:focus,
-body:not(.theme-dark) footer textarea:focus {
+html:not(.theme-dark) body footer input:focus,
+html:not(.theme-dark) body footer textarea:focus {
   border-color: #5f45ff;
   box-shadow: 0 0 0 3px rgba(95, 69, 255, 0.22), 0 0 14px rgba(253, 0, 255, 0.24);
 }
 
-body:not(.theme-dark) .about-hero::after {
+html:not(.theme-dark) body .about-hero::after {
   background: radial-gradient(520px 280px at 92% 8%, rgba(0, 81, 255, 0.15), transparent 72%), radial-gradient(420px 220px at 8% 94%, rgba(253, 0, 255, 0.14), transparent 72%);
 }
 
-body:not(.theme-dark) .about-eyebrow {
+html:not(.theme-dark) body .about-eyebrow {
   border-color: rgba(130, 143, 244, 0.62);
   background: rgba(0, 81, 255, 0.1);
   color: #2342d5;
 }
 
-body:not(.theme-dark) .about-vision-method {
+html:not(.theme-dark) body .about-vision-method {
   border-color: rgba(141, 154, 244, 0.66);
   background: linear-gradient(180deg, rgba(252, 253, 255, 0.94), rgba(239, 238, 255, 0.9));
   box-shadow: 0 14px 28px rgba(47, 64, 144, 0.14), 0 0 16px rgba(115, 107, 255, 0.16);
 }
 
-body:not(.theme-dark) .footer-lead-magnet {
+html:not(.theme-dark) body .footer-lead-magnet {
   border-color: rgba(117, 127, 244, 0.38);
   background: linear-gradient(122deg, rgba(0, 81, 255, 0.11), rgba(253, 0, 255, 0.12));
 }
 
-body:not(.theme-dark) .about-section-mentality blockquote {
+html:not(.theme-dark) body .about-section-mentality blockquote {
   border-left-color: rgba(95, 96, 255, 0.56);
   background: linear-gradient(122deg, rgba(0, 81, 255, 0.08), rgba(253, 0, 255, 0.08));
 }
 
-body:not(.theme-dark) .about-contact-bridge {
+html:not(.theme-dark) body .about-contact-bridge {
   border-color: rgba(122, 132, 244, 0.44);
   background: linear-gradient(122deg, rgba(0, 81, 255, 0.1), rgba(253, 0, 255, 0.12));
 }
