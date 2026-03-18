@@ -136,7 +136,7 @@ footer {
 }
 
 @media (min-width: 993px) {
-  body header {
+  html:not(.theme-dark) body header {
     background: linear-gradient(
       102deg,
       color-mix(in srgb, var(--surface) 96%, transparent) 0%,

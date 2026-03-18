@@ -1651,8 +1651,9 @@ footer textarea:focus {
 .about-hero-photo::before {
   inset: 13% 12% 11% 12%;
   border-radius: var(--about-photo-shape);
-  background: linear-gradient(155deg, rgba(20, 34, 59, 0.16), rgba(20, 34, 59, 0.3));
-  box-shadow: 0 22px 36px rgba(20, 34, 59, 0.24);
+  background: transparent;
+  border: 1px solid rgba(47, 118, 210, 0.22);
+  box-shadow: none;
   z-index: 0;
 }
 
@@ -1671,6 +1672,8 @@ footer textarea:focus {
   width: 118%;
   max-width: 430px;
   transform: translateX(-2%) translateY(1%);
+  display: block;
+  background: transparent;
   position: relative;
   z-index: 2;
 }
@@ -1678,6 +1681,7 @@ footer textarea:focus {
 .about-hero-photo img {
   width: 100%;
   height: auto;
+  background: transparent;
   position: relative;
   z-index: 2;
   object-fit: contain;
@@ -2497,7 +2501,7 @@ footer {
 }
 
 @media (min-width: 993px) {
-  body header {
+  html:not(.theme-dark) body header {
     background: linear-gradient(102deg, color-mix(in srgb, var(--surface) 96%, transparent) 0%, color-mix(in srgb, var(--surface-strong) 92%, transparent) 60%, color-mix(in srgb, var(--surface-strong) 35%, transparent) 75%, transparent 90%);
   }
   body.theme-dark header,
