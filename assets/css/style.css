@@ -725,18 +725,32 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
 
 .right-container-header {
   --home-photo-shape: 58% 42% 50% 50%/44% 46% 54% 56%;
-  width: min(100%, 420px);
+  --hero-oval-fill-alpha: 0.12;
+  width: min(100%, 372px);
   aspect-ratio: 4/5;
   position: relative;
   justify-self: end;
   display: grid;
   place-items: end center;
-  overflow: hidden;
-  border-radius: var(--home-photo-shape);
+  overflow: visible;
   padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  isolation: isolate;
+}
+
+.right-container-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--home-photo-shape);
   border: 1px solid rgba(47, 118, 210, 0.32);
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(207, 226, 255, 0.1));
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.22), rgba(207, 226, 255, var(--hero-oval-fill-alpha)));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 18px 30px rgba(20, 34, 59, 0.14);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .img-container-header {
@@ -745,6 +759,8 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
   position: relative;
   display: grid;
   place-items: end center;
+  background-color: transparent;
+  z-index: 1;
 }
 
 .img-container-header::before,
@@ -753,12 +769,13 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
 }
 
 .home-hero-cutout-media {
-  width: 126%;
+  width: 138%;
   max-width: 530px;
-  transform: translateX(-1.4%) translateY(4.2%);
+  transform: translateX(-2.2%) translateY(2.8%);
   display: block;
   background: transparent;
   position: relative;
+  z-index: 2;
 }
 
 .foto-loris {
@@ -767,7 +784,7 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
   background: transparent;
   object-fit: contain;
   object-position: center bottom;
-  transform: translateY(4%) scale(1.08);
+  transform: translateY(2%) scale(1.18);
   transform-origin: center bottom;
   filter: drop-shadow(0 14px 22px rgba(20, 34, 59, 0.2));
 }
@@ -795,9 +812,9 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
     width: 100%;
   }
   .home-hero-cutout-media {
-    width: 124%;
+    width: 132%;
     max-width: 440px;
-    transform: translateX(-1%) translateY(4%);
+    transform: translateX(-1.8%) translateY(2.7%);
   }
 }
 @media (min-width: 641px) and (max-width: 992px) {
