@@ -865,16 +865,39 @@
 
       function stabilizeUiDuringResize() {
         document.documentElement.classList.add('is-resizing');
+        if (universeState.isRunning) {
+          stopUniverseAnimation(false);
+        }
         if (resizeStabilizerTimeoutId) {
           window.clearTimeout(resizeStabilizerTimeoutId);
         }
         resizeStabilizerTimeoutId = window.setTimeout(function () {
           document.documentElement.classList.remove('is-resizing');
+          if (!document.hidden) {
+            syncUniverseParticlesState();
+          }
           resizeStabilizerTimeoutId = 0;
-        }, 180);
+        }, 260);
       }
 
       window.addEventListener('resize', stabilizeUiDuringResize, { passive: true });
+
+      if (window.visualViewport && typeof window.visualViewport.addEventListener === 'function') {
+        window.visualViewport.addEventListener('resize', stabilizeUiDuringResize, { passive: true });
+      }
+
+      window.addEventListener('wheel', function (event) {
+        if (event.ctrlKey || event.metaKey) {
+          stabilizeUiDuringResize();
+        }
+      }, { passive: true });
+
+      window.addEventListener('keydown', function (event) {
+        if (!event.ctrlKey && !event.metaKey) return;
+        if (event.key === '+' || event.key === '-' || event.key === '=' || event.key === '0') {
+          stabilizeUiDuringResize();
+        }
+      });
 
       function randomBetween(min, max) {
         return min + Math.random() * (max - min);

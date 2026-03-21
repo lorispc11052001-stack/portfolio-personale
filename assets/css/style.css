@@ -2511,6 +2511,24 @@ html.is-resizing .universe-canvas {
   opacity: 0 !important;
 }
 
+html.is-resizing .radial-menu-shell,
+html.is-resizing .radial-menu-overlay,
+html.is-resizing .radial-menu-item,
+html.is-resizing .radial-menu-item::before,
+html.is-resizing .radial-menu-item::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+html.is-resizing header::after,
+html.is-resizing .right-container-header::before,
+html.is-resizing .right-container-header::after,
+html.is-resizing .img-container-header::after {
+  opacity: 0 !important;
+}
+
 .universe-canvas {
   position: fixed;
   inset: 0;
