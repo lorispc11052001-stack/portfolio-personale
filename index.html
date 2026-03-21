@@ -1571,9 +1571,6 @@
               slider.addEventListener('pointerdown', function (event) {
                 if (typeof event.button === 'number' && event.button !== 0) return;
                 if (state.isManualAnimating) return;
-                if (!state.isAutoPaused) {
-                  setSliderPaused(state, true, false);
-                }
                 pointerSwipe.isTracking = true;
                 pointerSwipe.pointerId = event.pointerId;
                 pointerSwipe.startX = event.clientX;
@@ -1600,6 +1597,9 @@
                   if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
                   if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
                     pointerSwipe.hasHorizontalIntent = true;
+                    if (!state.isAutoPaused) {
+                      setSliderPaused(state, true, false);
+                    }
                   }
                 }
 
@@ -1674,9 +1674,6 @@
             slider.addEventListener('touchstart', function (event) {
               if (!event.touches || event.touches.length === 0) return;
               if (state.isManualAnimating) return;
-              if (!state.isAutoPaused) {
-                setSliderPaused(state, true, false);
-              }
               const primaryTouch = event.touches[0];
               touchSwipe.isTracking = true;
               touchSwipe.touchId = primaryTouch.identifier;
@@ -1699,6 +1696,9 @@
                 if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
                 if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
                   touchSwipe.hasHorizontalIntent = true;
+                  if (!state.isAutoPaused) {
+                    setSliderPaused(state, true, false);
+                  }
                 }
               }
 
