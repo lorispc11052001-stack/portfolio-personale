@@ -1524,6 +1524,192 @@
             }
           });
 
+          (function enableSliderSwipe() {
+            let ignoreNextClick = false;
+
+            function getSwipeThreshold() {
+              const firstCard = state.lane.firstElementChild;
+              const cardStep = firstCard ? getCardStep(firstCard, state) : 0;
+              return Math.min(130, Math.max(30, cardStep * 0.2));
+            }
+
+            function handleSwipe(deltaX, hasHorizontalIntent) {
+              if (!hasHorizontalIntent) return;
+              if (Math.abs(deltaX) < getSwipeThreshold()) return;
+              ignoreNextClick = true;
+              stepSlider(state, deltaX < 0 ? 1 : -1);
+            }
+
+            slider.addEventListener('click', function (event) {
+              if (!ignoreNextClick) return;
+              ignoreNextClick = false;
+              event.preventDefault();
+              event.stopPropagation();
+            }, true);
+
+            if ('PointerEvent' in window) {
+              const pointerSwipe = {
+                isTracking: false,
+                pointerId: null,
+                startX: 0,
+                startY: 0,
+                lastX: 0,
+                hasHorizontalIntent: false
+              };
+
+              function resetPointerSwipe() {
+                pointerSwipe.isTracking = false;
+                pointerSwipe.pointerId = null;
+                pointerSwipe.startX = 0;
+                pointerSwipe.startY = 0;
+                pointerSwipe.lastX = 0;
+                pointerSwipe.hasHorizontalIntent = false;
+              }
+
+              slider.addEventListener('pointerdown', function (event) {
+                if (event.pointerType === 'mouse') return;
+                if (typeof event.button === 'number' && event.button !== 0) return;
+                if (state.isManualAnimating) return;
+                pointerSwipe.isTracking = true;
+                pointerSwipe.pointerId = event.pointerId;
+                pointerSwipe.startX = event.clientX;
+                pointerSwipe.startY = event.clientY;
+                pointerSwipe.lastX = event.clientX;
+                pointerSwipe.hasHorizontalIntent = false;
+                if (typeof slider.setPointerCapture === 'function') {
+                  try {
+                    slider.setPointerCapture(event.pointerId);
+                  } catch (error) {
+                    // Ignore pointer-capture failures on fast touch transitions.
+                  }
+                }
+              });
+
+              slider.addEventListener('pointermove', function (event) {
+                if (!pointerSwipe.isTracking || event.pointerId !== pointerSwipe.pointerId) return;
+
+                const deltaX = event.clientX - pointerSwipe.startX;
+                const deltaY = event.clientY - pointerSwipe.startY;
+
+                if (!pointerSwipe.hasHorizontalIntent) {
+                  if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+                  if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                    resetPointerSwipe();
+                    return;
+                  }
+                  pointerSwipe.hasHorizontalIntent = true;
+                }
+
+                pointerSwipe.lastX = event.clientX;
+                event.preventDefault();
+              }, { passive: false });
+
+              slider.addEventListener('pointerup', function (event) {
+                if (!pointerSwipe.isTracking || event.pointerId !== pointerSwipe.pointerId) return;
+                const deltaX = pointerSwipe.lastX - pointerSwipe.startX;
+                const hasHorizontalIntent = pointerSwipe.hasHorizontalIntent;
+                if (typeof slider.releasePointerCapture === 'function') {
+                  try {
+                    if (typeof slider.hasPointerCapture !== 'function' || slider.hasPointerCapture(event.pointerId)) {
+                      slider.releasePointerCapture(event.pointerId);
+                    }
+                  } catch (error) {
+                    // Pointer may already be released by browser.
+                  }
+                }
+                resetPointerSwipe();
+                handleSwipe(deltaX, hasHorizontalIntent);
+              });
+
+              slider.addEventListener('pointercancel', function (event) {
+                if (!pointerSwipe.isTracking || event.pointerId !== pointerSwipe.pointerId) return;
+                if (typeof slider.releasePointerCapture === 'function') {
+                  try {
+                    if (typeof slider.hasPointerCapture !== 'function' || slider.hasPointerCapture(event.pointerId)) {
+                      slider.releasePointerCapture(event.pointerId);
+                    }
+                  } catch (error) {
+                    // Pointer may already be released by browser.
+                  }
+                }
+                resetPointerSwipe();
+              });
+              return;
+            }
+
+            const touchSwipe = {
+              isTracking: false,
+              touchId: null,
+              startX: 0,
+              startY: 0,
+              lastX: 0,
+              hasHorizontalIntent: false
+            };
+
+            function findTrackedTouch(touchList, id) {
+              for (let i = 0; i < touchList.length; i += 1) {
+                if (touchList[i].identifier === id) return touchList[i];
+              }
+              return null;
+            }
+
+            function resetTouchSwipe() {
+              touchSwipe.isTracking = false;
+              touchSwipe.touchId = null;
+              touchSwipe.startX = 0;
+              touchSwipe.startY = 0;
+              touchSwipe.lastX = 0;
+              touchSwipe.hasHorizontalIntent = false;
+            }
+
+            slider.addEventListener('touchstart', function (event) {
+              if (!event.touches || event.touches.length === 0) return;
+              if (state.isManualAnimating) return;
+              const primaryTouch = event.touches[0];
+              touchSwipe.isTracking = true;
+              touchSwipe.touchId = primaryTouch.identifier;
+              touchSwipe.startX = primaryTouch.clientX;
+              touchSwipe.startY = primaryTouch.clientY;
+              touchSwipe.lastX = primaryTouch.clientX;
+              touchSwipe.hasHorizontalIntent = false;
+            }, { passive: true });
+
+            slider.addEventListener('touchmove', function (event) {
+              if (!touchSwipe.isTracking || touchSwipe.touchId === null) return;
+              const trackedTouch = findTrackedTouch(event.touches, touchSwipe.touchId);
+              if (!trackedTouch) return;
+
+              const deltaX = trackedTouch.clientX - touchSwipe.startX;
+              const deltaY = trackedTouch.clientY - touchSwipe.startY;
+
+              if (!touchSwipe.hasHorizontalIntent) {
+                if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+                if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                  resetTouchSwipe();
+                  return;
+                }
+                touchSwipe.hasHorizontalIntent = true;
+              }
+
+              touchSwipe.lastX = trackedTouch.clientX;
+              event.preventDefault();
+            }, { passive: false });
+
+            slider.addEventListener('touchend', function (event) {
+              if (!touchSwipe.isTracking || touchSwipe.touchId === null) return;
+              const trackedTouch = findTrackedTouch(event.changedTouches, touchSwipe.touchId);
+              if (!trackedTouch) return;
+              const deltaX = touchSwipe.lastX - touchSwipe.startX;
+              const hasHorizontalIntent = touchSwipe.hasHorizontalIntent;
+              resetTouchSwipe();
+              handleSwipe(deltaX, hasHorizontalIntent);
+            }, { passive: true });
+
+            slider.addEventListener('touchcancel', function () {
+              resetTouchSwipe();
+            }, { passive: true });
+          })();
+
           updateSliderEdgeOffset(state);
           updateSliderSpeed(state);
           applyLaneTransform(state);
