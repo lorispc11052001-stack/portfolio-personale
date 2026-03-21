@@ -1426,17 +1426,19 @@
         if (state.isManualAnimating) return;
 
         setSliderPaused(state, true, false);
+        const startOffset = state.offset;
 
         if (direction > 0) {
           const firstCard = state.lane.firstElementChild;
           if (!firstCard) return;
           const step = getCardStep(firstCard, state);
+          const deltaToNextCenter = -(step + startOffset);
 
-          animateLaneBy(state, -step, 300, function () {
+          animateLaneBy(state, deltaToNextCenter, 300, function () {
             const movedCard = state.lane.firstElementChild;
             if (!movedCard) return;
             state.lane.appendChild(movedCard);
-            state.offset += step;
+            state.offset = 0;
             applyLaneTransform(state);
           });
           return;
@@ -1445,13 +1447,17 @@
         const lastCard = state.lane.lastElementChild;
         if (!lastCard) return;
         const step = getCardStep(lastCard, state);
+        const deltaToPrevCenter = step - startOffset;
 
         state.lane.insertBefore(lastCard, state.lane.firstElementChild);
         state.offset -= step;
         applyLaneTransform(state);
 
         requestAnimationFrame(function () {
-          animateLaneBy(state, step, 300, null);
+          animateLaneBy(state, deltaToPrevCenter, 300, function () {
+            state.offset = 0;
+            applyLaneTransform(state);
+          });
         });
       }
 
