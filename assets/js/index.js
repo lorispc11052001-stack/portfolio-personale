@@ -1030,6 +1030,16 @@
         }
       }
 
+      function normalizeBackwardLoop(state) {
+        let lastCard = state.lane.lastElementChild;
+        while (lastCard && state.offset > 0) {
+          const step = getCardStep(lastCard, state);
+          state.offset -= step;
+          state.lane.insertBefore(lastCard, state.lane.firstElementChild);
+          lastCard = state.lane.lastElementChild;
+        }
+      }
+
       function snapLaneToCenter(state, durationMs) {
         const firstCard = state.lane.firstElementChild;
         if (!firstCard) return;
@@ -1221,7 +1231,8 @@
             offset: 0,
             laneGap: 0,
             edgeOffset: 0,
-            speed: 0.045
+            speed: 0.045,
+            ignoreNextClick: false
           };
 
           prevButton.addEventListener('click', function () {
@@ -1235,6 +1246,158 @@
           toggleButton.addEventListener('click', function () {
             setSliderPaused(state, !state.isAutoPaused, true);
           });
+
+          if ('PointerEvent' in window) {
+            const dragState = {
+              active: false,
+              pointerId: null,
+              startX: 0,
+              startY: 0,
+              startOffset: 0,
+              lastDeltaX: 0,
+              isHorizontal: false,
+              didMove: false,
+              hasCapturedPointer: false
+            };
+            const dragActivationThreshold = 8;
+
+            function trySetSliderPointerCapture(pointerId) {
+              if (typeof slider.setPointerCapture !== 'function') return;
+              try {
+                slider.setPointerCapture(pointerId);
+              } catch (error) {
+                // Some browsers reject pointer capture when pointer state changes quickly.
+              }
+            }
+
+            function tryReleaseSliderPointerCapture(pointerId) {
+              if (typeof slider.releasePointerCapture !== 'function') return;
+              try {
+                if (typeof slider.hasPointerCapture === 'function' && !slider.hasPointerCapture(pointerId)) {
+                  return;
+                }
+                slider.releasePointerCapture(pointerId);
+              } catch (error) {
+                // Pointer may already be released by the browser.
+              }
+            }
+
+            function resetSliderDragState() {
+              dragState.active = false;
+              dragState.pointerId = null;
+              dragState.startX = 0;
+              dragState.startY = 0;
+              dragState.startOffset = 0;
+              dragState.lastDeltaX = 0;
+              dragState.isHorizontal = false;
+              dragState.didMove = false;
+              dragState.hasCapturedPointer = false;
+              slider.classList.remove('is-dragging');
+            }
+
+            function endSliderDrag(event, isCancelled) {
+              if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+
+              const pointerId = dragState.pointerId;
+              const lastDeltaX = dragState.lastDeltaX;
+              const isHorizontal = dragState.isHorizontal;
+              const didMove = dragState.didMove;
+              const hadCapture = dragState.hasCapturedPointer;
+
+              if (hadCapture) {
+                tryReleaseSliderPointerCapture(pointerId);
+              }
+              resetSliderDragState();
+
+              if (!isHorizontal) return;
+
+              if (didMove) {
+                state.ignoreNextClick = true;
+              }
+
+              if (isCancelled) {
+                snapLaneToCenter(state, 180);
+                applyLaneTransform(state);
+                return;
+              }
+
+              const firstCard = state.lane.firstElementChild;
+              const cardStep = firstCard ? getCardStep(firstCard, state) : 0;
+              const swipeThreshold = Math.min(130, Math.max(34, cardStep * 0.22));
+
+              if (cardStep > 0 && Math.abs(lastDeltaX) >= swipeThreshold) {
+                stepSlider(state, lastDeltaX < 0 ? 1 : -1);
+                return;
+              }
+
+              snapLaneToCenter(state, 180);
+              applyLaneTransform(state);
+            }
+
+            slider.addEventListener('pointerdown', function (event) {
+              if (event.pointerType === 'mouse') return;
+              if (typeof event.button === 'number' && event.button !== 0) return;
+              if (state.isManualAnimating) return;
+
+              dragState.active = true;
+              dragState.pointerId = event.pointerId;
+              dragState.startX = event.clientX;
+              dragState.startY = event.clientY;
+              dragState.startOffset = state.offset;
+              dragState.lastDeltaX = 0;
+              dragState.isHorizontal = false;
+              dragState.didMove = false;
+              dragState.hasCapturedPointer = false;
+            });
+
+            slider.addEventListener('pointermove', function (event) {
+              if (!dragState.active || event.pointerId !== dragState.pointerId) return;
+
+              const deltaX = event.clientX - dragState.startX;
+              const deltaY = event.clientY - dragState.startY;
+
+              if (!dragState.isHorizontal) {
+                if (Math.abs(deltaX) < dragActivationThreshold && Math.abs(deltaY) < dragActivationThreshold) {
+                  return;
+                }
+
+                if (Math.abs(deltaY) > Math.abs(deltaX)) {
+                  resetSliderDragState();
+                  return;
+                }
+
+                dragState.isHorizontal = true;
+                setSliderPaused(state, true, false);
+                slider.classList.add('is-dragging');
+                trySetSliderPointerCapture(event.pointerId);
+                dragState.hasCapturedPointer = true;
+              }
+
+              event.preventDefault();
+              dragState.didMove = true;
+              dragState.lastDeltaX = deltaX;
+
+              state.offset = dragState.startOffset + deltaX;
+              normalizeForwardLoop(state);
+              normalizeBackwardLoop(state);
+              applyLaneTransform(state);
+            }, { passive: false });
+
+            slider.addEventListener('pointerup', function (event) {
+              endSliderDrag(event, false);
+            });
+
+            slider.addEventListener('pointercancel', function (event) {
+              endSliderDrag(event, true);
+            });
+
+            slider.addEventListener('click', function (event) {
+              if (!state.ignoreNextClick) return;
+              state.ignoreNextClick = false;
+              event.preventDefault();
+              event.stopPropagation();
+            }, true);
+          }
 
           updateSliderLayoutMetrics(state);
           applyLaneTransform(state);
