@@ -665,7 +665,7 @@ body:not(.theme-dark) .img-container-header::after {
   background: transparent;
   object-fit: contain;
   object-position: center bottom;
-  transform: translateY(var(--hero-photo-y)) scale(var(--hero-photo-scale));
+  transform: translateY(calc(var(--hero-photo-y) - 15px)) scale(var(--hero-photo-scale));
   transform-origin: center bottom;
   filter: drop-shadow(0 16px 26px var(--hero-photo-shadow)) brightness(var(--hero-photo-brightness)) saturate(var(--hero-photo-saturate)) contrast(var(--hero-photo-contrast));
 }
