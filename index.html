@@ -1530,7 +1530,7 @@
             function getSwipeThreshold() {
               const firstCard = state.lane.firstElementChild;
               const cardStep = firstCard ? getCardStep(firstCard, state) : 0;
-              return Math.min(130, Math.max(30, cardStep * 0.2));
+              return Math.min(120, Math.max(18, cardStep * 0.14));
             }
 
             function handleSwipe(deltaX, hasHorizontalIntent) {
@@ -1554,6 +1554,7 @@
                 startX: 0,
                 startY: 0,
                 lastX: 0,
+                lastY: 0,
                 hasHorizontalIntent: false
               };
 
@@ -1563,18 +1564,22 @@
                 pointerSwipe.startX = 0;
                 pointerSwipe.startY = 0;
                 pointerSwipe.lastX = 0;
+                pointerSwipe.lastY = 0;
                 pointerSwipe.hasHorizontalIntent = false;
               }
 
               slider.addEventListener('pointerdown', function (event) {
-                if (event.pointerType === 'mouse') return;
                 if (typeof event.button === 'number' && event.button !== 0) return;
                 if (state.isManualAnimating) return;
+                if (!state.isAutoPaused) {
+                  setSliderPaused(state, true, false);
+                }
                 pointerSwipe.isTracking = true;
                 pointerSwipe.pointerId = event.pointerId;
                 pointerSwipe.startX = event.clientX;
                 pointerSwipe.startY = event.clientY;
                 pointerSwipe.lastX = event.clientX;
+                pointerSwipe.lastY = event.clientY;
                 pointerSwipe.hasHorizontalIntent = false;
                 if (typeof slider.setPointerCapture === 'function') {
                   try {
@@ -1593,21 +1598,23 @@
 
                 if (!pointerSwipe.hasHorizontalIntent) {
                   if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
-                  if (Math.abs(deltaY) > Math.abs(deltaX)) {
-                    resetPointerSwipe();
-                    return;
+                  if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
+                    pointerSwipe.hasHorizontalIntent = true;
                   }
-                  pointerSwipe.hasHorizontalIntent = true;
                 }
 
                 pointerSwipe.lastX = event.clientX;
-                event.preventDefault();
+                pointerSwipe.lastY = event.clientY;
+                if (pointerSwipe.hasHorizontalIntent) {
+                  event.preventDefault();
+                }
               }, { passive: false });
 
               slider.addEventListener('pointerup', function (event) {
                 if (!pointerSwipe.isTracking || event.pointerId !== pointerSwipe.pointerId) return;
                 const deltaX = pointerSwipe.lastX - pointerSwipe.startX;
-                const hasHorizontalIntent = pointerSwipe.hasHorizontalIntent;
+                const deltaY = pointerSwipe.lastY - pointerSwipe.startY;
+                const hasHorizontalIntent = pointerSwipe.hasHorizontalIntent || Math.abs(deltaX) > Math.max(10, Math.abs(deltaY) * 0.65);
                 if (typeof slider.releasePointerCapture === 'function') {
                   try {
                     if (typeof slider.hasPointerCapture !== 'function' || slider.hasPointerCapture(event.pointerId)) {
@@ -1643,6 +1650,7 @@
               startX: 0,
               startY: 0,
               lastX: 0,
+              lastY: 0,
               hasHorizontalIntent: false
             };
 
@@ -1659,18 +1667,23 @@
               touchSwipe.startX = 0;
               touchSwipe.startY = 0;
               touchSwipe.lastX = 0;
+              touchSwipe.lastY = 0;
               touchSwipe.hasHorizontalIntent = false;
             }
 
             slider.addEventListener('touchstart', function (event) {
               if (!event.touches || event.touches.length === 0) return;
               if (state.isManualAnimating) return;
+              if (!state.isAutoPaused) {
+                setSliderPaused(state, true, false);
+              }
               const primaryTouch = event.touches[0];
               touchSwipe.isTracking = true;
               touchSwipe.touchId = primaryTouch.identifier;
               touchSwipe.startX = primaryTouch.clientX;
               touchSwipe.startY = primaryTouch.clientY;
               touchSwipe.lastX = primaryTouch.clientX;
+              touchSwipe.lastY = primaryTouch.clientY;
               touchSwipe.hasHorizontalIntent = false;
             }, { passive: true });
 
@@ -1684,15 +1697,16 @@
 
               if (!touchSwipe.hasHorizontalIntent) {
                 if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
-                if (Math.abs(deltaY) > Math.abs(deltaX)) {
-                  resetTouchSwipe();
-                  return;
+                if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
+                  touchSwipe.hasHorizontalIntent = true;
                 }
-                touchSwipe.hasHorizontalIntent = true;
               }
 
               touchSwipe.lastX = trackedTouch.clientX;
-              event.preventDefault();
+              touchSwipe.lastY = trackedTouch.clientY;
+              if (touchSwipe.hasHorizontalIntent) {
+                event.preventDefault();
+              }
             }, { passive: false });
 
             slider.addEventListener('touchend', function (event) {
@@ -1700,7 +1714,8 @@
               const trackedTouch = findTrackedTouch(event.changedTouches, touchSwipe.touchId);
               if (!trackedTouch) return;
               const deltaX = touchSwipe.lastX - touchSwipe.startX;
-              const hasHorizontalIntent = touchSwipe.hasHorizontalIntent;
+              const deltaY = touchSwipe.lastY - touchSwipe.startY;
+              const hasHorizontalIntent = touchSwipe.hasHorizontalIntent || Math.abs(deltaX) > Math.max(10, Math.abs(deltaY) * 0.65);
               resetTouchSwipe();
               handleSwipe(deltaX, hasHorizontalIntent);
             }, { passive: true });
