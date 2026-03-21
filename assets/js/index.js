@@ -53,7 +53,7 @@
         downloadCvButton: 'Download Resume',
         heroInfoLocation: 'Caprarola, Italy',
         heroInfoAge: '24 years old',
-        heroInfoTagline: 'Modern custom websites',
+        heroInfoTagline: 'Clear, modern, contact-focused websites',
         skillsHeading: 'Core skills',
         skillsIntro: 'Selected technologies to build reliable, maintainable, high-performance products.',
         skillHtmlText: 'Semantic and accessible structure.',

@@ -1,0 +1,472 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loris Battaglini | Curriculum Vitae</title>
+  <meta name="description" content="Curriculum professionale di Loris Battaglini, Full-Stack Web Developer.">
+  <style>
+    :root {
+      --ink: #122033;
+      --muted: #4d5f78;
+      --line: #d9e1ec;
+      --accent: #2f76d2;
+      --paper: #ffffff;
+      --bg: #eef3f9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Manrope", "Inter", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    .cv-wrapper {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: 24px 12px 36px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .screen-note {
+      margin: 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(12, 24, 40, 0.08);
+      padding: 16mm;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 10mm;
+    }
+
+    .cv-header {
+      display: grid;
+      gap: 3mm;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5mm;
+    }
+
+    .cv-header h1 {
+      margin: 0;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .role {
+      margin: 0;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.03rem;
+    }
+
+    .meta {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .portfolio-link {
+      color: #2c609e;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(44, 96, 158, 0.35);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .portfolio-link:hover {
+      color: #204f88;
+      border-bottom-color: rgba(32, 79, 136, 0.5);
+    }
+
+    .cv-body {
+      display: grid;
+      grid-template-columns: 1.55fr 1fr;
+      gap: 8mm;
+      align-items: start;
+    }
+
+    .main,
+    .side {
+      display: grid;
+      gap: 6mm;
+      align-content: start;
+    }
+
+    section {
+      display: grid;
+      gap: 3mm;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #2b3f5e;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #162742;
+    }
+
+    p {
+      margin: 0;
+      color: #243754;
+      font-size: 0.95rem;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 1.8mm;
+    }
+
+    li {
+      color: #243754;
+      font-size: 0.93rem;
+    }
+
+    .item {
+      display: grid;
+      gap: 1.4mm;
+      padding-bottom: 3.2mm;
+      border-bottom: 1px solid #edf2f8;
+    }
+
+    .item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4mm;
+    }
+
+    .badge-label {
+      display: inline-block;
+      margin-bottom: 1.8mm;
+      padding: 0.7mm 2.2mm;
+      border-radius: 999px;
+      background: rgba(47, 118, 210, 0.1);
+      color: #285ea3;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .compact-list {
+      padding-left: 16px;
+      gap: 1.1mm;
+    }
+
+    .availability-list {
+      list-style: none;
+      padding-left: 0;
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+      gap: 2mm 4mm;
+    }
+
+    .availability-list li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 1.2mm 2.4mm;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #244069;
+    }
+
+    @media (max-width: 1050px) {
+      .page {
+        width: 100%;
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .cv-body {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .availability-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .cv-wrapper {
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+      }
+
+      .screen-note {
+        display: none;
+      }
+
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="cv-wrapper">
+    <p class="screen-note">Curriculum bilingue IT/EN ottimizzato per stampa A4.</p>
+
+    <section class="page page-it" aria-label="Curriculum in italiano">
+      <header class="cv-header">
+        <h1>Loris Battaglini</h1>
+        <p class="role">Full-Stack Web Developer</p>
+        <p class="meta">Caprarola, Italia | Data di nascita: 11/05/2001 (24 anni)</p>
+        <p class="meta">Portfolio: <a class="portfolio-link" href="../../index.html" target="_blank" rel="noopener noreferrer">portfolio personale</a></p>
+      </header>
+
+      <div class="cv-body">
+        <div class="main">
+          <section>
+            <h2>Profilo</h2>
+            <p>
+              Sto costruendo competenze full-stack con un approccio operativo: studio mirato, applicazione pratica e miglioramento continuo.
+              Nel portfolio progetto pagine con struttura chiara, gerarchia dei contenuti e focus sul contatto.
+              Lavoro in modo ordinato, con processi ripetibili e attenzione all'affidabilita tecnica.
+            </p>
+          </section>
+
+          <section>
+            <h2>Formazione</h2>
+            <article class="item">
+              <h3>Start2Impact</h3>
+              <p class="muted">Percorso: Full Stack Web Developer &amp; AI Agents</p>
+              <p class="muted">Stato: in corso</p>
+            </article>
+            <article class="item">
+              <h3>Liceo Scientifico A. Meucci - Ronciglione</h3>
+              <p class="muted">Diploma: 74/100</p>
+            </article>
+          </section>
+
+          <section>
+            <h2>Esperienza lavorativa</h2>
+            <article class="item">
+              <h3>Tecnico luci e supporto tecnico operativo</h3>
+              <p class="muted">2020 - 2024</p>
+              <ul>
+                <li>Gestione e configurazione luci per eventi e ambienti.</li>
+                <li>Utilizzo di sistemi DMX in contesti operativi.</li>
+                <li>Supporto tecnico durante attività organizzative e logistiche.</li>
+                <li>Realizzazione e aggiornamento di contenuti grafici (menu e materiali visivi).</li>
+                <li>Utilizzo di strumenti tecnici e manuali con precisione e affidabilità.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section>
+            <h2>Progetti</h2>
+            <p>I progetti nel portfolio personale sono costruiti con focus su chiarezza, struttura e conversione.</p>
+          </section>
+        </div>
+
+        <aside class="side">
+          <section>
+            <h2>Competenze tecniche</h2>
+            <div class="skills-grid">
+              <div>
+                <span class="badge-label">Competenze attuali</span>
+                <ul class="compact-list">
+                  <li>HTML</li>
+                  <li>CSS / SCSS</li>
+                  <li>Git / GitHub</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge-label">Competenze in sviluppo</span>
+                <ul class="compact-list">
+                  <li>JavaScript</li>
+                  <li>TypeScript</li>
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>AI tools / workflow con agenti AI</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Lingue</h2>
+            <ul class="compact-list">
+              <li>Italiano: madrelingua</li>
+              <li>Inglese: buona comprensione scritta e tecnica</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Disponibilita</h2>
+            <ul class="availability-list">
+              <li>Freelance</li>
+              <li>Remoto</li>
+              <li>Ibrido</li>
+              <li>Presenza</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page page-en" aria-label="Resume in English">
+      <header class="cv-header">
+        <h1>Loris Battaglini</h1>
+        <p class="role">Full-Stack Web Developer</p>
+        <p class="meta">Caprarola, Italy | Date of birth: 11/05/2001 (24 years old)</p>
+        <p class="meta">Portfolio: <a class="portfolio-link" href="../../index.html" target="_blank" rel="noopener noreferrer">personal portfolio</a></p>
+      </header>
+
+      <div class="cv-body">
+        <div class="main">
+          <section>
+            <h2>Profile</h2>
+            <p>
+              I am building full-stack skills through an execution-focused routine: targeted study, practical implementation and iterative improvement.
+              In my portfolio, I design pages with clear structure, strong content hierarchy and contact-focused flows.
+              I work in an organized way, with repeatable processes and attention to technical reliability.
+            </p>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <article class="item">
+              <h3>Start2Impact</h3>
+              <p class="muted">Program: Full Stack Web Developer &amp; AI Agents</p>
+              <p class="muted">Status: ongoing</p>
+            </article>
+            <article class="item">
+              <h3>A. Meucci Scientific High School - Ronciglione</h3>
+              <p class="muted">High school diploma: 74/100</p>
+            </article>
+          </section>
+
+          <section>
+            <h2>Work experience</h2>
+            <article class="item">
+              <h3>Lighting Technician and Operational Technical Support</h3>
+              <p class="muted">2020 - 2024</p>
+              <ul>
+                <li>Set up and configured lighting systems for events and venues.</li>
+                <li>Worked with DMX systems in operational environments.</li>
+                <li>Provided technical support during live and logistical activities.</li>
+                <li>Created and updated visual materials (menus and graphics).</li>
+                <li>Used technical and manual tools with precision and reliability.</li>
+              </ul>
+            </article>
+          </section>
+
+          <section>
+            <h2>Projects</h2>
+            <p>The projects in my portfolio are built with a clear focus on clarity, structure and conversion.</p>
+          </section>
+        </div>
+
+        <aside class="side">
+          <section>
+            <h2>Technical skills</h2>
+            <div class="skills-grid">
+              <div>
+                <span class="badge-label">Current skills</span>
+                <ul class="compact-list">
+                  <li>HTML</li>
+                  <li>CSS / SCSS</li>
+                  <li>Git / GitHub</li>
+                </ul>
+              </div>
+              <div>
+                <span class="badge-label">Skills in progress</span>
+                <ul class="compact-list">
+                  <li>JavaScript</li>
+                  <li>TypeScript</li>
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>AI tools / AI-agent workflows</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Languages</h2>
+            <ul class="compact-list">
+              <li>Italian: native speaker</li>
+              <li>English: good written and technical comprehension</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Availability</h2>
+            <ul class="availability-list">
+              <li>Freelance</li>
+              <li>Remote</li>
+              <li>Hybrid</li>
+              <li>On-site</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
