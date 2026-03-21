@@ -1530,12 +1530,13 @@
             function getSwipeThreshold() {
               const firstCard = state.lane.firstElementChild;
               const cardStep = firstCard ? getCardStep(firstCard, state) : 0;
-              return Math.min(120, Math.max(18, cardStep * 0.14));
+              return Math.min(150, Math.max(34, cardStep * 0.18));
             }
 
-            function handleSwipe(deltaX, hasHorizontalIntent) {
+            function handleSwipe(deltaX, deltaY, hasHorizontalIntent) {
               if (!hasHorizontalIntent) return;
               if (Math.abs(deltaX) < getSwipeThreshold()) return;
+              if (Math.abs(deltaX) < Math.abs(deltaY) * 1.2) return;
               ignoreNextClick = true;
               stepSlider(state, deltaX < 0 ? 1 : -1);
             }
@@ -1555,7 +1556,8 @@
                 startY: 0,
                 lastX: 0,
                 lastY: 0,
-                hasHorizontalIntent: false
+                hasHorizontalIntent: false,
+                isVerticalGesture: false
               };
 
               function resetPointerSwipe() {
@@ -1566,6 +1568,7 @@
                 pointerSwipe.lastX = 0;
                 pointerSwipe.lastY = 0;
                 pointerSwipe.hasHorizontalIntent = false;
+                pointerSwipe.isVerticalGesture = false;
               }
 
               slider.addEventListener('pointerdown', function (event) {
@@ -1578,6 +1581,7 @@
                 pointerSwipe.lastX = event.clientX;
                 pointerSwipe.lastY = event.clientY;
                 pointerSwipe.hasHorizontalIntent = false;
+                pointerSwipe.isVerticalGesture = false;
                 if (typeof slider.setPointerCapture === 'function') {
                   try {
                     slider.setPointerCapture(event.pointerId);
@@ -1593,9 +1597,13 @@
                 const deltaX = event.clientX - pointerSwipe.startX;
                 const deltaY = event.clientY - pointerSwipe.startY;
 
-                if (!pointerSwipe.hasHorizontalIntent) {
+                if (!pointerSwipe.hasHorizontalIntent && !pointerSwipe.isVerticalGesture) {
                   if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
-                  if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
+                  if (Math.abs(deltaY) > Math.abs(deltaX) * 1.1 && Math.abs(deltaY) > 10) {
+                    pointerSwipe.isVerticalGesture = true;
+                    return;
+                  }
+                  if (Math.abs(deltaX) > Math.abs(deltaY) * 1.1 && Math.abs(deltaX) > 10) {
                     pointerSwipe.hasHorizontalIntent = true;
                   }
                 }
@@ -1611,7 +1619,7 @@
                 if (!pointerSwipe.isTracking || event.pointerId !== pointerSwipe.pointerId) return;
                 const deltaX = pointerSwipe.lastX - pointerSwipe.startX;
                 const deltaY = pointerSwipe.lastY - pointerSwipe.startY;
-                const hasHorizontalIntent = pointerSwipe.hasHorizontalIntent || Math.abs(deltaX) > Math.max(10, Math.abs(deltaY) * 0.65);
+                const hasHorizontalIntent = pointerSwipe.hasHorizontalIntent && !pointerSwipe.isVerticalGesture;
                 if (typeof slider.releasePointerCapture === 'function') {
                   try {
                     if (typeof slider.hasPointerCapture !== 'function' || slider.hasPointerCapture(event.pointerId)) {
@@ -1622,7 +1630,7 @@
                   }
                 }
                 resetPointerSwipe();
-                handleSwipe(deltaX, hasHorizontalIntent);
+                handleSwipe(deltaX, deltaY, hasHorizontalIntent);
               });
 
               slider.addEventListener('pointercancel', function (event) {
@@ -1648,7 +1656,8 @@
               startY: 0,
               lastX: 0,
               lastY: 0,
-              hasHorizontalIntent: false
+              hasHorizontalIntent: false,
+              isVerticalGesture: false
             };
 
             function findTrackedTouch(touchList, id) {
@@ -1666,6 +1675,7 @@
               touchSwipe.lastX = 0;
               touchSwipe.lastY = 0;
               touchSwipe.hasHorizontalIntent = false;
+              touchSwipe.isVerticalGesture = false;
             }
 
             slider.addEventListener('touchstart', function (event) {
@@ -1679,6 +1689,7 @@
               touchSwipe.lastX = primaryTouch.clientX;
               touchSwipe.lastY = primaryTouch.clientY;
               touchSwipe.hasHorizontalIntent = false;
+              touchSwipe.isVerticalGesture = false;
             }, { passive: true });
 
             slider.addEventListener('touchmove', function (event) {
@@ -1689,9 +1700,13 @@
               const deltaX = trackedTouch.clientX - touchSwipe.startX;
               const deltaY = trackedTouch.clientY - touchSwipe.startY;
 
-              if (!touchSwipe.hasHorizontalIntent) {
+              if (!touchSwipe.hasHorizontalIntent && !touchSwipe.isVerticalGesture) {
                 if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
-                if (Math.abs(deltaX) > Math.abs(deltaY) * 0.65) {
+                if (Math.abs(deltaY) > Math.abs(deltaX) * 1.1 && Math.abs(deltaY) > 10) {
+                  touchSwipe.isVerticalGesture = true;
+                  return;
+                }
+                if (Math.abs(deltaX) > Math.abs(deltaY) * 1.1 && Math.abs(deltaX) > 10) {
                   touchSwipe.hasHorizontalIntent = true;
                 }
               }
@@ -1709,9 +1724,9 @@
               if (!trackedTouch) return;
               const deltaX = touchSwipe.lastX - touchSwipe.startX;
               const deltaY = touchSwipe.lastY - touchSwipe.startY;
-              const hasHorizontalIntent = touchSwipe.hasHorizontalIntent || Math.abs(deltaX) > Math.max(10, Math.abs(deltaY) * 0.65);
+              const hasHorizontalIntent = touchSwipe.hasHorizontalIntent && !touchSwipe.isVerticalGesture;
               resetTouchSwipe();
-              handleSwipe(deltaX, hasHorizontalIntent);
+              handleSwipe(deltaX, deltaY, hasHorizontalIntent);
             }, { passive: true });
 
             slider.addEventListener('touchcancel', function () {
