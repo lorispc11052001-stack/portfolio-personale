@@ -368,7 +368,7 @@
     <footer>
       <div class="section-heading">
         <h3 data-i18n="contactHeading">Raccontami il tuo progetto</h3>
-        <p data-i18n="contactIntro">Scrivimi qui sotto e spiegami cosa vuoi costruire. Ti rispondo entro 24 ore. <br>Se preferisci, possiamo anche parlarne in una breve call.</p>
+        <p data-i18n="contactIntro">Scrivimi qui sotto e spiegami cosa vuoi costruire. <span class="contact-intro-mobile-line">Ti rispondo entro 24 ore.</span></p>
       </div>
 
       <div class="footer-lead-magnet" aria-label="Regalo di benvenuto">
@@ -513,7 +513,7 @@
         projectRestaurantText: 'High-impact showcase site for fast bookings and menu highlights.',
         inProgressButton: 'In progress',
         contactHeading: 'Tell me about your project',
-        contactIntro: 'Write below and explain what you want to build. I reply within 24 hours. <br>If you prefer, we can also discuss it in a short call.',
+        contactIntro: 'Write below and explain what you want to build. <span class="contact-intro-mobile-line">I reply within 24 hours.</span>',
         leadMagnetHeading: 'Free checklist',
         leadMagnetText: 'You will also receive a useful guide: <strong>\"Your first credible online presence (even if you are starting from zero)\"</strong>',
         formNameLabel: 'Name',
@@ -574,6 +574,9 @@
         : null;
       const coarsePointerQuery = typeof window.matchMedia === 'function'
         ? window.matchMedia('(pointer: coarse)')
+        : null;
+      const universeAnimationDisabledQuery = typeof window.matchMedia === 'function'
+        ? window.matchMedia('(max-width: 768px), (pointer: coarse)')
         : null;
       const projectSliderStates = [];
       let activeTimer = null;
@@ -868,6 +871,11 @@
 
       function isCoarsePointerDevice() {
         return coarsePointerQuery ? coarsePointerQuery.matches : false;
+      }
+
+      function isUniverseAnimationDisabled() {
+        if (universeAnimationDisabledQuery) return universeAnimationDisabledQuery.matches;
+        return isCoarsePointerDevice();
       }
 
       function shouldSkipResizeStabilizer() {
@@ -1246,7 +1254,7 @@
       function syncUniverseParticlesState() {
         if (!universeCanvas || !universeState.context) return;
 
-        if (isCoarsePointerDevice()) {
+        if (isUniverseAnimationDisabled()) {
           universeCanvas.style.display = 'none';
           stopUniverseAnimation(true);
           return;
@@ -1310,14 +1318,14 @@
           }
         }
 
-        if (coarsePointerQuery) {
-          const handleCoarsePointerChange = function () {
+        if (universeAnimationDisabledQuery) {
+          const handleUniverseViewportChange = function () {
             syncUniverseParticlesState();
           };
-          if (typeof coarsePointerQuery.addEventListener === 'function') {
-            coarsePointerQuery.addEventListener('change', handleCoarsePointerChange);
-          } else if (typeof coarsePointerQuery.addListener === 'function') {
-            coarsePointerQuery.addListener(handleCoarsePointerChange);
+          if (typeof universeAnimationDisabledQuery.addEventListener === 'function') {
+            universeAnimationDisabledQuery.addEventListener('change', handleUniverseViewportChange);
+          } else if (typeof universeAnimationDisabledQuery.addListener === 'function') {
+            universeAnimationDisabledQuery.addListener(handleUniverseViewportChange);
           }
         }
       }

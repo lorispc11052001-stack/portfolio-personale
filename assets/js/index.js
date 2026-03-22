@@ -99,7 +99,7 @@
         projectRestaurantText: 'High-impact showcase site for fast bookings and menu highlights.',
         inProgressButton: 'In progress',
         contactHeading: 'Tell me about your project',
-        contactIntro: 'Write below and explain what you want to build. I reply within 24 hours. <br>If you prefer, we can also discuss it in a short call.',
+        contactIntro: 'Write below and explain what you want to build. <span class="contact-intro-mobile-line">I reply within 24 hours.</span>',
         leadMagnetHeading: 'Free guide',
         leadMagnetText: 'You will also receive a useful guide: <strong>\"Your first credible online presence (even if you are starting from zero)\"</strong>',
         formNameLabel: 'Name',
@@ -157,6 +157,9 @@
       const universeCanvas = document.querySelector('#universe-canvas');
       const reducedMotionQuery = typeof window.matchMedia === 'function'
         ? window.matchMedia('(prefers-reduced-motion: reduce)')
+        : null;
+      const universeAnimationDisabledQuery = typeof window.matchMedia === 'function'
+        ? window.matchMedia('(max-width: 768px), (pointer: coarse)')
         : null;
       const phoneViewportQuery = typeof window.matchMedia === 'function'
         ? window.matchMedia(PHONE_MEDIA_QUERY)
@@ -855,6 +858,12 @@
 
       function syncUniverseParticlesState() {
         if (!universeCanvas || !universeState.context) return;
+
+        if (universeAnimationDisabledQuery && universeAnimationDisabledQuery.matches) {
+          stopUniverseAnimation(true);
+          return;
+        }
+
         const nextThemeMode = getUniverseThemeMode();
         const reduceMotionEnabled = reducedMotionQuery ? reducedMotionQuery.matches : false;
 
@@ -916,6 +925,17 @@
             reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
           } else if (typeof reducedMotionQuery.addListener === 'function') {
             reducedMotionQuery.addListener(handleReducedMotionChange);
+          }
+        }
+
+        if (universeAnimationDisabledQuery) {
+          const handleUniverseViewportChange = function () {
+            syncUniverseParticlesState();
+          };
+          if (typeof universeAnimationDisabledQuery.addEventListener === 'function') {
+            universeAnimationDisabledQuery.addEventListener('change', handleUniverseViewportChange);
+          } else if (typeof universeAnimationDisabledQuery.addListener === 'function') {
+            universeAnimationDisabledQuery.addListener(handleUniverseViewportChange);
           }
         }
       }
