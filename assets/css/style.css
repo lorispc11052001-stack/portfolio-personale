@@ -2859,6 +2859,10 @@ footer {
 .section-focus .metodo-track,
 .section-focus .metodo-item p,
 .section-focus .project-card,
+.section-focus .footer-lead-magnet,
+.section-focus > label:not(.form-honeypot),
+.section-focus form > label:not(.form-honeypot),
+.section-focus .lead-magnet-consent,
 .section-focus form,
 .section-focus input,
 .section-focus textarea {
@@ -2867,11 +2871,58 @@ footer {
   animation: section-inner-focus-fade 1.35s ease;
 }
 
+.section-focus .footer-lead-magnet,
+.section-focus > label:not(.form-honeypot),
+.section-focus form > label:not(.form-honeypot),
+.section-focus .lead-magnet-consent {
+  border-radius: 0.85rem;
+}
+
 .section-focus .project-card,
 .section-focus .skill-inside-container,
 .section-focus .metodo-track,
-.section-focus .metodo-item p {
+.section-focus .metodo-item p,
+.section-focus .footer-lead-magnet,
+.section-focus > label:not(.form-honeypot),
+.section-focus form > label:not(.form-honeypot),
+.section-focus .lead-magnet-consent {
   background: linear-gradient(180deg, var(--card-bg), var(--card-bg-soft));
+}
+
+body.theme-dark .section-focus,
+html.theme-dark body .section-focus {
+  border-color: rgba(239, 247, 255, 0.96);
+  box-shadow: 0 0 0 2px rgba(239, 247, 255, 0.4), 0 0 14px rgba(220, 240, 255, 0.24), 0 18px 34px rgba(6, 18, 36, 0.48);
+  animation: section-focus-fade-dark 0.9s ease;
+}
+
+body.theme-dark .section-focus .skill-inside-container,
+body.theme-dark .section-focus .learning-dropdown,
+body.theme-dark .section-focus .metodo-track,
+body.theme-dark .section-focus .metodo-item p,
+body.theme-dark .section-focus .project-card,
+body.theme-dark .section-focus .footer-lead-magnet,
+body.theme-dark .section-focus > label:not(.form-honeypot),
+body.theme-dark .section-focus form > label:not(.form-honeypot),
+body.theme-dark .section-focus .lead-magnet-consent,
+body.theme-dark .section-focus form,
+body.theme-dark .section-focus input,
+body.theme-dark .section-focus textarea,
+html.theme-dark body .section-focus .skill-inside-container,
+html.theme-dark body .section-focus .learning-dropdown,
+html.theme-dark body .section-focus .metodo-track,
+html.theme-dark body .section-focus .metodo-item p,
+html.theme-dark body .section-focus .project-card,
+html.theme-dark body .section-focus .footer-lead-magnet,
+html.theme-dark body .section-focus > label:not(.form-honeypot),
+html.theme-dark body .section-focus form > label:not(.form-honeypot),
+html.theme-dark body .section-focus .lead-magnet-consent,
+html.theme-dark body .section-focus form,
+html.theme-dark body .section-focus input,
+html.theme-dark body .section-focus textarea {
+  border-color: rgba(239, 247, 255, 0.68);
+  box-shadow: 0 0 0 1px rgba(239, 247, 255, 0.24), 0 0 10px rgba(220, 240, 255, 0.14);
+  animation: section-inner-focus-fade-dark 0.84s ease;
 }
 
 @keyframes section-focus-fade {
@@ -2894,6 +2945,30 @@ footer {
   }
   100% {
     box-shadow: 0 0 0 2px rgba(47, 118, 210, 0.1);
+  }
+}
+
+@keyframes section-focus-fade-dark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 247, 255, 0.56), 0 14px 28px rgba(6, 18, 36, 0.42);
+  }
+  60% {
+    box-shadow: 0 0 0 5px rgba(239, 247, 255, 0.24), 0 0 18px rgba(220, 240, 255, 0.2), 0 22px 40px rgba(6, 18, 36, 0.56);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(239, 247, 255, 0.4), 0 0 14px rgba(220, 240, 255, 0.24), 0 18px 34px rgba(6, 18, 36, 0.48);
+  }
+}
+
+@keyframes section-inner-focus-fade-dark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 247, 255, 0.38);
+  }
+  70% {
+    box-shadow: 0 0 0 2px rgba(239, 247, 255, 0.12);
+  }
+  100% {
+    box-shadow: 0 0 0 1px rgba(239, 247, 255, 0.24), 0 0 10px rgba(220, 240, 255, 0.14);
   }
 }
 .section-heading {
