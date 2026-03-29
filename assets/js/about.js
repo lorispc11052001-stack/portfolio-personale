@@ -1050,8 +1050,10 @@
         function syncWheelGeometry() {
           const radius = getCssNumber('--wheel-radius', 280);
           const toggleRect = radialMenuToggleButton.getBoundingClientRect();
-          const centerX = toggleRect.left - radius + toggleRect.width * 0.62;
-          const centerY = toggleRect.bottom + 86;
+          const viewportOffsetX = window.visualViewport ? window.visualViewport.offsetLeft : 0;
+          const viewportOffsetY = window.visualViewport ? window.visualViewport.offsetTop : 0;
+          const centerX = toggleRect.left + viewportOffsetX - radius + toggleRect.width * 0.62;
+          const centerY = toggleRect.bottom + viewportOffsetY + 86;
           radialMenuOrbit.style.setProperty('--wheel-center-x', centerX + 'px');
           radialMenuOrbit.style.setProperty('--wheel-center-y', centerY + 'px');
         }
@@ -1117,6 +1119,7 @@
             radialState.inputLockUntil = 0;
             radialMenuShell.focus({ preventScroll: true });
             renderWheel();
+            scheduleRadialWheelSync();
             return;
           }
 
@@ -1272,6 +1275,11 @@
         });
 
         window.addEventListener('scroll', scheduleRadialWheelSync, { passive: true });
+
+        if (window.visualViewport && typeof window.visualViewport.addEventListener === 'function') {
+          window.visualViewport.addEventListener('resize', scheduleRadialWheelSync);
+          window.visualViewport.addEventListener('scroll', scheduleRadialWheelSync);
+        }
 
         syncWheelGeometry();
         radialState.activeIndex = resolveInitialRadialIndex();
