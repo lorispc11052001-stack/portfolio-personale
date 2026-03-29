@@ -193,6 +193,16 @@ html.theme-dark body header::after {
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
 }
 
+.contattami-header,
+.btn-cv,
+.about-contact-link {
+  border: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background-clip: padding-box;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
 .about-link-header:hover,
 .contattami-header:hover,
 .btn-cv:hover {
@@ -2354,7 +2364,7 @@ footer textarea:focus {
   min-height: 2.5rem;
   padding: 0.45rem 1rem;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 0;
   color: #fff;
   font-weight: 700;
   background: linear-gradient(120deg, var(--accent), var(--accent-2));
@@ -3054,6 +3064,18 @@ html.theme-dark body .metodo-cta-link:hover,
 html.theme-dark body .about-contact-link:hover,
 html.theme-dark body .btn-footer:hover {
   box-shadow: 0 12px 22px rgba(5, 15, 31, 0.5), 0 0 12px rgba(78, 173, 255, 0.36), inset 0 1px 0 rgba(223, 239, 255, 0.28);
+}
+
+html:not(.theme-dark) body .contattami-header,
+html:not(.theme-dark) body .btn-cv,
+html:not(.theme-dark) body .about-contact-link,
+body.theme-dark .contattami-header,
+body.theme-dark .btn-cv,
+body.theme-dark .about-contact-link,
+html.theme-dark body .contattami-header,
+html.theme-dark body .btn-cv,
+html.theme-dark body .about-contact-link {
+  border-color: transparent;
 }
 
 body.theme-dark .about-link-header,
