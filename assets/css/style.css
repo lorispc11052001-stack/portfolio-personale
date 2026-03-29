@@ -496,9 +496,9 @@ html:not(.theme-dark) body.radial-menu-open .radial-menu-item.is-active {
 /* Dark-mode radial menu: high contrast, deep-space hierarchy */
 body.radial-menu-open.theme-dark .radial-menu-overlay,
 html.theme-dark body.radial-menu-open .radial-menu-overlay {
-  background: radial-gradient(980px 620px at 14% 24%, rgba(8, 20, 48, 0.48), rgba(8, 20, 48, 0.76) 54%, rgba(3, 8, 20, 0.9) 100%), radial-gradient(560px 340px at 82% 76%, rgba(82, 228, 255, 0.16), transparent 74%), linear-gradient(120deg, rgba(3, 8, 18, 0.56), rgba(3, 8, 18, 0.66));
-  backdrop-filter: blur(8px) saturate(142%);
-  -webkit-backdrop-filter: blur(8px) saturate(142%);
+  background: radial-gradient(980px 620px at 14% 24%, rgba(34, 62, 124, 0.34), rgba(19, 34, 72, 0.58) 54%, rgba(7, 14, 32, 0.74) 100%), radial-gradient(560px 340px at 82% 76%, rgba(120, 96, 255, 0.2), transparent 74%), radial-gradient(500px 300px at 68% 28%, rgba(82, 228, 255, 0.18), transparent 72%), linear-gradient(120deg, rgba(8, 16, 36, 0.42), rgba(10, 18, 44, 0.52));
+  backdrop-filter: blur(9px) saturate(148%);
+  -webkit-backdrop-filter: blur(9px) saturate(148%);
 }
 
 body.radial-menu-open.theme-dark .radial-menu-orbit::before,
@@ -512,9 +512,9 @@ html.theme-dark body.radial-menu-open .radial-menu-orbit::before {
   transform: translate(-22%, -44%);
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(58% 58% at 32% 42%, rgba(96, 163, 255, 0.42), rgba(96, 163, 255, 0) 68%), radial-gradient(52% 52% at 72% 72%, rgba(82, 228, 255, 0.24), rgba(82, 228, 255, 0) 72%);
-  filter: blur(30px);
-  opacity: 0.92;
+  background: radial-gradient(60% 60% at 30% 42%, rgba(118, 167, 255, 0.38), rgba(118, 167, 255, 0) 68%), radial-gradient(54% 54% at 72% 72%, rgba(151, 112, 255, 0.3), rgba(151, 112, 255, 0) 72%), radial-gradient(46% 46% at 58% 30%, rgba(88, 223, 255, 0.24), rgba(88, 223, 255, 0) 70%);
+  filter: blur(28px);
+  opacity: 0.86;
   z-index: -2;
   will-change: transform, opacity;
   animation: radial-dark-aura-pulse 5.3s ease-in-out infinite;
@@ -531,9 +531,9 @@ html.theme-dark body.radial-menu-open .radial-menu-orbit::after {
   transform: translate(-26%, -50%);
   border-radius: 50%;
   pointer-events: none;
-  border: 1px solid rgba(144, 206, 255, 0.34);
-  box-shadow: 0 0 0 1px rgba(168, 225, 255, 0.24), inset 0 0 34px rgba(102, 188, 255, 0.34);
-  opacity: 0.82;
+  border: 1px solid rgba(156, 195, 255, 0.34);
+  box-shadow: 0 0 0 1px rgba(176, 206, 255, 0.2), inset 0 0 34px rgba(116, 160, 255, 0.26), inset 0 0 18px rgba(142, 110, 255, 0.2);
+  opacity: 0.74;
   z-index: -1;
   will-change: transform, opacity;
   animation: radial-dark-ring-spin 18s linear infinite;
@@ -541,22 +541,22 @@ html.theme-dark body.radial-menu-open .radial-menu-orbit::after {
 
 body.radial-menu-open.theme-dark .radial-menu-item,
 html.theme-dark body.radial-menu-open .radial-menu-item {
-  border-color: rgba(176, 220, 255, 0.44);
-  background: linear-gradient(132deg, rgba(8, 27, 64, 0.95), rgba(14, 58, 120, 0.92) 54%, rgba(54, 174, 214, 0.9));
-  color: #eff7ff;
-  text-shadow: 0 1px 0 rgba(0, 8, 22, 0.56);
-  letter-spacing: 0.02em;
-  padding: 0.58rem 1.04rem;
-  box-shadow: 0 20px 38px rgba(2, 8, 20, 0.64), 0 0 30px rgba(98, 174, 255, 0.48), inset 0 1px 0 rgba(190, 228, 255, 0.3);
-  backdrop-filter: blur(12px) saturate(174%);
-  -webkit-backdrop-filter: blur(12px) saturate(174%);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(132deg, rgba(10, 28, 96, 0.94), rgba(20, 86, 198, 0.88) 56%, rgba(162, 82, 255, 0.84));
+  color: #f5faff;
+  text-shadow: 0 1px 0 rgba(7, 14, 28, 0.5);
+  letter-spacing: 0.018em;
+  padding: 0.56rem 1.02rem;
+  box-shadow: 0 14px 28px rgba(4, 10, 26, 0.5), 0 0 16px rgba(82, 140, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(11px) saturate(165%);
+  -webkit-backdrop-filter: blur(11px) saturate(165%);
 }
 
 body.radial-menu-open.theme-dark .radial-menu-item::before,
 html.theme-dark body.radial-menu-open .radial-menu-item::before {
-  background: radial-gradient(140% 140% at 14% 50%, rgba(120, 194, 255, 0.6), rgba(120, 194, 255, 0) 66%);
-  box-shadow: 0 12px 24px rgba(3, 10, 24, 0.46);
-  opacity: 0.88;
+  background: radial-gradient(138% 138% at 14% 50%, rgba(154, 178, 255, 0.56), rgba(154, 178, 255, 0) 65%);
+  box-shadow: 0 8px 16px rgba(6, 14, 34, 0.22);
+  opacity: 0.74;
   transform: scale(1);
 }
 
@@ -566,7 +566,7 @@ html.theme-dark body.radial-menu-open .radial-menu-item::after {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  border: 1px solid rgba(182, 226, 255, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   pointer-events: none;
   mix-blend-mode: screen;
 }
@@ -576,17 +576,17 @@ body.radial-menu-open.theme-dark .radial-menu-item:focus-visible,
 html.theme-dark body.radial-menu-open .radial-menu-item:hover,
 html.theme-dark body.radial-menu-open .radial-menu-item:focus-visible {
   color: #ffffff;
-  border-color: rgba(204, 236, 255, 0.58);
-  background: linear-gradient(132deg, rgba(12, 42, 88, 0.96), rgba(20, 82, 163, 0.92) 52%, rgba(88, 220, 255, 0.88));
-  box-shadow: 0 22px 42px rgba(1, 8, 22, 0.7), 0 0 34px rgba(116, 201, 255, 0.7), inset 0 1px 0 rgba(210, 240, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.56);
+  background: linear-gradient(132deg, rgba(18, 44, 136, 0.96), rgba(22, 92, 214, 0.9) 52%, rgba(182, 86, 255, 0.86));
+  box-shadow: 0 16px 30px rgba(4, 10, 26, 0.56), 0 0 20px rgba(132, 142, 255, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.34);
 }
 
 body.radial-menu-open.theme-dark .radial-menu-item.is-active,
 html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
   color: #fff;
-  border-color: rgba(214, 240, 255, 0.7);
-  background: linear-gradient(122deg, #2e7dff 0%, #4cc9ff 48%, #8fe8ff 100%);
-  box-shadow: 0 24px 48px rgba(2, 10, 28, 0.8), 0 0 42px rgba(98, 188, 255, 0.88), 0 0 18px rgba(153, 238, 255, 0.68), inset 0 1px 0 rgba(219, 246, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.68);
+  background: linear-gradient(122deg, #1468ff 0%, #4d7bff 44%, #d06bff 100%);
+  box-shadow: 0 18px 34px rgba(5, 14, 34, 0.62), 0 0 24px rgba(114, 138, 255, 0.52), 0 0 10px rgba(208, 108, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 @keyframes radial-light-aura-pulse {
