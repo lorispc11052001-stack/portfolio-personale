@@ -681,7 +681,8 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
 }
 
 .btn-linkedin,
-.btn-instagram {
+.btn-instagram,
+.btn-whatsapp {
   inline-size: 2.7rem;
   block-size: 2.7rem;
   border: 1px solid var(--line-strong);
@@ -690,7 +691,8 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
 }
 
 .btn-linkedin a,
-.btn-instagram a {
+.btn-instagram a,
+.btn-whatsapp a {
   inline-size: 100%;
   block-size: 100%;
   display: grid;
@@ -705,8 +707,14 @@ html.theme-dark body.radial-menu-open .radial-menu-item.is-active {
   object-fit: contain;
 }
 
+.btn-whatsapp a {
+  color: #25d366;
+  font-size: 1.24rem;
+}
+
 .btn-linkedin:hover,
-.btn-instagram:hover {
+.btn-instagram:hover,
+.btn-whatsapp:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 18px rgba(20, 34, 59, 0.16);
 }
@@ -2711,7 +2719,8 @@ html:not(.theme-dark) body .about-link-header,
 html:not(.theme-dark) body .projects-more-link-alt,
 html:not(.theme-dark) body .projects-nav-btn,
 html:not(.theme-dark) body .btn-linkedin,
-html:not(.theme-dark) body .btn-instagram {
+html:not(.theme-dark) body .btn-instagram,
+html:not(.theme-dark) body .btn-whatsapp {
   border-color: rgba(139, 150, 245, 0.56);
   background: linear-gradient(142deg, rgba(253, 253, 255, 0.93), rgba(236, 236, 255, 0.92));
   color: #223474;
